@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: SettleForDevelopers/Settle-Developer-Docs-with-Netlify-CMS
+  repo: SettleForDevelopers/Developer-Docs
   branch: stage
 
 # when using the default proxy server port
