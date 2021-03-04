@@ -32,8 +32,9 @@ module.exports = {
   themeConfig: {
     logo: 'https://settle.eu/wp-content/uploads/2020/10/Settle-color.svg',
     repo: 'SettleForDevelopers/Developer-Docs',
+    docsBranch: 'dev',
+    docsDir: 'docs',
     repoLabel: 'Contribute',
-    docsDir: '',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
     lastUpdated: true,
@@ -47,10 +48,6 @@ module.exports = {
         text: 'Guides',
         link: '/guides/',
       },
-      // {
-      //   text: 'Reference',
-      //   link: '/api/merchant',
-      // },
       {
         text: 'Reference',
         ariaLabel: 'API Reference Menu',
