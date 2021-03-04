@@ -1,12 +1,12 @@
 {
   "name": "settle-developer-docs-with-netlify-cms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Documentation for the Settle APIs",
   "authors": {
     "name": "Christian Wick",
     "email": "christian@settle.eu"
   },
-  "repository": "https://github.com/SettleForDevelopers/Settle-Developer-Docs-with-Netlify-CMS",
+  "repository": "https://github.com/SettleAPI/settle-developer-docs",
   "license": "MIT",
   "scripts": {
     "docs:dev": "vuepress dev docs",
