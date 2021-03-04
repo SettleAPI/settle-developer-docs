@@ -24,7 +24,7 @@ Each [Markdown](https://www.markdownguide.org/) file is compiled into HTML with 
 
 1. ### Clone this repo
 
-   `git clone git@github.com:SettleAPI/settle-api-docs.git`
+   `gh repo clone SettleAPI/developer-docs`
 
 2. ### Navigate into your newly created Settle API docs directory
 
