@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: SettleAPI/developer-docs
+  repo: SettleAPI/settle-developer-docs
   branch: stage
 
 # when using the default proxy server port

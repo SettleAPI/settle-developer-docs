@@ -6,7 +6,7 @@
     "name": "Christian Wick",
     "email": "christian@settle.eu"
   },
-  "repository": "https://github.com/SettleAPI/developer-docs",
+  "repository": "https://github.com/SettleAPI/settle-developer-docs",
   "license": "MIT",
   "scripts": {
     "docs:dev": "vuepress dev docs",

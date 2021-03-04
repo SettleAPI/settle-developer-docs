@@ -37,7 +37,7 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
 **Netlify CMS** allows a user to enter content through an intuitive and easy to use interface which will then get used by **Vuepress** to create the appropriate pages. When saving content on **Netlify CMS**, the data gets saved into this git repository as markdown files.
 
-## Setup local envitoment
+## Setup local environment
 
 1. ### Clone this repo
 
@@ -54,15 +54,15 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 4. ### Start the local dev server
 
    `yarn docs:dev`
-   &nbsp;
+
    By default, you should now see your scaffolded Settle APIs docs site at [https://localhost:8080](https://localhost:8080)🚀
 
 5. ### Start the local CMS server
 
    `npx netlify-cms-proxy-server`
-   &nbsp;
+
    Open [http://localhost:8080/admin/](http://localhost:8080/admin/) to verify that your can administer your content locally. If the default port (8081) is in use, the proxy server won't start and you will see an error message. In this case, follow [these steps](https://www.netlifycms.org/docs/beta-features/#configure-the-netlify-cms-proxy-server-port-number) before proceeding.
-   &nbsp;
+
    **Note:** `netlify-cms-proxy-server` runs an unauthenticated express server. As any client can send requests to the server, it should only be used for local development.
 
 ## Contributing
@@ -83,4 +83,4 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
     `gh pr create --title "My Awesome feature" --body "This is my new awesome feature." --base dev`
 
-    **NOTE:** Pull Requests are used to start conversation about proposed changes before they're code is reviewed and eventually merged into the main branch, and **we will only consider Pull Requests initiated towards the [dev branch](https://github.com/SettleAPI/developer-docs/tree/dev)**. Pull Requests towards any other branch will be ignored and closed without any further notifications.
+    **NOTE:** Pull Requests are used to start conversation about proposed changes before they're code is reviewed and eventually merged into the main branch, and **we will only consider Pull Requests initiated towards the [dev branch](https://github.com/SettleAPI/settle-developer-docs/tree/dev)**. Pull Requests towards any other branch will be ignored and closed without any further notifications.
