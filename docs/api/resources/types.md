@@ -39,7 +39,7 @@ Information about the store or business that is receiving the payment. Used for 
 | **longitude** : String : optional : default=null           | Longitude                        |
 | **latitude** : String : optional : default=null            | Latitude                         |
 
-## ReceiptItem[](https://developer.settle.eu/types.html#wtforms-fielddoc-attachments-3 "Permalink to this headline")
+## ReceiptItem
 
 Thorough item description for e-receipts.
 
@@ -60,7 +60,7 @@ Thorough item description for e-receipts.
 | **ean** : String : optional : default=null              | International Article Number (EAN).                      |
 | **serial_number** : String : optional : default=null    | Item serial number.                                      |
 
-## ReceiptPayment[](https://developer.settle.eu/types.html#wtforms-fielddoc-attachments-4 "Permalink to this headline")
+## ReceiptPayment
 
 |                                                     |                                        |
 | --------------------------------------------------- | -------------------------------------- |
@@ -68,11 +68,11 @@ Thorough item description for e-receipts.
 | **amount** : String : optional : default=null       | Amount paid using this payment type    |
 | **currency** : String : optional : default=null     | Currency of the payment                |
 
-## Currency[](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0 "Permalink to this headline")
+## Currency
 
 In schemas where a Currency field occurs it's value determines the currency used for the [Money](https://developer.settle.eu/types.html#wtforms-fielddoc-oauth_api-0) fields in the same schema. If the schema has a nested structure, the Currency field only affects the Money fields at the same nesting level. The Currency field takes a string of 3 chars representing a currency code according to the [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) standard.
 
-## MoneyInteger[](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1 "Permalink to this headline")
+## MoneyInteger
 
 Type that represents a monetary amount as an integer. In schemas where one or more Money fields appears there will always be a [Currency](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0) field present, that determines the currency of the Money fields.
 
