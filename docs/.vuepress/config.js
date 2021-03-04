@@ -31,7 +31,7 @@ module.exports = {
    */
   themeConfig: {
     logo: 'https://settle.eu/wp-content/uploads/2020/10/Settle-color.svg',
-    repo: 'SettleAPI/developer-docs',
+    repo: 'SettleAPI/settle-developer-docs',
     docsBranch: 'dev',
     docsDir: 'docs',
     repoLabel: 'Contribute',
