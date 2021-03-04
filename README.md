@@ -79,6 +79,8 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
     `git push origin feat/my-awesome-feature`
 
-4. ### Submit a pull request 🤓
+4. ### Open a Pull Request 🤓
 
-    `git request-pull dev origin feat/my-awesome-feature`
+    `gh pr create --title "My Awesome feature" --body "This is my new awesome feature." --base dev`
+
+    **NOTE:** Pull Requests are used to start conversation about proposed changes before they're code is reviewed and eventually merged into the main branch, and **we will only consider Pull Requests initiated towards the [dev branch](https://github.com/SettleAPI/developer-docs/tree/dev)**. Pull Requests towards any other branch will be ignored and closed without any further notifications.
