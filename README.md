@@ -28,7 +28,7 @@ Each [Markdown](https://www.markdownguide.org/) file is compiled into HTML with 
 
 2. ### Navigate into your newly created Settle API docs directory
 
-   `cd settle-api-docs`
+   `cd developer-docs`
 
 3. ### Setup local environment
 
