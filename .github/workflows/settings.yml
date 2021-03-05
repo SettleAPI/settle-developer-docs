@@ -34,7 +34,7 @@ autoDeleteSettings:
 releaseDrafting: false
 
 
-slackWebhook: 'https://hooks.slack.com/services/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'
+slackWebhook: 'https://hooks.slack.com/services/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'
 
 
 ## Configurable label names
