@@ -1,0 +1,56 @@
+##### TO BE PUT as .github/settings.yml in REPO's DEFAULT BRANCH
+
+# Set to true to add assignees to pull requests
+addAssignees: true
+
+addReviewers: true
+
+# A list of reviewers to be added to pull requests (GitHub user name)
+# a floating reviewer needs a weight, by default its 1
+# if the PR author is in fixed they will not come in review
+# Reviewers already selected before the PR creation will still be added also respecting total count
+reviewers:
+    total: 2  
+    fixed:
+        - rexgnu
+        - iamchriswick
+    #floating:
+    #    - cytopia 10
+    #    - streamich 30
+
+
+
+# Settings for autoDelete Feature
+autoDelete: true
+
+autoDeleteSettings:
+    # Exact names for the branch to be given
+    exclude:
+        - promotion/dev
+        - promotion/stage
+        - promotion/prod
+
+# Release drafting (coming soon)
+releaseDrafting: false
+
+
+slackWebhook: 'https://hooks.slack.com/services/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'
+
+
+## Configurable label names
+## Addition of the following will disable its respective features.
+disableBotActions:
+  # Disables all the features
+  sudo : no-bot
+  
+  # Label names for each actions
+  autoAssignee : no-bot-assignee
+  autoReviewer : no-bot-reviewer
+  autoDelete : no-bot-delete
+  slackPosts : no-bot-slack
+  
+  
+### FEATURE: DO NOT MERGE ###
+# Works by putting [DNM] at the beganing of the title in the Pull Request.  
+# This disables branch merge ( However the repo admin can still merge if blocked by app )
+# Any contributor with write access can 
