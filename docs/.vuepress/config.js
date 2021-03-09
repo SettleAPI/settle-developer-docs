@@ -126,6 +126,23 @@ module.exports = {
         indexSuffix: '/',
         notFoundPath: '/404.html',
       },
+      [
+        'vuepress-plugin-right-anchor',
+        {
+          showDepth: 1,
+          ignore: [
+            '/',
+            '/api/',
+            // more...
+          ],
+          expand: {
+            default: true,
+            trigger: 'hover',
+          },
+          customClass: 'your-customClass',
+          disableGlobalUI: false,
+        },
+      ],
     ],
   ],
 };
