@@ -65,16 +65,19 @@ The value in the `event` field in the `meta` part of the message is called t
 
 Several events are associated with the different transitions in payment request state:
 
-* payment_authorized *(User has accepted a payment request. Used for both AUTH and SALE requests)*
-* payment_captured
-* payment_auth_released
-* payment_aborted_by_customer
-* payment_aborted_by_merchant
-* payment_authorization_renewed
-* payment_authorization_expired
-* payment_request_expired
+* `payment_authorized`
+  * *(User has accepted a payment request. Used for both AUTH and SALE requests)*
+* `payment_captured`
+* `payment_auth_released`
+* `payment_aborted_by_customer`
+* `payment_aborted_by_merchant`
+* `payment_authorization_renewed`
+* `payment_authorization_expired`
+* `payment_request_expired`
 
 As these events reflect the state of the payment request at the time the callback was made, the `object` part will contain the same data as what can be retrieved from the payment request [`outcome`](https://developer.settle.eu/handlers.html#get--payment_request--tid--outcome- "GET /payment_request/\<tid>/outcome/") endpoint. The data schema is:
+
+<div class="md-api_reference_FiraCode">
 
 #### currency
 
@@ -216,7 +219,7 @@ Data required (new or existing on update). The POS this request originates from,
 #### pos_tid
 
 * Type: `string`
-* Required: `required`
+* Required: `true`
 * Length: <= 64
 * Regexp: `^[a-zA-Z0-9_.-]+$`
 
@@ -225,7 +228,7 @@ Local transaction id for POS. This must be unique for the POS.
 #### tid
 
 * Type: `string`
-* Required: `required`
+* Required: `true`
 * Length: <= 64
 * Regexp: `^[a-zA-Z0-9_.-]+$`
 
@@ -239,6 +242,8 @@ Settle transaction id.
 
 If payment request was combined with a permission request, this field will contain the permission request outcome. Same as returned by a GET the permission request outcome endpoint. See [AccessTokenResponse](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-10).
 
+</div>
+
 ### Permission request
 
 There are two events associated with permission requests:
@@ -248,19 +253,183 @@ There are two events associated with permission requests:
 
 The same data is available at the [`outcome`](https://developer.settle.eu/handlers.html#get--permission_request--rid--outcome- "GET /permission_request/\<rid>/outcome/") endpoint, with response schema:
 
-fgdsfgsdfgsdf
+<div class="md-api_reference_FiraCode">
+
+#### access_token
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+See [Access token]().
+
+#### id_token
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+A JWT that contains identity information about the user that is digitally signed by Settle. See [Lorem]().
+
+#### token_type
+
+* Type: `string`
+* Required: `true`
+* Default: `null`
+
+Type of access token, at this time it will always be Bearer. See [Lorem]().
+
+#### expires_in
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+Lifetime in seconds of the [`access_token`](#access-token). See [Lorem]().
+
+#### refresh_token
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+Refresh token used to issue new access token after expiration. See [Lorem]().
+
+#### scope
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+* Values: `address` | `bankid` | `email` | `fodselsnummer` | `openid` | `phone` | `profile` | `shipping_address`
+
+Space-delimited list of scopes. See [Lorem]().
+
+#### currency
+
+* Type: [`Currency`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0)
+* Required: `false`
+* Default: `null`
+* Length: == 3
+
+Currency for fee. See [Currency ](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0).
+
+#### transaction_fee
+
+* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Required: `false`
+* Default: `null`
+
+Permission fee to be deducted from settlement. See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+
+#### status
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+Permission request status. See [Lorem]().
+
+#### status_code
+
+* Type: `integer`
+* Required: `false`
+* Default: `null`
+
+Permission request status code. See [Lorem]().
+
+#### pos_id
+
+* Type: `string`
+* Required: `true`
+* Data: New or existing on update
+* Length:  <= 64
+* Regexp: ^[a-zA-Z0-9_.-]+$
+
+The POS this request originates from, used for informing user about origin. See [Lorem]().
+
+#### pos_id
+
+* Type: `string`
+* Required: `true`
+* Data: New or existing on update
+* Length:  <= 64
+* Regexp: ^[a-zA-Z0-9_.-]+$
+
+Local transaction id for POS. This must be unique for the POS. See [Lorem]().
+
+#### rid
+
+* Type: `string`
+* Required: `true`
+* Data: New or existing on update
+
+Settle request id. This must be unique for the POS. See [Lorem]().
+
+#### user_info
+
+* Type: [`JSON`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9)
+* Required: `false`
+* Default: `null`
+
+User Info. See [JSON](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9).
+
+</div>
 
 ### Shortlink scan
 
 Whenever a shortlink is scanned a callback will be made by Settle to the URI that was given in the `callback_uri` field of the shortlink resource. The event for this callback is *shortlink_scanned* and the data schema for the `object` part is:
 
-dfasdfdasf
+<div class="md-api_reference_FiraCode">
+
+#### id
+
+* Type: `string`
+* Required: `false`
+* Data: New or existing on update
+
+The scan token ID that can be used as recipient for payment and permission requests. Expires in one day. See [Lorem]().
+
+#### argstring
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+The string that was appended to the shortlink value in the QR code that was scanned. See [Lorem]().
+
+</div>
 
 Note that this event is exempt from the "secure callback rule". I.e. the `object` part is always included, no matter what protocol is being used for the callback. Hence the `uri` field in the `meta` part is `null`.
 
 If that callback is made using HTTP or HTTPS, the recipient of the callback may return the following data, which will be transported back to the user agent that scanned the shortlink, in the HTTP(S) response body:
 
-sadfasdfsdaf
+<div class="md-api_reference_FiraCode">
+
+#### text
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+Text that will be displayed to user. See [Lorem]().
+
+#### uri <Badge text="deprecated" type="error"/>
+
+* Type: `string`
+* Required: `false`
+* Default: `null`
+
+URI to open in Settle App. **DEPRECATED**: use [`next`](#next) action payload instead.
+
+#### next
+
+* Type: [`JSON`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9)
+* Required: `false`
+* Default: `null`
+
+Next action.
+
+</div>
 
 ## Supported protocols
 

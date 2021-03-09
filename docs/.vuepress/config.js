@@ -130,20 +130,29 @@ module.exports = {
     [
       'vuepress-plugin-right-anchor',
       {
-        showDepth: 1,
+        showDepth: -1,
         ignore: [
           '/',
-          '/api/'
+          // '/api/'
           // more...
         ],
         expand: {
           default: true,
-          trigger: 'hover'
+          trigger: 'hover',
         },
-        customClass: 'your-customClass',
+        // customClass: 'your-customClass',
         disableGlobalUI: false,
-      }
-    ]
+      },
+    ],
+    [
+      '@silvanite/markdown-classes',
+      {
+        prefix: 'md',
+        rules: [
+          'api_reference_FiraCode',
+        ],
+      },
+    ],
   ],
 };
 
