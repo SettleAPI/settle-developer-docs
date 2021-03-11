@@ -514,6 +514,30 @@ Value.
 
 </div>
 
+
+## LineItem :memo:
+
+<div class="md-api_reference_FiraCode">
+
+### product_id
+
+* Type: `string`
+* Required: `true`
+* Data Required: New or existing on update
+
+External id for the product in the line item.
+
+
+### description
+
+* Type: `string`
+* Required: `true`
+
+Description of the line item.
+
+</div>
+
+
 ## Money :moneybag:
 
 Type that represents a monetary amount as a string using period as the decimal separator (e.g. `"12.50"`). In schemas where one or more Money fields appears there will always be a [Currency](#currency) field present, that determines the currency of the Money fields. The value string of the Money field must have the correct number of decimal places for the currency that has been supplied in the same schema. E,g, if the currency is `"USD"`, `"12.50"` is a valid Money value, while `"12.5"` and `"12.500"` are not.
