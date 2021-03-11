@@ -4,6 +4,11 @@
 //  font-size 30px;
 //}
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*
+  font-family: 'Roboto', sans-serif;
+
 pre.vue-container
   border-left-width: .5rem;
   border-left-style: solid;
@@ -25,7 +30,23 @@ pre.vue-container
 .site-name.can-hide
   display: none
 
-.navbar
+// .navbar
+//   &
+//     .logo
+//       height: 60px
+
+.theme-default-content
   &
-    .logo
-      height: 60px
+    .md-api_reference_FiraCode
+      &
+        *
+          font-family: 'Fira Code', monospace;
+        h4
+          margin-block-start: 3.33em;
+        p:last-child
+          margin-bottom: 3.3em;
+  &
+    a
+      &
+        code
+          color: $accentColor
