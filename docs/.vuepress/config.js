@@ -140,7 +140,7 @@ module.exports = {
           default: true,
           trigger: 'hover',
         },
-        // customClass: 'your-customClass',
+        customClass: 'rightAnchorClass',
         disableGlobalUI: false,
       },
     ],
@@ -148,9 +148,7 @@ module.exports = {
       '@silvanite/markdown-classes',
       {
         prefix: 'md',
-        rules: [
-          'api_reference_FiraCode',
-        ],
+        rules: ['api_reference_FiraCode', 'api_reference_method_heading'],
       },
     ],
   ],

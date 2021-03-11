@@ -4,24 +4,25 @@ description: Callbacks
 ---
 # Callbacks
 
-API clients can associate some resources with a `callback_uri` in order to enable asynchronous communication between the client and server. At certain events Settle can trigger a callback to specified `callback_uri`. E.g. if the callback URI is an HTTP URI, an HTTP POST request will be made to the URI. The data sent with the callback is referred to as a "callback message" (or just "message"). The message consists of a `meta` part and an `object` part, the latter containing the actual message data, while the former is meta information about the callback. Note that you do not have to know everything about callbacks in order to implement an API client. However, *all developers should read the* *[Security considerations](https://developer.settle.eu/callbacks.html#callbacks-security)* *section*.
+API clients can associate some resources with a `callback_uri` in order to enable asynchronous communication between the client and server. At certain events Settle can trigger a callback to specified `callback_uri`. E.g. if the callback URI is an HTTP URI, an HTTP POST request will be made to the URI. The data sent with the callback is referred to as a "callback message" (or just "message"). The message consists of a `meta` part and an `object` part, the latter containing the actual message data, while the former is meta information about the callback. Note that you do not have to know everything about callbacks in order to implement an API client. However, *all developers should read the* *[Security considerations](#security-considerations)* *section*.
 
-Callbacks support several protocols (see *[Supported protocols](https://developer.settle.eu/callbacks.html#callbacks-protocols)*) For protocols that are considered secure the callback will contain the entire message. Let us first consider an example where the callback is made using a secure protocol. The example `callback_uri` of the resource is `https://callbackserver.test/notification/qWeR/`, which is an HTTPS URI.
+Callbacks support several protocols (see *[Supported protocols](#supported-protocols)*) For protocols that are considered secure the callback will contain the entire message. Let us first consider an example where the callback is made using a secure protocol. The example `callback_uri` of the resource is `https://callbackserver.test/notification/qWeR/`, which is an HTTPS URI.
 
-```
+```http
 POST /notification/qWeR/ HTTP/1.1
+
 HOST: callbackserver.test
-Content-Type: application/vnd.mcash.api.merchant.v1+json
 Authorization: RSA-SHA256 <rsa_signature>
 X-Auka-Content-Digest: SHA256=<content_sha256>
+Content-Type: application/vnd.mcash.api.merchant.v1+json
 
 {
-    "meta": {
-        "id": "RzeUPFP1T5WkWd46tX8Hxg",
-         "event": "test_event",
-         "uri": "https://server.test/my_resource/1/"
-    },
-    "object": {"text": "Hello World"},
+  "meta": {
+    "id": "RzeUPFP1T5WkWd46tX8Hxg",
+    "event": "test_event",
+    "uri": "https://server.test/my_resource/1/"
+  },
+  "object": { "text": "Hello World" }
 }
 ```
 
@@ -29,28 +30,30 @@ Notice the headers `Authorization` and `X-Auka-Content-Digest`. The values of
 
 For insecure protocols, Settle will only send non-sensitive meta-information. In this example the `callback_uri` is `http://callbackserver.test/notification/qWeR/` (HTTP):
 
-```
+```http
 POST /notification/qWeR HTTP/1.1
+
 HOST: callbackserver.test
 Content-Type: application/vnd.mcash.api.merchant.v1+json
 
 {
-    "meta": {
-        "id": "RzeUPFP1T5WkWd46tX8Hxg",
-        "event": "test_event",
-        "uri": "https://server.test/my_resource/1/"
-    }
+  "meta": {
+    "id": "RzeUPFP1T5WkWd46tX8Hxg",
+    "event": "test_event",
+    "uri": "https://server.test/my_resource/1/"
+  }
 }
 ```
 
 Here the `uri` field contains a URI that points to an endpoint on an Settle server where the `object` part can be retrieved using an HTTPS GET.
 
-```
+```http
 GET /my_resource/1/ HTTP/1.1
+
 HOST: server.test
 ```
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/vnd.mcash.api.merchant.v1+json
 
@@ -66,6 +69,7 @@ The value in the `event` field in the `meta` part of the message is called t
 Several events are associated with the different transitions in payment request state:
 
 * `payment_authorized`
+
   * *(User has accepted a payment request. Used for both AUTH and SALE requests)*
 * `payment_captured`
 * `payment_auth_released`
@@ -81,51 +85,51 @@ As these events reflect the state of the payment request at the time the callbac
 
 #### currency
 
-* Type: [`Currency`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0)
+* Type: [`Currency`](/api/resources/types/#currency)
 * Required: `true`
 * Default: `null`
 
-ISO 4217 currency code. See [Currency](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-0).
+ISO 4217 currency code. See [Currency](/api/resources/types/#currency).
 
 #### amount
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### additional_amount
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-Additional amount might have been changed by user if `additional_edit` was true. See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+Additional amount might have been changed by user if `additional_edit` was true. See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### auth_amount
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-The authorized amount. If doing partial captures, this will show the amount still available in the authorization for subsequent captures; auth_amount = amount - sum (captured amounts). See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+The authorized amount. If doing partial captures, this will show the amount still available in the authorization for subsequent captures; auth_amount = amount - sum (captured amounts). See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### auth_additional_amount
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-The authorized additional amount. If doing partial captures, this will show the part of additional amount still available in the authorization for subsequent captures; auth_additional_amount = additional_amount - sum(captured additional amounts). See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+The authorized additional amount. If doing partial captures, this will show the part of additional amount still available in the authorization for subsequent captures; auth_additional_amount = additional_amount - sum(captured additional amounts). See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### captures
 
-* Type: [`Capture`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-2)
+* Type: [`Capture`](/api/resources/types/#capture)
 * Required: `false`
 * Default: `null`
 
-List of captures. See [Capture](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-2).
+List of captures. See [Capture](/api/resources/types/#capture).
 
 #### refunds
 
@@ -187,19 +191,19 @@ Whether the received payment was a credit payment.
 
 #### interchange_fee
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-Interchange fee to be deducted if credit payment. See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+Interchange fee to be deducted if credit payment. See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### transaction_fee
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-Transaction fee to be deducted. See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+Transaction fee to be deducted. See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### attachment_uri
 
@@ -236,11 +240,11 @@ Settle transaction id.
 
 #### permissions
 
-* Type: [`AccessTokenResponse`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-10)
+* Type: [`AccessTokenResponse`](/api/resources/types/#moneyinteger0)
 * Required: `false`
 * Default: `null`
 
-If payment request was combined with a permission request, this field will contain the permission request outcome. Same as returned by a GET the permission request outcome endpoint. See [AccessTokenResponse](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-10).
+If payment request was combined with a permission request, this field will contain the permission request outcome. Same as returned by a GET the permission request outcome endpoint. See [AccessTokenResponse](/api/resources/types/#moneyinteger0).
 
 </div>
 
@@ -261,7 +265,7 @@ The same data is available at the [`outcome`](https://developer.settle.eu/handl
 * Required: `false`
 * Default: `null`
 
-See [Access token]().
+See [Access token](<>).
 
 #### id_token
 
@@ -269,7 +273,7 @@ See [Access token]().
 * Required: `false`
 * Default: `null`
 
-A JWT that contains identity information about the user that is digitally signed by Settle. See [Lorem]().
+A JWT that contains identity information about the user that is digitally signed by Settle. See [Lorem](<>).
 
 #### token_type
 
@@ -277,7 +281,7 @@ A JWT that contains identity information about the user that is digitally signed
 * Required: `true`
 * Default: `null`
 
-Type of access token, at this time it will always be Bearer. See [Lorem]().
+Type of access token, at this time it will always be Bearer. See [Lorem](<>).
 
 #### expires_in
 
@@ -285,7 +289,7 @@ Type of access token, at this time it will always be Bearer. See [Lorem]().
 * Required: `false`
 * Default: `null`
 
-Lifetime in seconds of the [`access_token`](#access-token). See [Lorem]().
+Lifetime in seconds of the [`access_token`](#access-token). See [Lorem](<>).
 
 #### refresh_token
 
@@ -293,7 +297,7 @@ Lifetime in seconds of the [`access_token`](#access-token). See [Lorem]().
 * Required: `false`
 * Default: `null`
 
-Refresh token used to issue new access token after expiration. See [Lorem]().
+Refresh token used to issue new access token after expiration. See [Lorem](<>).
 
 #### scope
 
@@ -302,7 +306,7 @@ Refresh token used to issue new access token after expiration. See [Lorem]().
 * Default: `null`
 * Values: `address` | `bankid` | `email` | `fodselsnummer` | `openid` | `phone` | `profile` | `shipping_address`
 
-Space-delimited list of scopes. See [Lorem]().
+Space-delimited list of scopes. See [Lorem](<>).
 
 #### currency
 
@@ -315,11 +319,11 @@ Currency for fee. See [Currency ](https://developer.settle.eu/types.html#wtforms
 
 #### transaction_fee
 
-* Type: [`MoneyInteger`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1)
+* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-Permission fee to be deducted from settlement. See [MoneyInteger](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-1).
+Permission fee to be deducted from settlement. See [MoneyInteger](/api/resources/types/#moneyinteger).
 
 #### status
 
@@ -327,7 +331,7 @@ Permission fee to be deducted from settlement. See [MoneyInteger](https://develo
 * Required: `false`
 * Default: `null`
 
-Permission request status. See [Lorem]().
+Permission request status. See [Lorem](<>).
 
 #### status_code
 
@@ -335,7 +339,7 @@ Permission request status. See [Lorem]().
 * Required: `false`
 * Default: `null`
 
-Permission request status code. See [Lorem]().
+Permission request status code. See [Lorem](<>).
 
 #### pos_id
 
@@ -343,9 +347,9 @@ Permission request status code. See [Lorem]().
 * Required: `true`
 * Data: New or existing on update
 * Length:  <= 64
-* Regexp: ^[a-zA-Z0-9_.-]+$
+* Regexp: ^\[a-zA-Z0-9_.-]+$
 
-The POS this request originates from, used for informing user about origin. See [Lorem]().
+The POS this request originates from, used for informing user about origin. See [Lorem](<>).
 
 #### pos_id
 
@@ -353,9 +357,9 @@ The POS this request originates from, used for informing user about origin. See 
 * Required: `true`
 * Data: New or existing on update
 * Length:  <= 64
-* Regexp: ^[a-zA-Z0-9_.-]+$
+* Regexp: ^\[a-zA-Z0-9_.-]+$
 
-Local transaction id for POS. This must be unique for the POS. See [Lorem]().
+Local transaction id for POS. This must be unique for the POS. See [Lorem](<>).
 
 #### rid
 
@@ -363,15 +367,15 @@ Local transaction id for POS. This must be unique for the POS. See [Lorem]().
 * Required: `true`
 * Data: New or existing on update
 
-Settle request id. This must be unique for the POS. See [Lorem]().
+Settle request id. This must be unique for the POS. See [Lorem](<>).
 
 #### user_info
 
-* Type: [`JSON`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9)
+* Type: [`JSON`](/api/resources/types/#json)
 * Required: `false`
 * Default: `null`
 
-User Info. See [JSON](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9).
+User Info. See [JSON](/api/resources/types/#json).
 
 </div>
 
@@ -387,7 +391,7 @@ Whenever a shortlink is scanned a callback will be made by Settle to the URI tha
 * Required: `false`
 * Data: New or existing on update
 
-The scan token ID that can be used as recipient for payment and permission requests. Expires in one day. See [Lorem]().
+The scan token ID that can be used as recipient for payment and permission requests. Expires in one day. See [Lorem](<>).
 
 #### argstring
 
@@ -395,7 +399,7 @@ The scan token ID that can be used as recipient for payment and permission reque
 * Required: `false`
 * Default: `null`
 
-The string that was appended to the shortlink value in the QR code that was scanned. See [Lorem]().
+The string that was appended to the shortlink value in the QR code that was scanned. See [Lorem](<>).
 
 </div>
 
@@ -411,7 +415,7 @@ If that callback is made using HTTP or HTTPS, the recipient of the callback may 
 * Required: `false`
 * Default: `null`
 
-Text that will be displayed to user. See [Lorem]().
+Text that will be displayed to user. See [Lorem](<>).
 
 #### uri <Badge text="deprecated" type="error"/>
 
@@ -423,7 +427,7 @@ URI to open in Settle App. **DEPRECATED**: use [`next`](#next) action payload in
 
 #### next
 
-* Type: [`JSON`](https://developer.settle.eu/types.html#wtforms-fielddoc-callbacks-9)
+* Type: [`JSON`](/api/resources/types/#json)
 * Required: `false`
 * Default: `null`
 
@@ -443,7 +447,7 @@ Settle will make an HTTP POST request to the specified URI. The content-type of 
 
 ### HTTPS (secure)
 
-Example URI: `https://acme.com/payment_request/Qd3/callback/`
+Example URI: `https://acme.com/paymjsoent_request/Qd3/callback/`
 
 Same as HTTP, except that HTTPS is considered secure which means that the `object` part is included in the callback message. Settle verifies SSL certificates, so the recipient of the callback must use a CA signed certificate. If the client is going to use the data in the `object` part it SHOULD verify that the callback has been correctly signed by Settle.
 
