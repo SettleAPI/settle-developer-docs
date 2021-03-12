@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f4516111-2bfc-4ae0-9fc3-626cfe56e954/deploy-status)](https://app.netlify.com/sites/settle-developer-docs/deploys)
 # Settle API Docs
 
 ## Introduction
