@@ -209,7 +209,7 @@ Captured part of additional amount.
 
 ## Currency
 
-In schemas where a Currency field occurs it's value determines the currency used for the [Money](/api/resources/types/#money) fields in the same schema. If the schema has a nested structure, the Currency field only affects the Money fields at the same nesting level. The `currency` field takes a string of 3 chars representing a currency code according to the [ISO 4217 standard](https://www.iso.org/iso-4217-currency-codes.html) .
+In schemas where a Currency field occurs it's value determines the currency used for the [Money](/api/resources/types/#money) fields in the same schema. If the schema has a nested structure, the Currency field only affects the Money fields at the same nesting level. The `currency` field takes a string of 3 chars representing a currency code according to the [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) standard.
 
 ## Cursor
 
@@ -604,7 +604,7 @@ URL to Merchants logo.
 
 ## Money
 
-Type that represents a monetary amount as a string using period as the decimal separator (e.g. `"12.50"`). In schemas where one or more Money fields appears there will always be a [Currency](/api/resources/types/#currency-2) field present, that determines the currency of the Money fields. The value string of the Money field must have the correct number of decimal places for the currency that has been supplied in the same schema. E,g, if the currency is `"USD"`, `"12.50"` is a valid Money value, while `"12.5"` and `"12.500"` are not.
+Type that represents a monetary amount as a string using period as the decimal separator (e.g. `"12.50"`). In schemas where one or more Money fields appears there will always be a [Currency](#currency) field present, that determines the currency of the Money fields. The value string of the Money field must have the correct number of decimal places for the currency that has been supplied in the same schema. E,g, if the currency is `"USD"`, `"12.50"` is a valid Money value, while `"12.5"` and `"12.500"` are not.
 
 ## MoneyInteger
 

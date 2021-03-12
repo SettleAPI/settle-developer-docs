@@ -19,5 +19,6 @@
     "vuepress": "^1.8.2",
     "vuepress-plugin-clean-urls": "^1.1.2",
     "vuepress-plugin-right-anchor": "^0.4.8"
-  }
+  },
+  "dependencies": {}
 }

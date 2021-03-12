@@ -10,7 +10,7 @@ In the Settle API different authentication levels (auth levels) can be achieved 
 2. [SECRET](/guides/authentication/#authentication-using-secret)
 3. [KEY](/guides/authentication/#authentication-using-rsa-signature)
 
-When authenticated with a particular auth level, the client is also authorized for endpoints requiring a lower auth level. E.g. if authenticated with auth level [KEY](/guides/authentication/#authentication-using-rsa-signature), endpoints requiring [SECRET](/guides/authentication/#authentication-using-secret) or OPEN are also accessible.
+When authenticated with a particular auth level, the client is also authorized for endpoints requiring a lower auth level. E.g. if authenticated with auth level KEY, endpoints requiring SECRET or OPEN are also accessible.
 
 ## Required Request Headers
 

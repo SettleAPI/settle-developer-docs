@@ -57,7 +57,7 @@ description: Endpoints
 #### <span class="badge post">POST</span> [/payment_request/]()
 #### <span class="badge get">GET</span> [/payment_request/`{ tid }`/]()
 #### <span class="badge put">PUT</span> [/payment_request/`{ tid }`/]()
-#### <span class="badge get">GET</span> [/payment_request/`{ tid }`/outcome/](/api/merchant/#get-payment-request-tid-outcome)
+#### <span class="badge get">GET</span> [/payment_request/`{ tid }`/outcome/](/api/merchant/#payment-request-outcome)
 
 </div>
 

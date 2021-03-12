@@ -394,6 +394,7 @@ div[class~='language-php']:before {
 .md-api_reference_FiraCode {
   font-family: 'Fira Code', monospace;
 }
+.md-api_reference_FiraCode h3,
 .md-api_reference_FiraCode h4 {
   margin-block-start: 3.33em;
 }
