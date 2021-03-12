@@ -1,4 +1,5 @@
 const { description } = require('../../package');
+const moment = require('moment');
 
 module.exports = {
   /**
@@ -37,7 +38,7 @@ module.exports = {
     repoLabel: 'Contribute',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
-    lastUpdated: true,
+    // lastUpdated: true,
     smoothScroll: true,
     nav: [
       {
@@ -156,6 +157,17 @@ module.exports = {
         ],
       },
     ],
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // Don't forget to install moment yourself
+          const moment = require('moment');
+          moment.locale(lang);
+          return moment(timestamp).fromNow();
+        },
+      },
+    ],
   ],
 };
 
@@ -188,36 +200,36 @@ function getGuidesSidebar() {
 function getApiSidebar() {
   return [
     {
-      title: 'Merchant API',   // required
-      path: '/api/merchant/',      // optional, link of the title, which should be an absolute path and must exist
+      title: 'Merchant API', // required
+      path: '/api/reference/merchant/', // optional, link of the title, which should be an absolute path and must exist
       collapsable: true, // optional, defaults to true
-      sidebarDepth: 1,    // optional, defaults to 1
+      sidebarDepth: 1, // optional, defaults to 1
       children: [
-        ['/api/merchant/', 'Introduction'],
-        '/api/merchant/payment-request',
-        '/api/merchant/payment-request-outcome'
+        ['/api/reference/merchant/', 'Introduction'],
+        '/api/reference/merchant/payment-request',
+        '/api/reference/merchant/payment-request-outcome',
       ],
-      initialOpenGroupIndex: -1
+      initialOpenGroupIndex: -1,
     },
     {
-      title: 'OAuth API',   // required
-      path: '/api/oauth',      // optional, link of the title, which should be an absolute path and must exist
+      title: 'OAuth API', // required
+      path: '/api/oauth', // optional, link of the title, which should be an absolute path and must exist
       collapsable: true, // optional, defaults to true
-      sidebarDepth: 1,    // optional, defaults to 1
+      sidebarDepth: 1, // optional, defaults to 1
       // children: [
       //   '/'
       // ]
     },
     {
-      title: 'Settle Send',   // required
-      path: '/api/send',      // optional, link of the title, which should be an absolute path and must exist
+      title: 'Settle Send', // required
+      path: '/api/send', // optional, link of the title, which should be an absolute path and must exist
       collapsable: true, // optional, defaults to true
-      sidebarDepth: 1,    // optional, defaults to 1
+      sidebarDepth: 1, // optional, defaults to 1
       // children: [
       //   '/'
       // ]
     },
-  ]
+  ];
 }
 
 function getResourcesSidebar() {
