@@ -55,7 +55,7 @@ module.exports = {
           {
             text: 'APIs',
             items: [
-              { text: 'Settle Merhant', link: '/api/merchant' },
+              { text: 'Settle Merhant', link: '/api/merchant/' },
               { text: 'Settle OAuth', link: '/api/oauth' },
               { text: 'Settle Send', link: '/api/send' },
             ],
@@ -130,7 +130,7 @@ module.exports = {
     [
       'vuepress-plugin-right-anchor',
       {
-        showDepth: -1,
+        showDepth: 1,
         ignore: [
           '/',
           // '/api/'
@@ -148,7 +148,12 @@ module.exports = {
       '@silvanite/markdown-classes',
       {
         prefix: 'md',
-        rules: ['api_reference_FiraCode', 'api_reference_method_heading'],
+        rules: [
+          'api_reference_FiraCode',
+          'api_reference_method_heading',
+          'api_reference_request_heading',
+          'api_reference_types_heading',
+        ],
       },
     ],
   ],
@@ -181,7 +186,38 @@ function getGuidesSidebar() {
 }
 
 function getApiSidebar() {
-  return ['/api/merchant', '/api/oauth', '/api/send'];
+  return [
+    {
+      title: 'Merchant API',   // required
+      path: '/api/merchant/',      // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1,    // optional, defaults to 1
+      children: [
+        ['/api/merchant/', 'Introduction'],
+        '/api/merchant/payment-request',
+        '/api/merchant/payment-request-outcome'
+      ],
+      initialOpenGroupIndex: -1
+    },
+    {
+      title: 'OAuth API',   // required
+      path: '/api/oauth',      // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1,    // optional, defaults to 1
+      // children: [
+      //   '/'
+      // ]
+    },
+    {
+      title: 'Settle Send',   // required
+      path: '/api/send',      // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1,    // optional, defaults to 1
+      // children: [
+      //   '/'
+      // ]
+    },
+  ]
 }
 
 function getResourcesSidebar() {

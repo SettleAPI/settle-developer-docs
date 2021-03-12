@@ -1,30 +1,35 @@
 ---
-title: Merchant API
-description: Merchant API
+title: Payment Request Outcome
+description: Payment Requests Outcomes in the Settle Merchant API 
 ---
-# Merchant API Reference
 
-This is the reference documentation for the Settle Merchant API.
 
-The Settle Merchant API enables merchants to interact with Settle. Among its features are registering POS, short-links for QR scans, and payment requests.
+# Payment Request Outcome
 
-All endpoints are listed below, along with their expected input and output. The default content type for endpoints is `application/vnd.mcash.api.merchant.v1+json`.
-
-## Outcome
-
-The outcome endpoint shows the outcome info for a payment request, ReAuth or capture.
+The Payment Request Outcome endpoint shows the outcome info for a **Payment Request**, **ReAuth** or **Capture**.
 
 This endpoints includes specified fee and/or interchange that will be deducted from payout, and also updated additional amount field if the user added gratuity.
 
-If the callback uri registered for the payment request was secure (https), the contents of this form was sent along with the callback. If the callback uri was insecure, a notification pointing to this endpoint was sent instead.
+If the callback URI registered for the payment request was secure (https), the contents of this form was sent along with the callback. If the callback URI was insecure, a notification pointing to this endpoint was sent instead.
 
-The status field contains a simple string that is one of `ok`, `fail`, `auth`, or `pending`. The status_code field contains more information. The codes currently documented are:
+The status field contains a simple string that is one of `ok`, `fail`, `auth`, or `pending`. The `status_code` field contains more information. The codes currently documented are:
 
-asdfasdf
+| Code 	| Reason                                                  	| Status Code 	|
+|:----:	|---------------------------------------------------------	|:-----------:	|
+| 1003 	| PENDING - Waiting for customer or bank                  	|   pending   	|
+| 2000 	| OK - Payment received                                   	|      ok     	|
+| 3008 	| AUTH - Payment authorized, ready for capture            	|     auth    	|
+| 4004 	| NOT_FOUND - No such customer                            	|     fail    	|
+| 4019 	| ABORTED - Merchant aborted payment before capture       	|     fail    	|
+| 5006 	| REJECTED - Customer rejected/aborted payment request    	|     fail    	|
+| 5011 	| REQUEST_EXPIRED - Payment request expired               	|     fail    	|
+| 5012 	| AUTH_EXPIRED - Authorization not captured within 3 days 	|     fail    	|
 
 ::: warning NOTE
-The list of status codes may grow in the future, and API clients should deal with unknown status codes gracefully. However, one can rely on 1xxx and 3xxx being temporary states (merchant should wait for further updates), 2xxx represent final successful outcomes, and 4xxx and 5xxx represents final failure outcomes.
+The list of status codes may grow in the future, and API clients should deal with unknown status codes gracefully. However, one can rely on **1xxx** and **3xxx** being temporary states *(merchant should wait for further updates)*, **2xxx** represent final successful outcomes, and **4xxx** and **5xxx** represents final failure outcomes.
 :::
+
+## Requests
 
 <div class="md-api_reference_FiraCode">
 
@@ -34,41 +39,45 @@ The list of status codes may grow in the future, and API clients should deal wit
 
 </div>
 
-* Required auth level: [SECRET](/guides/authentication/#authentication-using-secret)
-* Authorized roles: [All](<>)
+* Required Auth Level: [SECRET](/guides/authentication/#authentication-using-secret)
+* Authorized Roles: All
 
 Retrieve payment request outcome.
 
 #### Parameters
 
-* `tid` - Transaction id assigned by Settle
+* `tid` - Transaction ID assigned by Settle
 
 #### Status Codes
 
 * **200** --> OK
 * **404** --> `tid` not found (or unauthorized for this merchant)
 
-### Response schema
+</div>
 
-#### currency
+## Response Schema
 
-* Type: [`Currency`](/api/resources/types/#currency)
+<div class="md-api_reference_FiraCode">
+
+### currency
+
+* Type: [`Currency`](/api/resources/types/#currency-2)
 * Required: `true`
 * Default: `null`
 * Length: == 3
 * Data: New or existing on update
 
-ISO 4217 currency code. See [Currency](/api/resources/types/#currency).
+ISO 4217 currency code. See [Currency](/api/resources/types/#currency-2).
 
-#### amount
+### amount
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
 * Default: `null`
 
-ISO 4217 currency code. See [MoneyInteger](/api/resources/types/#moneyinteger).
+Amount.
 
-#### additional_amount
+### additional_amount
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
@@ -151,7 +160,7 @@ Expiration date for current status. After a payment authorization is given this 
 
 #### credit
 
-* Type: `boolean`
+* Type: `Boolean`
 * Required: `false`
 * Default: `null`
 
@@ -197,7 +206,7 @@ The POS this request originates from, used for informing user about origin.
 * Length <= 64
 * Regexp: ^\[a-zA-Z0-9_.-]+$
 
-Local transaction id for POS. This must be unique for the POS.
+Local transaction ID for POS. This must be unique for the POS.
 
 #### tid
 
@@ -218,11 +227,3 @@ Settle transaction id.
 If payment request was combined with a permission request, this field will contain the permission request outcome. Same as returned by a GET the permission request outcome endpoint.
 
 </div>
-
-#### asdf
-
-* Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
-* Required: `false`
-* Default: `null`
-
-asdf.

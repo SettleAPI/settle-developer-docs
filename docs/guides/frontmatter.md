@@ -125,7 +125,7 @@ Set the canonical URL for the current page.
 
 ### navbar
 
-- Type: `boolean`
+- Type: `Boolean`
 - Default: `undefined`
 
 See [Default Theme Config > Disable the Navbar](../theme/default-theme-config.md#disable-the-navbar) for details.
@@ -153,7 +153,7 @@ See [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#
 
 ### search
 
-- Type: `boolean`
+- Type: `Boolean`
 - Default: `undefined`
 
 See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search) for details.
