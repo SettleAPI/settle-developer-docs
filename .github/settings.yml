@@ -34,20 +34,20 @@ autoDeleteSettings:
 releaseDrafting: false
 
 
-slackWebhook: 'https://hooks.slack.com/services/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'
+# slackWebhook: 'https://hooks.slack.com/services/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'
 
 
-## Configurable label names
-## Addition of the following will disable its respective features.
-disableBotActions:
-  # Disables all the features
-  sudo : no-bot
+# ## Configurable label names
+# ## Addition of the following will disable its respective features.
+# disableBotActions:
+#   # Disables all the features
+#   sudo : no-bot
   
-  # Label names for each actions
-  autoAssignee : no-bot-assignee
-  autoReviewer : no-bot-reviewer
-  autoDelete : no-bot-delete
-  slackPosts : no-bot-slack
+#   # Label names for each actions
+#   autoAssignee : no-bot-assignee
+#   autoReviewer : no-bot-reviewer
+#   autoDelete : no-bot-delete
+#   slackPosts : no-bot-slack
   
   
 ### FEATURE: DO NOT MERGE ###
