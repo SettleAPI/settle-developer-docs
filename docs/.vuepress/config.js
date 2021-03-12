@@ -86,7 +86,7 @@ module.exports = {
         {
           title: 'Resources', // required
           collapsable: false, // optional, defaults to true
-          sidebarDepth: 2, // optional, defaults to 1
+          sidebarDepth: 1, // optional, defaults to 1
           children: getResourcesSidebar(),
         },
       ],
@@ -125,6 +125,30 @@ module.exports = {
         normalSuffix: '/',
         indexSuffix: '/',
         notFoundPath: '/404.html',
+      },
+    ],
+    [
+      'vuepress-plugin-right-anchor',
+      {
+        showDepth: -1,
+        ignore: [
+          '/',
+          // '/api/'
+          // more...
+        ],
+        expand: {
+          default: true,
+          trigger: 'hover',
+        },
+        customClass: 'rightAnchorClass',
+        disableGlobalUI: false,
+      },
+    ],
+    [
+      '@silvanite/markdown-classes',
+      {
+        prefix: 'md',
+        rules: ['api_reference_FiraCode', 'api_reference_method_heading'],
       },
     ],
   ],

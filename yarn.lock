@@ -872,6 +872,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@silvanite/vuepress-plugin-markdown-classes@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@silvanite/vuepress-plugin-markdown-classes/-/vuepress-plugin-markdown-classes-1.0.2.tgz#9e851d7e6fe010d6368d2337b650080b17b88ba8"
+  integrity sha512-ZfC8UHHpynQTt+B37ANvRljrKpeOciroCW6Oo1UcblE8pyZqlYkyUueQsvJDXk1Vr4nYQmRZUJdmeUipk+G3AQ==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -4795,6 +4800,11 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "^3.0.0"
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
+
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
@@ -7671,6 +7681,13 @@ vuepress-plugin-container@^2.0.2:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
 
+vuepress-plugin-right-anchor@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-right-anchor/-/vuepress-plugin-right-anchor-0.4.8.tgz#dc5e9176a9ce91b688874e92b543e6ed3a78a30f"
+  integrity sha512-2aQVL6gRs/MbGZk5o9ppbC929+F8QnToISHyWurZDScQ76m8dkpYheyHmnQiqSiMZMRldIdcSeGpP+5eGRrrnw==
+  dependencies:
+    lodash.throttle "^4.1.1"
+
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.3.tgz#6eff2d4c186cca917cc9f7df2b0af7de7c8c6438"
@@ -7702,10 +7719,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

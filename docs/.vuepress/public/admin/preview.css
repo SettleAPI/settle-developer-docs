@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 html,
 body {
   padding: 0;
@@ -5,7 +8,8 @@ body {
   background-color: #fff;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
@@ -13,12 +17,13 @@ body {
 }
 a {
   font-weight: 500;
-  color: #3eaf7c;
+  color: #ff4731;
   text-decoration: none;
 }
-p a code {
+p a code,
+a code {
   font-weight: 400;
-  color: #3eaf7c;
+  color: #ff4731;
 }
 kbd {
   background: #eee;
@@ -86,7 +91,8 @@ a.header-anchor:hover {
 code,
 kbd,
 .line-number {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 p,
 ul,
@@ -131,7 +137,7 @@ td {
   border-color: #42b983;
 }
 .custom-block.warning {
-  background-color: rgba(255,229,100,0.3);
+  background-color: rgba(255, 229, 100, 0.3);
   border-color: #e7c000;
   color: #6b5900;
 }
@@ -157,7 +163,7 @@ code {
   padding: 0.25rem 0.5rem;
   margin: 0;
   font-size: 0.85em;
-  background-color: rgba(27,31,35,0.05);
+  background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
 }
 code .token.deleted {
@@ -167,7 +173,7 @@ code .token.inserted {
   color: #3eaf7c;
 }
 pre,
-pre[class*="language-"] {
+pre[class*='language-'] {
   line-height: 1.4;
   padding: 1.25rem 1.5rem;
   margin: 0.85rem 0;
@@ -176,18 +182,18 @@ pre[class*="language-"] {
   overflow: auto;
 }
 pre code,
-pre[class*="language-"] code {
+pre[class*='language-'] code {
   color: #fff;
   padding: 0;
   background-color: transparent;
   border-radius: 0;
 }
-div[class*="language-"] {
+div[class*='language-'] {
   position: relative;
   background-color: #282c34;
   border-radius: 6px;
 }
-div[class*="language-"] .highlight-lines {
+div[class*='language-'] .highlight-lines {
   user-select: none;
   padding-top: 1.3rem;
   position: absolute;
@@ -196,30 +202,30 @@ div[class*="language-"] .highlight-lines {
   width: 100%;
   line-height: 1.4;
 }
-div[class*="language-"] .highlight-lines .highlighted {
-  background-color: rgba(0,0,0,0.66);
+div[class*='language-'] .highlight-lines .highlighted {
+  background-color: rgba(0, 0, 0, 0.66);
 }
-div[class*="language-"] pre,
-div[class*="language-"] pre[class*="language-"] {
+div[class*='language-'] pre,
+div[class*='language-'] pre[class*='language-'] {
   background: transparent;
   position: relative;
   z-index: 1;
 }
-div[class*="language-"]::before {
+div[class*='language-']::before {
   position: absolute;
   z-index: 3;
   top: 0.8em;
   right: 1em;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
-div[class*="language-"]:not(.line-numbers-mode) .line-numbers-wrapper {
+div[class*='language-']:not(.line-numbers-mode) .line-numbers-wrapper {
   display: none;
 }
-div[class*="language-"].line-numbers-mode .highlight-lines .highlighted {
+div[class*='language-'].line-numbers-mode .highlight-lines .highlighted {
   position: relative;
 }
-div[class*="language-"].line-numbers-mode .highlight-lines .highlighted:before {
+div[class*='language-'].line-numbers-mode .highlight-lines .highlighted:before {
   content: ' ';
   position: absolute;
   z-index: 3;
@@ -228,31 +234,31 @@ div[class*="language-"].line-numbers-mode .highlight-lines .highlighted:before {
   display: block;
   width: 3.5rem;
   height: 100%;
-  background-color: rgba(0,0,0,0.66);
+  background-color: rgba(0, 0, 0, 0.66);
 }
-div[class*="language-"].line-numbers-mode pre {
+div[class*='language-'].line-numbers-mode pre {
   padding-left: 4.5rem;
   vertical-align: middle;
 }
-div[class*="language-"].line-numbers-mode .line-numbers-wrapper {
+div[class*='language-'].line-numbers-mode .line-numbers-wrapper {
   position: absolute;
   top: 0;
   width: 3.5rem;
   text-align: center;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   padding: 1.25rem 0;
   line-height: 1.4;
 }
-div[class*="language-"].line-numbers-mode .line-numbers-wrapper br {
+div[class*='language-'].line-numbers-mode .line-numbers-wrapper br {
   user-select: none;
 }
-div[class*="language-"].line-numbers-mode .line-numbers-wrapper .line-number {
+div[class*='language-'].line-numbers-mode .line-numbers-wrapper .line-number {
   position: relative;
   z-index: 4;
   user-select: none;
   font-size: 0.85em;
 }
-div[class*="language-"].line-numbers-mode::after {
+div[class*='language-'].line-numbers-mode::after {
   content: '';
   position: absolute;
   z-index: 2;
@@ -261,92 +267,92 @@ div[class*="language-"].line-numbers-mode::after {
   width: 3.5rem;
   height: 100%;
   border-radius: 6px 0 0 6px;
-  border-right: 1px solid rgba(0,0,0,0.66);
+  border-right: 1px solid rgba(0, 0, 0, 0.66);
   background-color: #282c34;
 }
-div[class~="language-js"]:before {
+div[class~='language-js']:before {
   content: 'js';
 }
-div[class~="language-ts"]:before {
+div[class~='language-ts']:before {
   content: 'ts';
 }
-div[class~="language-html"]:before {
+div[class~='language-html']:before {
   content: 'html';
 }
-div[class~="language-md"]:before {
+div[class~='language-md']:before {
   content: 'md';
 }
-div[class~="language-vue"]:before {
+div[class~='language-vue']:before {
   content: 'vue';
 }
-div[class~="language-css"]:before {
+div[class~='language-css']:before {
   content: 'css';
 }
-div[class~="language-sass"]:before {
+div[class~='language-sass']:before {
   content: 'sass';
 }
-div[class~="language-scss"]:before {
+div[class~='language-scss']:before {
   content: 'scss';
 }
-div[class~="language-less"]:before {
+div[class~='language-less']:before {
   content: 'less';
 }
-div[class~="language-stylus"]:before {
+div[class~='language-stylus']:before {
   content: 'stylus';
 }
-div[class~="language-go"]:before {
+div[class~='language-go']:before {
   content: 'go';
 }
-div[class~="language-java"]:before {
+div[class~='language-java']:before {
   content: 'java';
 }
-div[class~="language-c"]:before {
+div[class~='language-c']:before {
   content: 'c';
 }
-div[class~="language-sh"]:before {
+div[class~='language-sh']:before {
   content: 'sh';
 }
-div[class~="language-yaml"]:before {
+div[class~='language-yaml']:before {
   content: 'yaml';
 }
-div[class~="language-py"]:before {
+div[class~='language-py']:before {
   content: 'py';
 }
-div[class~="language-docker"]:before {
+div[class~='language-docker']:before {
   content: 'docker';
 }
-div[class~="language-dockerfile"]:before {
+div[class~='language-dockerfile']:before {
   content: 'dockerfile';
 }
-div[class~="language-makefile"]:before {
+div[class~='language-makefile']:before {
   content: 'makefile';
 }
-div[class~="language-javascript"]:before {
-  content: "js";
+div[class~='language-javascript']:before {
+  content: 'js';
 }
-div[class~="language-typescript"]:before {
-  content: "ts";
+div[class~='language-typescript']:before {
+  content: 'ts';
 }
-div[class~="language-markup"]:before {
-  content: "html";
+div[class~='language-markup']:before {
+  content: 'html';
 }
-div[class~="language-markdown"]:before {
-  content: "md";
+div[class~='language-markdown']:before {
+  content: 'md';
 }
-div[class~="language-json"]:before {
-  content: "json";
+div[class~='language-json']:before {
+  content: 'json';
 }
-div[class~="language-ruby"]:before {
-  content: "rb";
+div[class~='language-ruby']:before {
+  content: 'rb';
 }
-div[class~="language-python"]:before {
-  content: "py";
+div[class~='language-python']:before {
+  content: 'py';
 }
-div[class~="language-bash"]:before {
-  content: "sh";
+div[class~='language-bash']:before {
+  content: 'sh';
 }
-div[class~="language-php"]:before {
-  content: "php";
+div[class~='language-php']:before {
+  content: 'php';
 }
 .frame-content {
   max-width: 740px;
@@ -364,7 +370,6 @@ div[class~="language-php"]:before {
   }
 }
 
-
 /* Style frontmatter in preview */
 .frame-content > div > div:not(:last-child) * {
   font-size: 0.8rem;
@@ -379,9 +384,20 @@ div[class~="language-php"]:before {
 
 .frame-content::before {
   display: block;
-  content: "FRONTMATTER";
+  content: 'FRONTMATTER';
   font-size: 0.6rem;
   font-weight: bold;
   color: #3eaf7c;
   border-bottom: 1px solid #42b983;
+}
+
+.md-api_reference_FiraCode {
+  font-family: 'Fira Code', monospace;
+}
+.md-api_reference_FiraCode h3,
+.md-api_reference_FiraCode h4 {
+  margin-block-start: 3.33em;
+}
+.md-api_reference_FiraCode p:last-child {
+  margin-bottom: 3.3em;
 }

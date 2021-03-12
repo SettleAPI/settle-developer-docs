@@ -1,31 +1,140 @@
 // placeholder for test, dont't remove it.
 
-//.content {
-//  font-size 30px;
-//}
+// .content {
+// font-size 30px;
+// }
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-pre.vue-container
-  border-left-width: .5rem;
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+pre.vue-container {
+  border-left-width: 0.5rem;
   border-left-style: solid;
   border-color: #42b983;
   border-radius: 0px;
-  & > code
+
+  & > code {
     font-size: 14px !important;
-    & > p
+
+    & > p {
       margin: -5px 0 -20px 0;
-    code
+    }
+
+    code {
       background-color: #42b983 !important;
       padding: 3px 5px;
       border-radius: 3px;
-      color #000
-    em
-      color #808080
-      font-weight light
+      color: #000;
+    }
 
-.site-name.can-hide
-  display: none
+    em {
+      color: #808080;
+      font-weight: light;
+    }
+  }
+}
 
-.navbar
-  &
-    .logo
-      height: 60px
+.site-name.can-hide {
+  display: none;
+}
+
+// .navbar
+// &
+// .logo
+// height: 60px
+.theme-default-content {
+  & {
+    pre {
+      & {
+        code {
+          & {
+            * {
+              font-family: 'Fira Code', monospace;
+            }
+          }
+        }
+      }
+    }
+
+    .md-api_reference_FiraCode {
+      & {
+        * {
+          font-family: 'Fira Code', monospace;
+        }
+
+        h3, h4 {
+          margin-top: -3.1rem;
+          padding-top: 4.6rem;
+          margin-bottom: 0;
+        }
+
+        p:last-child {
+          margin-bottom: 3.3em;
+        }
+      }
+
+      & {
+        .md-api_reference_method_heading {
+          margin-block-start: 3.33em;
+          margin-block-end: 3.33em;
+
+          a {
+            color: $textColor;
+            font-weight: 600;
+
+            code {
+              // color: $textColor;
+            }
+          }
+
+          h4 {
+            .badge {
+              font-size: 16px;
+            }
+          }
+
+          & {
+            .badge {
+              font-size: 1.35rem;
+              height: auto;
+              line-height: 1.25;
+              padding: 1px 6px 0 6px;
+              color: #fff;
+              border-radius: 3px;
+            }
+
+            .badge.post {
+              background-color: #EEC049;
+            }
+
+            .badge.get {
+              background-color: #59B090;
+            }
+
+            .badge.put {
+              background-color: #96CBE8;
+            }
+
+            .badge.delete {
+              background-color: #E07166;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & {
+    p {
+      a {
+        & {
+          code {
+            color: $accentColor;
+          }
+        }
+      }
+    }
+  }
+}
