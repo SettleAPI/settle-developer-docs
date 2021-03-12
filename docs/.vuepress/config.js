@@ -86,7 +86,7 @@ module.exports = {
         {
           title: 'Resources', // required
           collapsable: false, // optional, defaults to true
-          sidebarDepth: 2, // optional, defaults to 1
+          sidebarDepth: 1, // optional, defaults to 1
           children: getResourcesSidebar(),
         },
       ],

@@ -34,7 +34,7 @@ The list of status codes may grow in the future, and API clients should deal wit
 
 </div>
 
-* Required auth level: [SECRET](<>)
+* Required auth level: [SECRET](/guides/authentication/#authentication-using-secret)
 * Authorized roles: [All](<>)
 
 Retrieve payment request outcome.
@@ -108,7 +108,6 @@ List of captures.
 
 List of refunds.
 
-
 #### status
 
 * Type: `string`
@@ -118,7 +117,6 @@ List of refunds.
 
 Payment request status (see above).
 
-
 #### status_code
 
 * Type: `integer`
@@ -126,7 +124,6 @@ Payment request status (see above).
 * Default: `null`
 
 Payment request status code (see above).
-
 
 #### customer
 
@@ -136,7 +133,6 @@ Payment request status code (see above).
 
 Customer identifier as originally registered by POS.
 
-
 #### date_modified
 
 * Type: [`DateTime`](/api/resources/types/#datetime)
@@ -144,7 +140,6 @@ Customer identifier as originally registered by POS.
 * Default: `null`
 
 Last modified date.
-
 
 #### date_expires
 
@@ -154,7 +149,6 @@ Last modified date.
 
 Expiration date for current status. After a payment authorization is given this may extend beyond the original expiry date given in the payment request. An authorization expires after 3 days. When the payment request expires it is marked as failed (whether in pending or authorized state).
 
-
 #### credit
 
 * Type: `boolean`
@@ -162,7 +156,6 @@ Expiration date for current status. After a payment authorization is given this 
 * Default: `null`
 
 Whether the received payment was a credit payment.
-
 
 #### interchange_fee
 
@@ -172,7 +165,6 @@ Whether the received payment was a credit payment.
 
 Interchange fee to be deducted if credit payment.
 
-
 #### transaction_fee
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
@@ -180,7 +172,6 @@ Interchange fee to be deducted if credit payment.
 * Default: `null`
 
 Interchange fee to be deducted if credit payment.
-
 
 #### attachment_uri
 
@@ -190,7 +181,6 @@ Interchange fee to be deducted if credit payment.
 
 Endpoint for Attachment uploads, such as electronic receipts. This URI has a limited time to live, and a new URI is generated each time outcome is retrieved.
 
-
 #### pos_id
 
 * Type: `string`
@@ -199,17 +189,15 @@ Endpoint for Attachment uploads, such as electronic receipts. This URI has a lim
 
 The POS this request originates from, used for informing user about origin.
 
-
 #### pos_id
 
 * Type: `string`
 * Required: `true`
 * Required Data: New or existing on update
 * Length <= 64
-* Regexp: ^[a-zA-Z0-9_.-]+$
+* Regexp: ^\[a-zA-Z0-9_.-]+$
 
 Local transaction id for POS. This must be unique for the POS.
-
 
 #### tid
 
@@ -217,10 +205,9 @@ Local transaction id for POS. This must be unique for the POS.
 * Required: `true`
 * Required Data: New or existing on update
 * Length <= 64
-* Regexp: ^[a-zA-Z0-9_.-]+$
+* Regexp: ^\[a-zA-Z0-9_.-]+$
 
 Settle transaction id.
-
 
 #### permissions
 
@@ -239,48 +226,3 @@ If payment request was combined with a permission request, this field will conta
 * Default: `null`
 
 asdf.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

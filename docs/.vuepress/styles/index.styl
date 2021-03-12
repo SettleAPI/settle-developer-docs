@@ -80,8 +80,19 @@ pre.vue-container {
           margin-block-start: 3.33em;
           margin-block-end: 3.33em;
 
-          h3::first-word {
-            background-color: #42b983;
+          a {
+            color: $textColor;
+            font-weight: 600;
+
+            code {
+              // color: $textColor;
+            }
+          }
+
+          h4 {
+            .badge {
+              font-size: 16px;
+            }
           }
 
           & {
@@ -94,8 +105,20 @@ pre.vue-container {
               border-radius: 3px;
             }
 
+            .badge.post {
+              background-color: #EEC049;
+            }
+
             .badge.get {
-              background-color: #42b983;
+              background-color: #59B090;
+            }
+
+            .badge.put {
+              background-color: #96CBE8;
+            }
+
+            .badge.delete {
+              background-color: #E07166;
             }
           }
         }
@@ -104,10 +127,12 @@ pre.vue-container {
   }
 
   & {
-    a {
-      & {
-        code {
-          color: $accentColor;
+    p {
+      a {
+        & {
+          code {
+            color: $accentColor;
+          }
         }
       }
     }
