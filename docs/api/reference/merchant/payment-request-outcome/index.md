@@ -15,7 +15,7 @@ If the callback URI registered for the payment request was secure (https), the c
 The status field contains a simple string that is one of `ok`, `fail`, `auth`, or `pending`. The `status_code` field contains more information. The codes currently documented are:
 
 | Code 	| Reason                                                  	| Status Code 	|
-|:----:	|---------------------------------------------------------	|:-----------:	|
+|:----:	|:--------------------------------------------------------	|:-----------:	|
 | 1003 	| PENDING - Waiting for customer or bank                  	|   pending   	|
 | 2000 	| OK - Payment received                                   	|      ok     	|
 | 3008 	| AUTH - Payment authorized, ready for capture            	|     auth    	|
@@ -25,28 +25,36 @@ The status field contains a simple string that is one of `ok`, `fail`, `auth`, o
 | 5011 	| REQUEST_EXPIRED - Payment request expired               	|     fail    	|
 | 5012 	| AUTH_EXPIRED - Authorization not captured within 3 days 	|     fail    	|
 
-::: warning NOTE
+::: tip NOTE
 The list of status codes may grow in the future, and API clients should deal with unknown status codes gracefully. However, one can rely on **1xxx** and **3xxx** being temporary states *(merchant should wait for further updates)*, **2xxx** represent final successful outcomes, and **4xxx** and **5xxx** represents final failure outcomes.
 :::
 
-## Requests
+## HTTP Requests
 
 <div class="md-api_reference_FiraCode">
 
-<div class="md-api_reference_method_heading">
+<div class="md-api_reference_heading request">
 
 ### <span class="badge get">GET</span> /payment_request/`{ tid }`/outcome/
 
 </div>
 
+Retrieve payment request outcome.
+
+#### Authorization Scopes
+
 * Required Auth Level: [SECRET](/guides/authentication/#authentication-using-secret)
 * Authorized Roles: All
 
-Retrieve payment request outcome.
 
-#### Parameters
+#### Base URIs
 
-* `tid` - Transaction ID assigned by Settle
+* Sandbox: <span class="noLink>https://api.sandbox.settle.eu</span>
+* Production: <span class="noLink>https://api.settle.eu</span>
+
+#### Path Parameters
+
+* [`tid`](/api/resources/types/#tid) - Transaction ID assigned by Settle
 
 #### Status Codes
 
@@ -85,7 +93,7 @@ Amount.
 
 Additional amount might have been changed by user if `additional_edit` was true. See [MoneyInteger](/api/resources/types/#moneyinteger).
 
-#### auth_amount
+### auth_amount
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
@@ -93,7 +101,7 @@ Additional amount might have been changed by user if `additional_edit` was true.
 
 The authorized amount. If doing partial captures, this will show the amount still available in the authorization for subsequent captures; auth_amount = amount - sum(captured amounts). See [MoneyInteger](/api/resources/types/#moneyinteger).
 
-#### auth_additional_amount
+### auth_additional_amount
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
@@ -101,7 +109,7 @@ The authorized amount. If doing partial captures, this will show the amount stil
 
 The authorized additional amount. If doing partial captures, this will show the part of additional amount still available in the authorization for subsequent captures; auth_additional_amount = additional_amount - sum(captured additional amounts). See [MoneyInteger](/api/resources/types/#moneyinteger).
 
-#### captures
+### captures
 
 * Type: [`Capture`](/api/resources/types/#capture)
 * Required: `false`
@@ -109,7 +117,7 @@ The authorized additional amount. If doing partial captures, this will show the 
 
 List of captures.
 
-#### refunds
+### refunds
 
 * Type: [`Refund`](/api/resources/types/#refund)
 * Required: `false`
@@ -117,7 +125,7 @@ List of captures.
 
 List of refunds.
 
-#### status
+### status
 
 * Type: `string`
 * Required: `false`
@@ -126,7 +134,7 @@ List of refunds.
 
 Payment request status (see above).
 
-#### status_code
+### status_code
 
 * Type: `integer`
 * Required: `false`
@@ -134,7 +142,7 @@ Payment request status (see above).
 
 Payment request status code (see above).
 
-#### customer
+### customer
 
 * Type: [`PersonIdentifier`](/api/resources/types/#personIdentifier)
 * Required: `false`
@@ -142,7 +150,7 @@ Payment request status code (see above).
 
 Customer identifier as originally registered by POS.
 
-#### date_modified
+### date_modified
 
 * Type: [`DateTime`](/api/resources/types/#datetime)
 * Required: `false`
@@ -150,7 +158,7 @@ Customer identifier as originally registered by POS.
 
 Last modified date.
 
-#### date_expires
+### date_expires
 
 * Type: [`DateTime`](/api/resources/types/#datetime)
 * Required: `false`
@@ -158,7 +166,7 @@ Last modified date.
 
 Expiration date for current status. After a payment authorization is given this may extend beyond the original expiry date given in the payment request. An authorization expires after 3 days. When the payment request expires it is marked as failed (whether in pending or authorized state).
 
-#### credit
+### credit
 
 * Type: `Boolean`
 * Required: `false`
@@ -166,7 +174,7 @@ Expiration date for current status. After a payment authorization is given this 
 
 Whether the received payment was a credit payment.
 
-#### interchange_fee
+### interchange_fee
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
@@ -174,7 +182,7 @@ Whether the received payment was a credit payment.
 
 Interchange fee to be deducted if credit payment.
 
-#### transaction_fee
+### transaction_fee
 
 * Type: [`MoneyInteger`](/api/resources/types/#moneyinteger)
 * Required: `false`
@@ -182,7 +190,7 @@ Interchange fee to be deducted if credit payment.
 
 Interchange fee to be deducted if credit payment.
 
-#### attachment_uri
+### attachment_uri
 
 * Type: `string`
 * Required: `false`
@@ -190,7 +198,7 @@ Interchange fee to be deducted if credit payment.
 
 Endpoint for Attachment uploads, such as electronic receipts. This URI has a limited time to live, and a new URI is generated each time outcome is retrieved.
 
-#### pos_id
+### pos_id
 
 * Type: `string`
 * Required: `true`
@@ -198,7 +206,7 @@ Endpoint for Attachment uploads, such as electronic receipts. This URI has a lim
 
 The POS this request originates from, used for informing user about origin.
 
-#### pos_id
+### pos_id
 
 * Type: `string`
 * Required: `true`
@@ -208,7 +216,7 @@ The POS this request originates from, used for informing user about origin.
 
 Local transaction ID for POS. This must be unique for the POS.
 
-#### tid
+### tid
 
 * Type: `string`
 * Required: `true`
@@ -218,7 +226,7 @@ Local transaction ID for POS. This must be unique for the POS.
 
 Settle transaction id.
 
-#### permissions
+### permissions
 
 * Type: [`AccessTokenResponse`](/api/resources/types/#accesstokenresponse)
 * Required: `false`
@@ -227,3 +235,31 @@ Settle transaction id.
 If payment request was combined with a permission request, this field will contain the permission request outcome. Same as returned by a GET the permission request outcome endpoint.
 
 </div>
+
+## Response Body
+
+```json
+{
+  "additional_amount": "null",
+  "amount": 1000,
+  "attachment_uri": "TBD/TBA",
+  "auth_amount": "null",
+  "authadditionalamount": "null",
+  "captures": [],
+  "credit": "False",
+  "currency": "EUR",
+  "customer": "4798765432",
+  "date_expires": "YYYY-MM-DD hh:mm:ss",
+  "date_modified": "YYYY-MM-DD hh:mm:ss",
+  "interchange_fee": "null",
+  "permissions": "null",
+  "pos_id": "499f2f7e-bddc-5fc5-9a15-3f34be608e71",
+  "pos_tid": "1GY5TL5NEX3D1EA0TCWPLGVPQF5EAF",
+  "refunds": [],
+  "status": "ok",
+  "status_code": "",
+  "tid": "3VB8JGT7Y4Z63U68KGGKDXMLLH5",
+  "transaction_fee": ""
+}
+
+```

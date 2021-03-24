@@ -1,0 +1,23 @@
+{
+  "action": string,
+  "additional_amount": MoneyInteger,
+  "additional_edit": bollean,
+  "allow_credit": bollean,
+  "amount": MoneyInteger,
+  "callback_uri": string,
+  "cid": string,
+  "currency": Currency,
+  "customer": PersonIdentifier,
+  "display_message_uri": string,
+  "expires_in": integer,
+  "failure_return_uri": string,
+  "line_items": LineItem,
+  "links": PaymentRequestLink,
+  "max_scan_age": integer,
+  "pos_id": string,
+  "pos_tid": string,
+  "required_scope": Scope,
+  "required_scope_text": string,
+  "success_return_uri": string,
+  "text": string
+}

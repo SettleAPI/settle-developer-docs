@@ -56,7 +56,7 @@ module.exports = {
           {
             text: 'APIs',
             items: [
-              { text: 'Settle Merhant', link: '/api/merchant/' },
+              { text: 'Settle Merhant', link: '/api/reference/merchant/' },
               { text: 'Settle OAuth', link: '/api/oauth' },
               { text: 'Settle Send', link: '/api/send' },
             ],
@@ -141,7 +141,7 @@ module.exports = {
           default: true,
           trigger: 'hover',
         },
-        customClass: 'rightAnchorClass',
+        customClass: 'onThisPageMenu',
         disableGlobalUI: false,
       },
     ],
@@ -168,6 +168,7 @@ module.exports = {
         },
       },
     ],
+    ['vuepress-plugin-code-copy', true],
   ],
 };
 
@@ -205,11 +206,13 @@ function getApiSidebar() {
       collapsable: true, // optional, defaults to true
       sidebarDepth: 1, // optional, defaults to 1
       children: [
-        ['/api/reference/merchant/', 'Introduction'],
-        '/api/reference/merchant/payment-request',
-        '/api/reference/merchant/payment-request-outcome',
+        '/api/reference/merchant/getInfo',
+        ['/api/reference/merchant/payment-request/', 'Introduction'],
+        '/api/reference/merchant/payment-request/',
+        '/api/reference/merchant/payment-request-outcome/',
+        getReferencePosSidebar(),
       ],
-      initialOpenGroupIndex: -1,
+      initialOpenGroupIndex: 0,
     },
     {
       title: 'OAuth API', // required
@@ -230,6 +233,24 @@ function getApiSidebar() {
       // ]
     },
   ];
+}
+
+function getReferencePosSidebar() {
+  return {
+    title: 'POS', // required
+    path: '/api/reference/merchant/pos/overview', // optional, link of the title, which should be an absolute path and must exist
+    // collapsable: true, // optional, defaults to true
+    // sidebarDepth: 1, // optional, defaults to 1
+    children: [
+      ['/api/reference/merchant/pos/overview', 'Overview'],
+      ['/api/reference/merchant/pos/create', 'Create POS'],
+      '/api/reference/merchant/pos/list',
+      '/api/reference/merchant/pos/update',
+      '/api/reference/merchant/pos/delete',
+      '/api/reference/merchant/pos/get',
+    ],
+    initialOpenGroupIndex: 0,
+  };
 }
 
 function getResourcesSidebar() {

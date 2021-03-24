@@ -1,17 +1,14 @@
 ---
-title: Payment Request
-description: Payment Requests in the Settle Merchant API 
-
+title: payment.request.create
+description: Endpoint for requesting payments.
 ---
 
+# Method: payment.request.create
 
-# Payment Request
-
-### Request a payment from a customer
+Endpoint for requesting payments.
 
 A payment request goes through several stages. After being registered, the customer can either reject or authorize. An authorization is valid for 3 days, but can be reauthorized before it expires to be valid for 3 new days. Once authorized, it can be captured to be included in the next settlement.
 
-This resource replaces the `sale_request`, but as additional functionality for **auth/capture**.
 
 ## HTTP Request
 
@@ -19,36 +16,32 @@ This resource replaces the `sale_request`, but as additional functionality for *
 
 <div class="md-api_reference_heading request">
 
-### <span class="badge post">POST</span> /payment_request/
+<span class="badge post">POST</span> /payment_request/
 
 </div>
 
-Post a payment request.
+Create a Payment Request.
 
-#### Authorization Scopes
+### Authorization Scopes
 
 * Required Auth Level: [SECRET](/guides/authentication/#authentication-using-secret)
 * Authorized Roles: All
 
-#### Base URIs
+### Base URIs
 
-* Sandbox: <span class="noLink">https://api.sandbox.settle.eu</span>
-* Production: <span class="noLink">https://api.settle.eu</span>
+* Sandbox: <span class="url">https://api.sandbox.settle.eu/merchant/v1</span>
+* Production: <span class="url">https://api.settle.eu/merchant/v1</span>
 
-#### Status Codes
+### Status Codes
 
 * **200** --> **OK**, identical payment request already created
 * **201** --> **OK**, new payment request
 * **400** --> **Bad Request**, validation error
 * **409** --> **Conflict**, same `pos_id` and `pos_tid` used for a request earlier
-
+  
 </div>
 
-::: warning NOTE
-The call is idempotent; that is, if one posts the same `pos_id` and `pos_tid` twice, only one payment request is created.
-:::
-
-## Query Parameters
+## Request Body | Data Types
 
 <div class="md-api_reference_FiraCode">
 
@@ -235,11 +228,35 @@ Text that is shown to user when asked to pay. This can contain line breaks and t
 
 </div>
 
-## Request Body
+### JSON Representation - Data Types
 
-::: danger warning
-The request body can not be empty.
-:::
+```json
+{
+  "action": string,
+  "additional_amount": MoneyInteger,
+  "additional_edit": bollean,
+  "allow_credit": bollean,
+  "amount": MoneyInteger,
+  "callback_uri": string,
+  "cid": string,
+  "currency": Currency,
+  "customer": PersonIdentifier,
+  "display_message_uri": string,
+  "expires_in": integer,
+  "failure_return_uri": string,
+  "line_items": LineItem,
+  "links": PaymentRequestLink,
+  "max_scan_age": integer,
+  "pos_id": string,
+  "pos_tid": string,
+  "required_scope": Scope,
+  "required_scope_text": string,
+  "success_return_uri": string,
+  "text": string
+}
+```
+
+### JSON Representation - Example
 
 ```json
 {
@@ -271,12 +288,28 @@ The request body can not be empty.
 }
 ```
 
-## Response Body
 
-If successful, the response body contains an instance of [`tid`](/api/resources/types/#tid).
+## Response Body - JSON Representation
+
+If successful, the response body contains data with the following structure:
 
 ```json
 {
-  "tid": "3VB8JGT7Y4Z63U68KGGKDXMLLH5"
+  "id": string,
+  "uri": string
 }
 ```
+
+```json
+{
+  "id": "3VB8JGT7Y4Z63U68KGGKDXMLLH5"
+}
+```
+
+## Response Body Fields
+
+<div class="md-api_reference_FiraCode fields">
+
+TBA
+
+</div>
