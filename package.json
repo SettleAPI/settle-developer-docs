@@ -15,10 +15,16 @@
   "devDependencies": {
     "@silvanite/vuepress-plugin-markdown-classes": "^1.0.2",
     "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-last-updated": "^1.8.2",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
+    "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
+    "moment": "^2.29.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-clean-urls": "^1.1.2",
     "vuepress-plugin-right-anchor": "^0.4.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "remove": "^0.1.5",
+    "vuepress-plugin-code-copy": "^1.0.6"
+  }
 }

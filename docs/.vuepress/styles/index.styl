@@ -9,6 +9,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.code-copy {
+  margin-top: -22px;
+}
+
+
+@media (max-width: 1582px) {
+  .global-ui {
+    display: none;
+  }
+}
+
 pre.vue-container {
   border-left-width: 0.5rem;
   border-left-style: solid;
@@ -36,6 +47,11 @@ pre.vue-container {
   }
 }
 
+table {
+  display: inline-table;
+  width: 100%;
+}
+
 .site-name.can-hide {
   display: none;
 }
@@ -58,27 +74,98 @@ pre.vue-container {
       }
     }
 
+    .url {
+      color: $accentColor;
+    }
+
+    // h2 {
+    // margin-top: -3.1rem;
+    // padding-top: 4.6rem;
+    // }
+    .md-api_reference_FiraCode.fields {
+      // font-size: 14px;
+    }
+
     .md-api_reference_FiraCode {
       & {
         * {
           font-family: 'Fira Code', monospace;
         }
 
-        h3, h4 {
-          margin-top: -3.1rem;
-          padding-top: 4.6rem;
-          margin-bottom: 0;
-        }
-
+        // h3, h4 {
+        // margin-top: -3.1rem;
+        // padding-top: 4.6rem;
+        // margin-bottom: 0;
+        // }
         p:last-child {
           margin-bottom: 3.3em;
         }
+
+        ul:last-child {
+          margin-bottom: 2.2em;
+        }
+      }
+
+      h3 {
+        margin-top: -3.1rem;
+        padding-top: 4.6rem;
+        margin-bottom: 0;
       }
 
       & {
-        .md-api_reference_method_heading {
-          margin-block-start: 3.33em;
-          margin-block-end: 3.33em;
+        .noLink a, .noLink a code {
+          color: $textColor;
+          text-decoration: none;
+        }
+
+        .badge {
+          height: auto;
+          padding: 0 6px;
+          color: #fff;
+          border-radius: 3px;
+        }
+
+        .badge.small {
+        }
+
+        .badge.post {
+          background-color: #EEC049;
+        }
+
+        .badge.get {
+          background-color: #59B090;
+        }
+
+        .badge.put {
+          background-color: #96CBE8;
+        }
+
+        .badge.delete {
+          background-color: #E07166;
+        }
+
+        .md-api_reference_heading {
+          font-size: 1.65rem;
+          font-weight: 600;
+          line-height: 1.25;
+          // margin-block-start: 3.33em;
+          // margin-block-end: 3.33em;
+          margin-top: 3.3rem;
+          margin-bottom: 1.5rem;
+
+          p:last-child {
+            margin-bottom: 0em;
+          }
+
+          & {
+            .request {
+              h3 {
+                margin-top: -3.1rem;
+                padding-top: 4.6rem;
+                margin-bottom: 0;
+              }
+            }
+          }
 
           a {
             color: $textColor;
@@ -95,30 +182,19 @@ pre.vue-container {
             }
           }
 
+          h2 {
+            border-bottom: none;
+            // display: none;
+          }
+
           & {
             .badge {
-              font-size: 1.35rem;
-              height: auto;
-              line-height: 1.25;
-              padding: 1px 6px 0 6px;
-              color: #fff;
-              border-radius: 3px;
-            }
-
-            .badge.post {
-              background-color: #EEC049;
-            }
-
-            .badge.get {
-              background-color: #59B090;
-            }
-
-            .badge.put {
-              background-color: #96CBE8;
-            }
-
-            .badge.delete {
-              background-color: #E07166;
+              // font-size: 1.35rem;
+              // height: auto;
+              // line-height: 1.25;
+              padding: 2px 6px 0 6px;
+              // color: #fff;
+              // border-radius: 3px;
             }
           }
         }
@@ -127,12 +203,10 @@ pre.vue-container {
   }
 
   & {
-    p {
-      a {
-        & {
-          code {
-            color: $accentColor;
-          }
+    a {
+      & {
+        code {
+          color: $accentColor;
         }
       }
     }

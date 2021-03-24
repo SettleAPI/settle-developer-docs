@@ -183,7 +183,7 @@ Expiration date for current status. After a payment authorization is given this 
 
 #### credit
 
-* Type: `boolean`
+* Type: `Boolean`
 * Required: `true`
 * Default: `null`
 

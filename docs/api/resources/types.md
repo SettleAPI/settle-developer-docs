@@ -1358,7 +1358,7 @@ Show Sale Refund.
 
 ### show_sale_refund
 
-- Type: `boolean`
+- Type: `Boolean`
 - Required: `false`
 - Default: `null`
 

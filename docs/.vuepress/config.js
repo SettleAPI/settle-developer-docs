@@ -1,4 +1,5 @@
 const { description } = require('../../package');
+const moment = require('moment');
 
 module.exports = {
   /**
@@ -37,7 +38,7 @@ module.exports = {
     repoLabel: 'Contribute',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
-    lastUpdated: true,
+    // lastUpdated: true,
     smoothScroll: true,
     nav: [
       {
@@ -55,7 +56,7 @@ module.exports = {
           {
             text: 'APIs',
             items: [
-              { text: 'Settle Merhant', link: '/api/merchant' },
+              { text: 'Settle Merhant', link: '/api/reference/merchant/' },
               { text: 'Settle OAuth', link: '/api/oauth' },
               { text: 'Settle Send', link: '/api/send' },
             ],
@@ -130,7 +131,7 @@ module.exports = {
     [
       'vuepress-plugin-right-anchor',
       {
-        showDepth: -1,
+        showDepth: 1,
         ignore: [
           '/',
           // '/api/'
@@ -140,7 +141,7 @@ module.exports = {
           default: true,
           trigger: 'hover',
         },
-        customClass: 'rightAnchorClass',
+        customClass: 'onThisPageMenu',
         disableGlobalUI: false,
       },
     ],
@@ -148,9 +149,26 @@ module.exports = {
       '@silvanite/markdown-classes',
       {
         prefix: 'md',
-        rules: ['api_reference_FiraCode', 'api_reference_method_heading'],
+        rules: [
+          'api_reference_FiraCode',
+          'api_reference_method_heading',
+          'api_reference_request_heading',
+          'api_reference_types_heading',
+        ],
       },
     ],
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // Don't forget to install moment yourself
+          const moment = require('moment');
+          moment.locale(lang);
+          return moment(timestamp).fromNow();
+        },
+      },
+    ],
+    ['vuepress-plugin-code-copy', true],
   ],
 };
 
@@ -181,7 +199,58 @@ function getGuidesSidebar() {
 }
 
 function getApiSidebar() {
-  return ['/api/merchant', '/api/oauth', '/api/send'];
+  return [
+    {
+      title: 'Merchant API', // required
+      path: '/api/reference/merchant/', // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1, // optional, defaults to 1
+      children: [
+        '/api/reference/merchant/getInfo',
+        ['/api/reference/merchant/payment-request/', 'Introduction'],
+        '/api/reference/merchant/payment-request/',
+        '/api/reference/merchant/payment-request-outcome/',
+        getReferencePosSidebar(),
+      ],
+      initialOpenGroupIndex: 0,
+    },
+    {
+      title: 'OAuth API', // required
+      path: '/api/oauth', // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1, // optional, defaults to 1
+      // children: [
+      //   '/'
+      // ]
+    },
+    {
+      title: 'Settle Send', // required
+      path: '/api/send', // optional, link of the title, which should be an absolute path and must exist
+      collapsable: true, // optional, defaults to true
+      sidebarDepth: 1, // optional, defaults to 1
+      // children: [
+      //   '/'
+      // ]
+    },
+  ];
+}
+
+function getReferencePosSidebar() {
+  return {
+    title: 'POS', // required
+    path: '/api/reference/merchant/pos/overview', // optional, link of the title, which should be an absolute path and must exist
+    // collapsable: true, // optional, defaults to true
+    // sidebarDepth: 1, // optional, defaults to 1
+    children: [
+      ['/api/reference/merchant/pos/overview', 'Overview'],
+      ['/api/reference/merchant/pos/create', 'Create POS'],
+      '/api/reference/merchant/pos/list',
+      '/api/reference/merchant/pos/update',
+      '/api/reference/merchant/pos/delete',
+      '/api/reference/merchant/pos/get',
+    ],
+    initialOpenGroupIndex: 0,
+  };
 }
 
 function getResourcesSidebar() {
