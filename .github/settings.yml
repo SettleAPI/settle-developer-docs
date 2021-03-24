@@ -26,9 +26,9 @@ autoDelete: true
 autoDeleteSettings:
     # Exact names for the branch to be given
     exclude:
-        - promotion/dev
-        - promotion/stage
-        - promotion/prod
+        - promTo/dev
+        - promTo/stage
+        - promTo/prod
 
 # Release drafting (coming soon)
 releaseDrafting: false
