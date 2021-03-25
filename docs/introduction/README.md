@@ -4,6 +4,8 @@ description: Getting started with the Settle API
 ---
 # Getting started with the Settle API
 
-**The main function of the Settle API is to allow merchants in the Settle network to integrate Settle into their existing payment solution, such as POS terminals, vending machines, websites, and mobile apps. The API is a versatile framework of functions to create custom payment flows, with buttons, QR codes, or phone numbers.**
+**The Settle API allows merchants in the Settle network to integrate Settle into their payment solutions, such as POS terminals, websites, and mobile apps. The API is a versatile framework of functions to create custom payment flows, with buttons, QR codes, or phone numbers depending on the use case.**
 
-Integrations typically fall into one of three categories,
+To get started we recommend that you first create a consumer account and a business account in the [Sandbox environment,](https://settle.dev/sandbox/) this allows you to try out Settle and test your integration without having to worry about real money.
+
+You can then follow one the [tutorials](https://settle.dev/tutorials/) or checkout the API references directly.
