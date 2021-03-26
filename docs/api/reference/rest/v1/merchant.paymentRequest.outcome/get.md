@@ -1,10 +1,15 @@
 ---
-title: Payment Request Outcome
+title: merchant.paymentRequest.outcome.get
 description: Payment Requests Outcomes in the Settle Merchant API 
 ---
 
+## Method
 
-# Payment Request Outcome
+<div class="md-api_reference_method_heading">
+
+merchant.paymentRequest.outcome.get
+
+</div>
 
 The Payment Request Outcome endpoint shows the outcome info for a **Payment Request**, **ReAuth** or **Capture**.
 
@@ -33,37 +38,37 @@ The list of status codes may grow in the future, and API clients should deal wit
 
 <div class="md-api_reference_FiraCode">
 
-<div class="md-api_reference_heading request">
+<div class="md-api_reference_request_heading">
 
-### <span class="badge get">GET</span> /payment_request/`{ tid }`/outcome/
+<span class="badge get">GET</span> /payment_request/`{ tid }`/outcome/
 
 </div>
 
-Retrieve payment request outcome.
+Get outcome info for a payment request, ReAuth or capture.
 
-#### Authorization Scopes
+### Authorization Scopes
 
 * Required Auth Level: [SECRET](/guides/authentication/#authentication-using-secret)
 * Authorized Roles: All
 
 
-#### Base URIs
+### Base URIs
 
-* Sandbox: <span class="noLink>https://api.sandbox.settle.eu</span>
-* Production: <span class="noLink>https://api.settle.eu</span>
+* Sandbox: <span class="url">https://api.sandbox.settle.eu/merchant/v1</span>
+* Production: <span class="url">https://api.settle.eu/merchant/v1</span>
 
-#### Path Parameters
+### Path Parameters
 
 * [`tid`](/api/resources/types/#tid) - Transaction ID assigned by Settle
 
-#### Status Codes
+### Status Codes
 
-* **200** --> OK
-* **404** --> `tid` not found (or unauthorized for this merchant)
+* **200** --> **OK**
+* **404** --> **Not Found**, `tid` not found (or unauthorized for this merchant)
 
 </div>
 
-## Response Schema
+## Query Parameters
 
 <div class="md-api_reference_FiraCode">
 
@@ -236,7 +241,27 @@ If payment request was combined with a permission request, this field will conta
 
 </div>
 
+## Request Body
+
+::: warning NOTE
+The request body can not be empty.
+:::
+
 ## Response Body
+
+If successful, the response body contains data with the following structure:
+
+<code-group>
+<code-block title="Types">
+
+```json
+TBA
+```
+
+</code-block>
+
+<code-block title="Example">
+
 
 ```json
 {
@@ -261,5 +286,8 @@ If payment request was combined with a permission request, this field will conta
   "tid": "3VB8JGT7Y4Z63U68KGGKDXMLLH5",
   "transaction_fee": ""
 }
-
 ```
+
+</code-block>
+</code-group>
+

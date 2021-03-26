@@ -1,9 +1,15 @@
 ---
-title: merchant.getInfo
+title: merchant.getProfile
 description: Endpoint for retrieving info about merchants.
 ---
 
-# Method: merchant.getInfo
+## Method
+
+<div class="md-api_reference_method_heading">
+
+merchant.getProfile
+
+</div>
 
 Endpoint for retrieving info about merchants.
 
@@ -13,7 +19,7 @@ This endpoint supports retrieval of the information about a merchant that is mai
 
 <div class="md-api_reference_FiraCode">
 
-<div class="md-api_reference_heading request">
+<div class="md-api_reference_request_heading">
 
 <span class="badge get">GET</span> /merchant/`{ merchant_id }`/
 
@@ -37,16 +43,32 @@ Get merchant info.
   
 </div>
 
+## Query Parameters
+
+<div class="md-api_reference_FiraCode">
+
+### currency
+
+* Type: [`Currency`](/api/resources/types/#currency-2)
+* Required: `true`
+* Default: `null`
+* Length: == 3
+* Data: New or existing on update
+
+ISO 4217 currency code. See [Currency](/api/resources/types/#currency-2).
+
+</div>
+
 ## Request Body
 
 The request body must be empty.
 
-## Response Body - JSON Representation
+## Response Body
 
 If successful, the response body contains data with the following structure:
 
-**Profile for a Merchant**
-
+<code-group>
+<code-block title="Types">
 ```json
 {
   "application": BusinessApplication,
@@ -68,20 +90,13 @@ If successful, the response body contains data with the following structure:
   "settlement_account": NdbKey
 }
 ```
+</code-block>
 
-## Response Body Fields
-
-<div class="md-api_reference_FiraCode fields">
-
-
-### currency
-
-* Type: [`Currency`](/api/resources/types/#currency-2)
-* Required: `true`
-* Default: `null`
-* Length: == 3
-* Data: New or existing on update
-
-ISO 4217 currency code. See [Currency](/api/resources/types/#currency-2).
-
-</div>
+<code-block title="Example">
+```json
+{
+  "id": "3VB8JGT7Y4Z63U68KGGKDXMLLH5"
+}
+```
+</code-block>
+</code-group>

@@ -1,11 +1,15 @@
 ---
-title: payment.request.create
+title: merchant.paymentRequest.create
 description: Endpoint for requesting payments.
 ---
 
-# Method: payment.request.create
+## Method
 
-Endpoint for requesting payments.
+<div class="md-api_reference_method_heading">
+
+merchant.paymentRequest.create
+
+</div>
 
 A payment request goes through several stages. After being registered, the customer can either reject or authorize. An authorization is valid for 3 days, but can be reauthorized before it expires to be valid for 3 new days. Once authorized, it can be captured to be included in the next settlement.
 
@@ -14,7 +18,7 @@ A payment request goes through several stages. After being registered, the custo
 
 <div class="md-api_reference_FiraCode">
 
-<div class="md-api_reference_heading request">
+<div class="md-api_reference_request_heading">
 
 <span class="badge post">POST</span> /payment_request/
 
@@ -41,7 +45,7 @@ Create a Payment Request.
   
 </div>
 
-## Request Body | Data Types
+## Query Parameters
 
 <div class="md-api_reference_FiraCode">
 
@@ -149,6 +153,14 @@ Expiration in seconds from when server received request.
 
 Return URL if payment failed.
 
+### id
+
+- Type: `string`
+- Required: `true`
+- Required Data: New or existing on update
+
+Transaction id.
+
 ### line_items
 
 - Type: [`LineItem`](/api/resources/types/#lineitem)
@@ -226,10 +238,24 @@ Return URL if payment successful.
 
 Text that is shown to user when asked to pay. This can contain line breaks and the text has to fit on smartphones screens.
 
+### uri
+
+- Type: `string`
+- Required: `false`
+- Default: `null`
+
+If payment request was posted without a customer, user can claim it on this URI.
+
 </div>
 
-### JSON Representation - Data Types
+## Request Body
 
+::: warning NOTE
+The request body can not be empty.
+:::
+
+<code-group>
+<code-block title="Types">
 ```json
 {
   "action": string,
@@ -255,9 +281,9 @@ Text that is shown to user when asked to pay. This can contain line breaks and t
   "text": string
 }
 ```
+</code-block>
 
-### JSON Representation - Example
-
+<code-block title="Example">
 ```json
 {
   "action": "SALE",
@@ -287,29 +313,28 @@ Text that is shown to user when asked to pay. This can contain line breaks and t
   "text": "Ice cream cotton candy chupa chups apple pie muffin candy."
 }
 ```
+</code-block>
+</code-group>
 
-
-## Response Body - JSON Representation
+## Response Body
 
 If successful, the response body contains data with the following structure:
 
+<code-group>
+<code-block title="Types">
 ```json
 {
   "id": string,
   "uri": string
 }
 ```
+</code-block>
 
+<code-block title="Example">
 ```json
 {
   "id": "3VB8JGT7Y4Z63U68KGGKDXMLLH5"
 }
 ```
-
-## Response Body Fields
-
-<div class="md-api_reference_FiraCode fields">
-
-TBA
-
-</div>
+</code-block>
+</code-group>

@@ -56,7 +56,7 @@ module.exports = {
           {
             text: 'APIs',
             items: [
-              { text: 'Settle Merhant', link: '/api/reference/merchant/' },
+              { text: 'Settle Merhant', link: '/api/reference/rest/v1/merchant/getProfile' },
               { text: 'Settle OAuth', link: '/api/oauth' },
               { text: 'Settle Send', link: '/api/send' },
             ],
@@ -76,19 +76,48 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/api/': [
+      '/api/reference/rest': [
         {
-          title: 'API Reference', // required
+          title: 'REST Reference', // required
+          collapsable: false, // optional, defaults to true
+          sidebarDepth: 0, // optional, defaults to 1
+          children: [['/api/reference/rest/', 'Resource Summary']],
+        },
+        {
+          title: 'REST Resources', // required
           collapsable: false, // optional, defaults to true
           sidebarDepth: 1, // optional, defaults to 1
-          children: getApiSidebar(),
+          // children: getApiSidebar(),
+          children: [
+            // '/api/reference/rest/v1/merchant/getProfile',
+            // '/api/reference/rest/v1/merchant/lookup',
+            // '/api/reference/rest/v1/merchant.paymentRequest/create',
+            // '/api/reference/rest/v1/merchant.paymentRequest/list',
+            // '/api/reference/rest/v1/merchant.paymentRequest/modify',
+            // '/api/reference/rest/v1/merchant.paymentRequest/getOutcome',
+            get_sidebar_reference_merchant(),
+            get_sidebar_reference_merchant_payment_request(),
+            get_sidebar_reference_merchant_payment_request_outcome(),
+          ],
         },
-        '/api/resources/types',
+        '/api/reference/rest/v1/types',
         {
           title: 'Resources', // required
           collapsable: false, // optional, defaults to true
           sidebarDepth: 1, // optional, defaults to 1
           children: getResourcesSidebar(),
+        },
+      ],
+      '/discovery': [
+        {
+          title: 'API Discovery Service', // required
+          collapsable: false, // optional, defaults to true
+          sidebarDepth: 1, // optional, defaults to 1
+          children: [
+            get_sidebar_discovery_home(),
+            get_sidebar_discovery_guides(),
+            get_sidebar_discovery_reference(),
+          ],
         },
       ],
       '/': [
@@ -134,7 +163,7 @@ module.exports = {
         showDepth: 1,
         ignore: [
           '/',
-          // '/api/'
+          '/$discovery/',
           // more...
         ],
         expand: {
@@ -198,19 +227,58 @@ function getGuidesSidebar() {
   ];
 }
 
+function get_sidebar_discovery_home() {
+  return ['/discovery/', 'Overview'];
+}
+
+function get_sidebar_discovery_guides() {
+  return {
+    title: 'Guides', // required
+    path: '/discovery/v1/guides/getting-started', // optional, link of the title, which should be an absolute path and must exist
+    collapsable: false, // optional, defaults to true
+    sidebarDepth: 0, // optional, defaults to 1
+    children: [
+      ['/discovery/v1/guides/getting-started', 'Introduction'],
+      // get_sidebar_reference_payment_request(),
+      // getReferencePosSidebar(),
+    ],
+  };
+}
+
+function get_sidebar_discovery_reference() {
+  return {
+    title: 'API Reference', // required
+    path: '/discovery/v1/reference/', // optional, link of the title, which should be an absolute path and must exist
+    collapsable: false, // optional, defaults to true
+    sidebarDepth: 0, // optional, defaults to 1
+    children: [
+      ['/discovery/v1/reference/', 'Overview'],
+      {
+        title: 'Discovery Document', // required
+        path: '/discovery/v1/reference/apis/', // optional, link of the title, which should be an absolute path and must exist
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 0, // optional, defaults to 1
+        children: [
+          ['/discovery/v1/reference/apis/', 'Overview'],
+          ['/discovery/v1/reference/apis/list', 'list'],
+        ],
+      },
+    ],
+  };
+}
+
 function getApiSidebar() {
   return [
     {
       title: 'Merchant API', // required
-      path: '/api/reference/merchant/', // optional, link of the title, which should be an absolute path and must exist
+      // path: '/api/reference/merchant/getProfile', // optional, link of the title, which should be an absolute path and must exist
       collapsable: true, // optional, defaults to true
       sidebarDepth: 1, // optional, defaults to 1
       children: [
-        '/api/reference/merchant/getInfo',
-        ['/api/reference/merchant/payment-request/', 'Introduction'],
-        '/api/reference/merchant/payment-request/',
-        '/api/reference/merchant/payment-request-outcome/',
-        getReferencePosSidebar(),
+        '/api/reference/merchant/getProfile',
+        '/api/reference/merchant/lookup',
+        // get_sidebar_reference_payment_request(),
+        // getReferencePosSidebar(),
       ],
       initialOpenGroupIndex: 0,
     },
@@ -238,16 +306,16 @@ function getApiSidebar() {
 function getReferencePosSidebar() {
   return {
     title: 'POS', // required
-    path: '/api/reference/merchant/pos/overview', // optional, link of the title, which should be an absolute path and must exist
+    path: '/api/reference/pos/overview', // optional, link of the title, which should be an absolute path and must exist
     // collapsable: true, // optional, defaults to true
     // sidebarDepth: 1, // optional, defaults to 1
     children: [
-      ['/api/reference/merchant/pos/overview', 'Overview'],
-      ['/api/reference/merchant/pos/create', 'Create POS'],
-      '/api/reference/merchant/pos/list',
-      '/api/reference/merchant/pos/update',
-      '/api/reference/merchant/pos/delete',
-      '/api/reference/merchant/pos/get',
+      ['/api/reference/pos/overview', 'Overview'],
+      ['/api/reference/pos/create', 'Create POS'],
+      '/api/reference/pos/list',
+      '/api/reference/pos/update',
+      '/api/reference/pos/delete',
+      '/api/reference/pos/get',
     ],
     initialOpenGroupIndex: 0,
   };
@@ -255,6 +323,50 @@ function getReferencePosSidebar() {
 
 function getResourcesSidebar() {
   return ['/api/resources/endpoints'];
+}
+
+function get_sidebar_reference_merchant() {
+  return {
+    title: 'merchant', // required
+    // path: '/api/reference/rest/v1/merchant.paymentRequest/',
+    collapsable: true,
+    sidebarDepth: 0,
+    children: [
+      ['/api/reference/rest/v1/merchant/', 'Overview'],
+      ['/api/reference/rest/v1/merchant/getProfile', 'getProfile'],
+      ['/api/reference/rest/v1/merchant/lookup', 'lookup'],
+    ],
+  };
+}
+
+function get_sidebar_reference_merchant_payment_request() {
+  return {
+    title: 'merchant.paymentRequest', // required
+    // path: '/api/reference/rest/v1/merchant.paymentRequest/',
+    collapsable: true,
+    sidebarDepth: 0,
+    children: [
+      ['/api/reference/rest/v1/merchant.paymentRequest/', 'Overview'],
+      ['/api/reference/rest/v1/merchant.paymentRequest/create', 'create'],
+      ['/api/reference/rest/v1/merchant.paymentRequest/list', 'list'],
+      ['/api/reference/rest/v1/merchant.paymentRequest/modify', 'modify'],
+      ['/api/reference/rest/v1/merchant.paymentRequest/get', 'get'],
+      // ['/api/reference/rest/v1/merchant.paymentRequest/getOutcome', 'getOutcome'],
+    ],
+  };
+}
+
+function get_sidebar_reference_merchant_payment_request_outcome() {
+  return {
+    title: 'merchant.paymentRequest.outcome', // required
+    // path: '/api/reference/rest/v1/merchant.paymentRequest/',
+    collapsable: true,
+    sidebarDepth: 0,
+    children: [
+      ['/api/reference/rest/v1/merchant.paymentRequest.outcome/', 'Overview'],
+      ['/api/reference/rest/v1/merchant.paymentRequest.outcome/get', 'get'],
+    ],
+  };
 }
 
 function getImpIntSidebar() {

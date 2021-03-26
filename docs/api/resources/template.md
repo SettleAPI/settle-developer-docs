@@ -32,5 +32,9 @@ Dolor.
 * Type: [`PersonIdentifier`](/api/resources/types/#personidentifier)
 * Type: [`PaymentRequestLink`](/api/resources/types/#paymentrequestlink)
 * Type: [`Scope`](/api/resources/types/#scope)
+* Type: [`SelectMultiple`](/api/resources/types/#selectmultiple)
+* Type: [`Cursor`](/api/resources/types/#cursor)
+* Type: [`PaymentRequestListItem`](/api/resources/types/#paymentrequestlistitem)
+
 
 </div>
