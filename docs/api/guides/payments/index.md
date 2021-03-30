@@ -1,0 +1,1 @@
+<Redirect to="/api/guides/" />

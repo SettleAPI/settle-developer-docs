@@ -5,118 +5,108 @@
 // }
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-* {
+*
   font-family: 'Roboto', sans-serif;
-}
 
-.code-copy {
+.code-copy
   margin-top: -22px;
-}
 
-@media (max-width: 1582px) {
-  .global-ui {
+@media (max-width: 1582px)
+  .global-ui
     display: none;
-  }
-}
 
-.guides-sidebar {
-  .sidebar-group.is-sub-group.depth-1 {
-    .sidebar-heading {
+.guides-sidebar
+  .sidebar-group.is-sub-group.depth-1
+    .sidebar-heading
       margin-top: 1em;
 
-      span {
+      span
         font-weight: 500;
-      }
-    }
-  }
-}
 
-.sidebar-group.is-sub-group > .sidebar-heading {
+.rest-resource-summary
+  table, th, tr, td
+    border: none;
+    vertical-align: top;
+
+  thead.custom-component
+    display: inline-table;
+    margin-top: 1rem;
+
+  tr
+    td
+      padding-top: 1em;
+      padding-bottom: 1em;
+
+    td:first-child
+      width: 20%;
+
+.sidebar-group.is-sub-group > .sidebar-heading
   font-weight: 400 !important;
   cursor: pointer !important;
   opacity: 1 !important;
-}
 
-.FiraCode {
+.FiraCode
   font-family: 'Fira Code', monospace;
-}
 
-h1 {
-  .FiraCode {
+h1
+  .FiraCode
     font-size: 1.65rem;
-  }
-}
 
-pre.vue-container {
-  border-left-width: 0.5rem;
+pre.vue-container
+  border-left-width: .5rem;
   border-left-style: solid;
   border-color: #42b983;
   border-radius: 0px;
 
-  & > code {
+  & > code
     font-size: 14px !important;
 
-    & > p {
+    & > p
       margin: -5px 0 -20px 0;
-    }
 
-    code {
+    code
       background-color: #42b983 !important;
       padding: 3px 5px;
       border-radius: 3px;
       color: #000;
-    }
 
-    em {
+    em
       color: #808080;
       font-weight: light;
-    }
-  }
-}
 
-table {
+table
   display: inline-table;
   width: 100%;
-}
 
-.site-name.can-hide {
+.site-name.can-hide
   display: none;
-}
 
 // .navbar
 // &
 // .logo
 // height: 60px
-.theme-default-content {
-  & {
-    pre {
-      & {
-        code {
-          & {
-            * {
+.theme-default-content
+  &
+    pre
+      &
+        code
+          &
+            *
               font-family: 'Fira Code', monospace;
-            }
-          }
-        }
-      }
-    }
 
-    .url {
+    .url
       color: $accentColor;
-    }
 
     // h2 {
     // margin-top: -3.1rem;
     // padding-top: 4.6rem;
     // }
-    .md-api_reference_FiraCode.fields {
+    .md-api_reference_FiraCode.fields
       // font-size: 14px;
-    }
 
-    .md-api_reference_method_heading {
-      * {
+    .md-api_reference_method_heading
+      *
         font-family: 'Fira Code', monospace;
-      }
 
       font-size: 1.65rem;
       font-weight: 600;
@@ -125,67 +115,55 @@ table {
       // margin-block-end: 3.33em;
       // margin-top: 3.3rem;
       margin-bottom: 1.5rem;
-    }
 
-    .md-api_reference_FiraCode {
-      & {
-        * {
+    .md-api_reference_FiraCode
+      &
+        *
           font-family: 'Fira Code', monospace;
-        }
 
         // h3, h4 {
         // margin-top: -3.1rem;
         // padding-top: 4.6rem;
         // margin-bottom: 0;
         // }
-        p:last-child {
+        p:last-child
           margin-bottom: 3.3em;
-        }
 
-        ul:last-child {
+        ul:last-child
           margin-bottom: 2.2em;
-        }
-      }
 
-      h3 {
+      h3
         margin-top: -3.1rem;
         padding-top: 4.6rem;
         margin-bottom: 0;
-      }
 
-      & {
-        .noLink a, .noLink a code {
+      &
+        .noLink a, .noLink a code
           color: $textColor;
           text-decoration: none;
-        }
 
-        .badge {
+        .badge
           height: auto;
           padding: 0 6px;
           color: #fff;
           border-radius: 3px;
-        }
 
-        .badge.small {
-        }
+        .badge.small
+          text-transform: uppercase;
 
-        .badge.post {
+        .badge.post
           background-color: #EEC049;
-        }
 
-        .badge.get {
+        .badge.get
           background-color: #59B090;
-        }
 
-        .badge.put {
+        .badge.put
           background-color: #96CBE8;
-        }
 
-        .badge.delete {
+        .badge.delete
           background-color: #E07166;
-        }
 
-        .md-api_reference_request_heading {
+        .md-api_reference_request_heading
           font-size: 1.65rem;
           font-weight: 600;
           line-height: 1.25;
@@ -194,62 +172,42 @@ table {
           margin-top: 3.3rem;
           margin-bottom: 1.5rem;
 
-          p:last-child {
+          p:last-child
             margin-bottom: 0em;
-          }
 
-          & {
-            .request {
-              h3 {
+          &
+            .request
+              h3
                 margin-top: -3.1rem;
                 padding-top: 4.6rem;
                 margin-bottom: 0;
-              }
-            }
-          }
 
-          a {
+          a
             color: $textColor;
             font-weight: 600;
 
-            code {
+            code
               // color: $textColor;
-            }
-          }
 
-          h4 {
-            .badge {
+          h4
+            .badge
               font-size: 16px;
-            }
-          }
 
-          h2 {
+          h2
             border-bottom: none;
             // display: none;
-          }
 
-          & {
-            .badge {
+          &
+            .badge
               // font-size: 1.35rem;
               // height: auto;
               // line-height: 1.25;
               padding: 2px 6px 0 6px;
               // color: #fff;
               // border-radius: 3px;
-            }
-          }
-        }
-      }
-    }
-  }
 
-  & {
-    a {
-      & {
-        code {
+  &
+    a
+      &
+        code
           color: $accentColor;
-        }
-      }
-    }
-  }
-}

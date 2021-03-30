@@ -1,5 +1,5 @@
 ---
-title: 'REST Resource: merchant.paymentRequest'
+title: 'REST Resource: merchant.payment.request'
 description: 
 ---
 
@@ -7,7 +7,7 @@ description:
 
 <div class="md-api_reference_method_heading">
 
-merchant.paymentRequest
+merchant.payment.request
 
 </div>
 
@@ -15,9 +15,4 @@ merchant.paymentRequest
 
 There is no persistent data associated with this resource.
 
-| Methods                                                                      |                                                                 |
-|:-----------------------------------------------------------------------------|-----------------------------------------------------------------|
-| [create](/api/reference/rest/v1/merchant.paymentRequest/create/)             | Create a Payment Request.                                       |
-| [list](/api/reference/rest/v1/merchant.paymentRequest/list/)                 | List all Payment Requests.                                      |
-| [update](/api/reference/rest/v1/merchant.paymentRequest/update/)             | Update, reauthorize, capture, release or abort payment request. |
-| [get](/api/reference/rest/v1/merchant.paymentRequest/get/)                   | Retrieve payment request info.                                  |
+<RestResourceOverview resource="merchant.payment.request" />

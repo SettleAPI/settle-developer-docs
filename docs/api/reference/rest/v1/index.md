@@ -1,6 +1,7 @@
 ---
 title: Settle API
 description: The Settle API enables merchants to interact with Settle, registering POS, shortlinks for QR scans, payment requests, permission requests for end user info and more.
+pageClass: rest-resource-summary
 ---
 
 # Settle API
@@ -33,25 +34,51 @@ https://api.settle.eu
 
 </div>
 
-## REST Resources
+## REST Resource
 
 <div class="md-api_reference_FiraCode">
 
 ### [v1.merchant](/api/reference/rest/v1/merchant/)
 
-| Methods |  |
-|:-|-|
-| [getProfile](/api/reference/rest/v1/merchant/getProfile/) | <span class="noLink">[<span class="badge get small">GET</span> /merchant/`{ merchant_id }`/](/api/reference/rest/v1/merchant/getProfile/)</span><br><br>Get merchant info. |
-| [lookup](/api/reference/rest/v1/merchant/lookup/) | <span class="badge get small">GET</span> /api/reference/rest/v1/merchant/lookup/<br><br>Perform a Merchant Lookup. |
+<!-- <RestReferenceResourceSummaryHeader /> -->
 
+Lorem
 
-### [v1.merchant.paymentRequest](/api/reference/rest/v1/merchant.paymentRequest/)
+<RestReferenceEntry resource="merchant.payment.request" />
 
-| Methods |  |
-|:-|-|
-| [create](/api/reference/rest/v1/merchant.paymentRequest/create/) | <span class="badge post small">POST</span> /merchant/v1/payment_request/<br><br>Create a Payment Request. |
-| [list](/api/reference/rest/v1/merchant.paymentRequest/list/) | <span class="badge get small">GET</span> /merchant/v1/payment_request/<br><br>List all Payment Requests. |
+<!-- <RestReferenceResourceSummaryEntry
+    method="getProfile"
+    description="Get merchant info."
+    request="post"
+    linkText="/merchant/{merchant_id}/"
+    url="/api/reference/rest/v1/merchant/getProfile/"
+/> -->
+
+<!-- <RestReferenceResourceSummaryEntry
+    method="lookup"
+    description="Perform a Merchant Lookup."
+    request="get"
+    linkText="/api/reference/rest/v1/merchant/lookup/"
+    url="/api/reference/rest/v1/merchant/lookup/"
+/> -->
+
+<!-- ### [v1.merchant.paymentRequest](/api/reference/rest/v1/merchant.paymentRequest/) -->
+
+<!-- <RestReferenceResourceSummaryHeader /> -->
+
+<!-- <RestReferenceResourceSummaryEntry
+    method="getProfile"
+    description="Get merchant info."
+    request="post"
+    linkText="/merchant/{merchant_id}/"
+    url="/api/reference/rest/v1/merchant/getProfile/"
+/> -->
+
+<!-- | Methods                                                          |                                                                                                                                                     |
+| :--------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [create](/api/reference/rest/v1/merchant.paymentRequest/create/) | <span class="badge post small">POST</span> /merchant/v1/payment_request/<br><br>Create a Payment Request.                                           |
+| [list](/api/reference/rest/v1/merchant.paymentRequest/list/)     | <span class="badge get small">GET</span> /merchant/v1/payment_request/<br><br>List all Payment Requests.                                            |
 | [modify](/api/reference/rest/v1/merchant.paymentRequest/modify/) | <span class="badge put small">PUT</span> /merchant/v1/payment_request/{tid}/<br><br>Update, reauthorize, capture, release or abort payment request. |
-| [get](/api/reference/rest/v1/merchant.paymentRequest/get/) | <span class="badge get small">GET</span> /merchant/v1/payment_request/{tid}/<br><br>Get outcome info for a payment request, ReAuth or capture. |
+| [get](/api/reference/rest/v1/merchant.paymentRequest/get/)       | <span class="badge get small">GET</span> /merchant/v1/payment_request/{tid}/<br><br>Get outcome info for a payment request, ReAuth or capture.      | -->
 
 </div>

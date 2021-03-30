@@ -1,5 +1,5 @@
 ---
-title: merchant.paymentRequest.create
+title: merchant.payment.request.create
 description: Endpoint for requesting payments.
 ---
 
@@ -7,7 +7,7 @@ description: Endpoint for requesting payments.
 
 <div class="md-api_reference_method_heading">
 
-merchant.paymentRequest.create
+merchant.payment.request.create
 
 </div>
 

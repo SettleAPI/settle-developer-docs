@@ -2,6 +2,17 @@ const { description } = require('../../package');
 const moment = require('moment');
 
 module.exports = {
+  chainWebpack: (config) => {
+    config.module
+      .rule('yaml')
+      .test(/\.ya?ml?$/)
+      .use('json-loader')
+      .loader('json-loader')
+      .end()
+      .use('yaml-loader')
+      .loader('yaml-loader');
+  },
+
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
@@ -38,6 +49,7 @@ module.exports = {
     repoLabel: 'Contribute',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
+    searchPlaceholder: 'Press "/" to search..',
     // lastUpdated: true,
     smoothScroll: true,
     nav: [
@@ -280,6 +292,7 @@ module.exports = {
       },
     ],
     ['vuepress-plugin-code-copy', true],
+    'redirect-frontmatter',
   ],
 };
 
