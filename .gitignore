@@ -12,4 +12,3 @@ config.local.js
 basement_dist
 docs/.vuepress/dist
 package-lock.json
-docs/.vuepress/public/discovery
