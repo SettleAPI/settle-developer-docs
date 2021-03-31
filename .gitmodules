@@ -1,3 +1,0 @@
-[submodule "docs/docs/.vuepress/public/discovery/v1"]
-	path = docs/docs/.vuepress/public/discovery/v1
-	url = git@github.com:SettleAPI/settle-api-description.git
