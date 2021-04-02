@@ -1,6 +1,10 @@
 ---
-title: merchant.paymentRequest.update
+title: merchant.payment.request.update
 description: Endpoint for updating payment requests.
+schema: merchant.payment.request
+operationId: merchant.payment.request.update
+operation: put
+method: update
 ---
 
 ## Method

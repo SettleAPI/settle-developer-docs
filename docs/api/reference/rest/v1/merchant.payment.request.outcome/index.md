@@ -1,5 +1,5 @@
 ---
-title: 'REST Resource: merchant.paymentRequest'
+title: 'REST Resource: merchant.payment.request.outcome'
 description: 
 ---
 
@@ -7,7 +7,7 @@ description:
 
 <div class="md-api_reference_method_heading">
 
-merchant.paymentRequest.outcome
+merchant.payment.request.outcome
 
 </div>
 
@@ -15,6 +15,4 @@ merchant.paymentRequest.outcome
 
 There is no persistent data associated with this resource.
 
-| Methods                                                           |                                                            |
-|:------------------------------------------------------------------|------------------------------------------------------------|
-| [get](/api/reference/rest/v1/merchant.paymentRequest.outcome/get) | Get outcome info for a payment request, ReAuth or capture. |
+<RestResourceOverview resource="merchant.payment.request.outcome" />

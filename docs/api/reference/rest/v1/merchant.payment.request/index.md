@@ -16,5 +16,3 @@ merchant.payment.request
 There is no persistent data associated with this resource.
 
 <RestResourceOverview resource="merchant.payment.request" />
-
-

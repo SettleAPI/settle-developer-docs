@@ -21,5 +21,5 @@
 //     console.log(e);
 //   }
 
-import schemas from './public/discovery/v1/reference/merchant.v1.yaml';
+// import schemas from './public/discovery/v1/reference/merchant.v1.yaml';
 // console.log(config)

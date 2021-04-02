@@ -1,51 +1,27 @@
 ---
 title: merchant.payment.request.create
 description: Endpoint for requesting payments.
+schema: merchant.payment.request
+operationId: merchant.payment.request.create
+operation: post
+method: create
+authLevel: SECRET
+authRoles: Any
 ---
 
 ## Method
 
 <div class="md-api_reference_method_heading">
 
-merchant.payment.request.create
+{{ $frontmatter.operationId }}
 
 </div>
 
 A payment request goes through several stages. After being registered, the customer can either reject or authorize. An authorization is valid for 3 days, but can be reauthorized before it expires to be valid for 3 new days. Once authorized, it can be captured to be included in the next settlement.
 
+<RestResourceMethod :resource="$frontmatter.operationId" />
 
-## HTTP Request
-
-<div class="md-api_reference_FiraCode">
-
-<div class="md-api_reference_request_heading">
-
-<span class="badge post">POST</span> /payment_request/
-
-</div>
-
-Create a Payment Request.
-
-### Authorization Scopes
-
-* Required Auth Level: [SECRET](/guides/authentication/#authentication-using-secret)
-* Authorized Roles: All
-
-### Base URIs
-
-* Sandbox: <span class="url">https://api.sandbox.settle.eu/merchant/v1</span>
-* Production: <span class="url">https://api.settle.eu/merchant/v1</span>
-
-### Status Codes
-
-* **200** --> **OK**, identical payment request already created
-* **201** --> **OK**, new payment request
-* **400** --> **Bad Request**, validation error
-* **409** --> **Conflict**, same `pos_id` and `pos_tid` used for a request earlier
-  
-</div>
-
-## Query Parameters
+<!-- ## Schema
 
 <div class="md-api_reference_FiraCode">
 
@@ -246,7 +222,7 @@ Text that is shown to user when asked to pay. This can contain line breaks and t
 
 If payment request was posted without a customer, user can claim it on this URI.
 
-</div>
+</div> -->
 
 ## Request Body
 

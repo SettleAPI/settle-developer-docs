@@ -1,13 +1,17 @@
 ---
-title: merchant.paymentRequest.outcome.get
-description: Payment Requests Outcomes in the Settle Merchant API 
+title: merchant.payment.request.outcome.get
+description: Payment Requests Outcomes in the Settle Merchant API
+schema: merchant.payment.request.outcome
+operationId: merchant.payment.request.outcome.get
+operation: get
+method: get
 ---
 
 ## Method
 
 <div class="md-api_reference_method_heading">
 
-merchant.paymentRequest.outcome.get
+merchant.payment.request.outcome.get
 
 </div>
 

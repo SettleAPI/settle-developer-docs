@@ -46,6 +46,8 @@ Lorem
 
 <RestReferenceEntry resource="merchant.payment.request" />
 
+<RestReferenceEntry resource="merchant.payment.request.outcome" />
+
 <!-- <RestReferenceResourceSummaryEntry
     method="getProfile"
     description="Get merchant info."

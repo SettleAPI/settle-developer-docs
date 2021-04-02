@@ -10,7 +10,7 @@
       <tbody>
         <tr v-for="(method, index) in methods" :key="index">
           <td style="text-align: left;">
-            <router-link :to="method.url">{{ method.operation }}</router-link>
+            <router-link :to="method.url">{{ method.method }}</router-link>
           </td>
           <td>
             {{ method.excerpt }}
@@ -22,17 +22,17 @@
 </template>
 
 <script>
+  const axios = require('axios');
+  const _ = require('lodash');
+
+  const yaml = require('js-yaml');
+
   function loggingDisabled() {
     console.log = function() {};
     console.table = function() {};
   }
 
   // loggingDisabled();
-
-  import result from '../public/discovery/v1/reference/merchant.v1.yaml';
-
-  const axios = require('axios');
-  const _ = require('lodash');
 
   export default {
     props: {
@@ -44,143 +44,150 @@
     data() {
       return {
         methods: [],
-        version: 1,
-        resourceOverviewUrl: [],
       };
     },
     async beforeMount() {
-      // console.log(result);
+      console.clear();
 
-      let data = this.$data;
-      let sitePages = this.$site.pages;
-      let paths = result.paths;
+      const site = this.$site;
+      const pages = site.pages;
+      const props = this.$props;
+      const data = this.$data;
 
-      console.log(
-        '%cSECTION: ',
-        'font-weight: bold; color: green; font-size: 14px',
-        this.$props.resource
-      );
+      // console.log(this.$props);
 
-      let anchorLink = this.$props.resource.replaceAll('.', '-');
-      // console.log(anchorLink);
-      this.$data.anchorLink = anchorLink;
+      const schemaUrl = function() {
+        let schema = props.resource.split('.')[0];
+        console.log('schema: ', schema);
+        if (schema === 'merchant') {
+          return 'merchant';
+        } else if (schema === 'oauth2') {
+          return 'oauth2';
+        } else if (schema === 'users') {
+          return 'users';
+        }
+      };
 
-      let resourceOverviewTitle = this.$props.resource;
-      // console.log(resourceOverviewTitle);
-      _.filter(sitePages, function(pages) {
-        // console.log(pages);
-        if (pages.title === 'REST Resource: ' + resourceOverviewTitle) {
-          // console.log(pages.title);
-          // console.log(pages.path);
-          data.resourceOverviewUrl = pages.path;
+      data.anchorLink = props.resource.replaceAll('.', '-');
+
+      // console.log(this.$site.pages.frontmatter.schema);
+      let methodEntryObject = [];
+
+      _.filter(pages, function(pages) {
+        if (
+          pages.frontmatter.schema !== undefined &&
+          pages.frontmatter.schema === props.resource
+        ) {
+          // let methodEntryObject = [];
+
+          axios
+            .get(
+              'https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/reference/' +
+                schemaUrl() +
+                '.v1.yaml'
+            )
+            .then(function(response) {
+              // handle success
+              // console.log(response);
+
+              // console.group(
+              //   '%cSECTION: ',
+              //   'font-weight: bold; color: green; font-size: 14px',
+              //   props.resource
+              // );
+
+              // let methodEntryObject = [];
+
+              let OpenApiJsonResponse = yaml.load(response.data, {
+                encoding: 'utf-8',
+              });
+              // console.log(OpenApiJsonResponse);
+
+              if (OpenApiJsonResponse.openapi ? true : false) {
+                data.version = OpenApiJsonResponse.info.version.split('.')[0];
+
+                if (OpenApiJsonResponse.paths) {
+                  // const paths = OpenApiJsonResponse.paths;
+
+                  _.filter(OpenApiJsonResponse.paths, function(key, value) {
+                    // let methodPath = value;
+                    // let methodData = key;
+
+                    // let methodEntry = {
+                    //   request: {},
+                    // };
+
+                    // methodEntry.path = value;
+
+                    _.filter(key, function(a, b) {
+                      if (typeof a.operationId !== 'undefined') {
+                        // console.log(a);
+
+                        // let operationId = a.operationId;
+                        // console.log(a.operationId.substring(0,a.operationId.lastIndexOf('.')));
+                        // console.log('props.resource: ', props.resource);
+
+                        let methodEntry = {
+                          request: {},
+                        };
+
+                        // methodEntry.path = value;
+
+                        // console.log('pages.frontmatter.schema: ', site.pages.frontmatter);
+                        if (pages.frontmatter.operationId === a.operationId) {
+                          console.group('Found:', a.operationId);
+                          // console.log('operationId: ', a.operationId);
+                          console.log('pages.title: ', pages.title);
+                        //   console.log('pages.path: ', pages.path);
+                          console.log(a);
+                          console.groupEnd();
+
+                          methodEntry.url = pages.path;
+                        //   methodEntry.request = a;
+
+                          let descriptionExcerpt = a.description
+                            .replace(/([.?!])\s*(?=[A-Z])/g, '$1|')
+                            .split('|');
+                          // console.info('Short Description: ', descriptionExcerpt[0]);
+                          methodEntry.excerpt = descriptionExcerpt[0];
+
+                          methodEntry.method = pages.frontmatter.method;
+                          methodEntry.operation = pages.frontmatter.operation;
+                          // console.log('pages.frontmatter.operation: ', pages.frontmatter.operation);
+
+                          methodEntryObject.push(methodEntry);
+                        }
+                      }
+                    });
+                  });
+                  // console.log(paths);
+                  // console.log('pages.title: ', pages.title);
+                  // console.log('pages.path: ', pages.path);
+                }
+              } else {
+                console.warn(
+                  'No valid Open API sepesification document found.'
+                );
+              }
+
+              // console.groupEnd();
+
+              if (methodEntryObject.length) {
+                // console.table(methodEntryObject);
+                data.methods = methodEntryObject;
+              } else {
+                console.warn('No data in methodEntryObject');
+              }
+            })
+            .catch(function(error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function() {
+              // always executed
+            });
         }
       });
-
-      let methodEntryObject = [];
-      let methodEntryName;
-      let counter = 1;
-      _.filter(paths, function(key, value) {
-        let methodPath = value;
-        let methodData = key;
-
-        console.log(
-          '%cIteration START: ',
-          'font-weight: bold; color: yellow; font-size: 10px',
-          methodPath
-        );
-        // console.log(counter++);
-        // console.trace(key);
-        let methodEntry = {
-          request: {},
-        };
-
-        methodEntry.path = methodPath;
-
-        let operationId = '';
-
-        _.filter(methodData, function(a, b) {
-          if (typeof a.operationId !== 'undefined') {
-            // console.log(a);
-            _.filter(sitePages, function(pages) {
-              // console.log(pages);
-              if (pages.title === a.operationId) {
-                // console.log('operationId: ', a.operationId);
-                // console.log('pages.title: ', pages.title);
-                // console.log(pages.path);
-                methodEntry.url = pages.path;
-
-                if (b == 'post') {
-                  methodEntry.http = 'post';
-                } else if (b == 'get') {
-                  methodEntry.http = 'get';
-                } else if (b == 'put') {
-                  methodEntry.http = 'put';
-                } else if (b == 'delete') {
-                  methodEntry.http = 'delete';
-                } else {
-                  console.warn('Method not found');
-                }
-
-                methodEntryObject.push(methodEntry);
-              } else {
-                // console.warn('pages.title: ', pages.title, ': ', pages.path);
-              }
-            });
-
-            methodEntry.request = a;
-            operationId = a.operationId;
-
-            let descriptionExcerpt = a.description;
-            descriptionExcerpt = descriptionExcerpt
-              .replace(/([.?!])\s*(?=[A-Z])/g, '$1|')
-              .split('|');
-            // console.info('Short Description: ', descriptionExcerpt[0]);
-            methodEntry.excerpt = descriptionExcerpt[0];
-
-            // methodEntry.request = a;
-            // console.log(operationId);
-            let lw = operationId.split('.');
-            let metodOperation = lw[lw.length - 1];
-            // console.log('metodOperation: ', metodOperation);
-            methodEntry.operation = metodOperation;
-          } else {
-            // console.log('operationId missing for: ', a);
-          }
-        });
-
-        console.log(
-          '%cIteration END: ',
-          'font-weight: bold; color: #bada55; font-size: 10px'
-        );
-      });
-      console.table(methodEntryObject);
-      // console.log(methodEntryObject);
-      this.$data.methods = methodEntryObject;
     },
   };
-
-  // name: 'Entry',
-  // props: {
-  //   methodEntry: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   description: {
-  //     type: String,
-  //     required: false,
-  //   },
-  //   request: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   linkText: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   url: {
-  //     type: String,
-  //     required: true,
-  //   },
-  // },
-  // };
 </script>
