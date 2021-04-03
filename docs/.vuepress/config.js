@@ -293,6 +293,7 @@ module.exports = {
     ],
     ['vuepress-plugin-code-copy', true],
     'redirect-frontmatter',
+    'img-lazy',
   ],
 };
 

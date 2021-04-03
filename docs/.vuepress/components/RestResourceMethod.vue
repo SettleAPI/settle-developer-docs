@@ -62,9 +62,10 @@
             <li>
               Type:
               <code v-if="entry.url">
-                <router-link :to="entry.url">
                   {{ entry.type }}
-                </router-link>
+                <!-- <router-link :to="entry.url">
+                  {{ entry.type }}
+                </router-link> -->
               </code>
               <code v-else>{{ entry.type }}</code>
             </li>
