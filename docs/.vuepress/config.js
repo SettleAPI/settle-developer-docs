@@ -1,5 +1,8 @@
 const { description } = require('../../package');
+require("dotenv").config({ path: ".env.local" });
+// require('dotenv').config()
 const moment = require('moment');
+// console.log(process.env.GITHUB_TOKEN);
 
 module.exports = {
   chainWebpack: (config) => {
@@ -11,6 +14,10 @@ module.exports = {
       .end()
       .use('yaml-loader')
       .loader('yaml-loader');
+  },
+
+  markdown: {
+    extractHeaders: ['h2', 'h3', 'h4']
   },
 
   /**
@@ -169,7 +176,7 @@ module.exports = {
             get_sidebar_reference_users_permissions_scope(),
           ],
         },
-        '/api/reference/rest/types',
+        '/api/reference/rest/v1/types',
         // {
         //   title: 'Resources', // required
         //   collapsable: false, // optional, defaults to true
@@ -240,9 +247,12 @@ module.exports = {
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
+  // plugins: [require('./plugins/getTypes.js')],
   plugins: [
+    [require('./plugins/getTypes.js')],
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
+    '@vuepress/nprogress',
     [
       'vuepress-plugin-clean-urls',
       {
@@ -294,6 +304,18 @@ module.exports = {
     ['vuepress-plugin-code-copy', true],
     'redirect-frontmatter',
     'img-lazy',
+
+    // [
+    //   'register-components',
+    //   {
+    //     components: [
+    //       {
+    //         name: 'Types',
+    //         path: './components/Types.vue',
+    //       },
+    //     ],
+    //   },
+    // ],
   ],
 };
 

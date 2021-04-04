@@ -2,9 +2,7 @@
   <div>
     <section v-for="(type, index) in types" :key="index">
       <h2 :id="type.title">
-        <router-link :to="'#' + type.title" class="header-anchor"
-          >#</router-link
-        >
+        <router-link :to="'#' + type.title" class="header-anchor">#</router-link>
         <!-- <a :href="'#' + type.title" class="header-anchor">#</a>  -->
         {{ type.title }}
       </h2>
@@ -16,11 +14,7 @@
           class="md-api_reference_FiraCode"
         >
           <h3 :id="type.title + '_' + name">
-            <router-link
-              :to="'#' + type.title + '_' + name"
-              class="header-anchor"
-              >#</router-link
-            >
+            <router-link :to="'#' + type.title + '_' + name" class="header-anchor">#</router-link>
             <!-- <a :href="'#' + type.title + '?typename=' + name" class="header-anchor">#</a> -->
             {{ name }}
           </h3>
@@ -29,20 +23,16 @@
             <li v-if="property.$ref">
               Type:
               <code>
-                <router-link :to="'#' + property.$ref">{{
-                  property.$ref
-                }}</router-link>
+                <router-link :to="'#' + property.$ref">{{ property.$ref }}</router-link>
                 <!-- <a :href="'#' + property.$ref">{{ property.$ref }}</a> -->
-              </code>
+              </code
+              >
             </li>
             <li v-if="property.type">
               Type: <code>{{ property.type }}</code>
             </li>
             <li v-if="property.required">
-              Required:
-              <code
-                ><span class="required">{{ property.required }}</span></code
-              >
+              Required: <code><span class="required">{{ property.required }}</span></code>
             </li>
             <li v-if="property.default">
               Default: <code>{{ property.default }}</code>
@@ -139,28 +129,102 @@
 </template>
 
 <script>
+import myToken from "./scripts/doNotSync.js";
+
+const listContent = require("list-github-dir-content");
+const axios = require("axios");
+const _ = require("lodash");
+
+const yaml = require("js-yaml");
+
+// loggingDisabled();
+
 export default {
   data() {
     return {
       types: "",
     };
   },
-  beforeCreate() {
-    console.log("beforeCreate");
-    
-    // require("dotenv").config();
-    // require("dotenv").config({ path: ".env.development.local" });
-    // const result = dotenv.config();
-
-    // if (result.error) {
-    //   throw result.error;
-    // }
-
-    // console.log(result.parsed);
-  },
   async beforeMount() {
-    console.log("beforeMount");
-    this.$data.types = this.$site.pages[0].models;
+    console.clear();
+
+    //   const site = this.$site;
+    const page = this.$page;
+    const frontmatter = this.$frontmatter;
+    const props = this.$props;
+    const data = this.$data;
+
+    let models = [];
+    let fileNames = [];
+    let types = [];
+
+    // const listContent = require("list-github-dir-content");
+
+    const modelDirectoryFiles = await listContent.viaContentsApi({
+      user: "SettleAPI",
+      repository: "settle-api-description",
+      directory: "models",
+      token: myToken,
+    });
+
+    // console.log(modelDirectoryFiles);
+
+    _.filter(modelDirectoryFiles, function (r) {
+      // console.log(r);
+
+      let fileName = r.split("models/")[1];
+
+      fileNames.push(fileName);
+    });
+
+    // console.log(fileNames);
+
+    _.filter(fileNames, function (file) {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/models/" +
+            file
+        )
+        .then(function (bendersBigScore) {
+          bendersBigScore = yaml.load(bendersBigScore.data, {
+            encoding: "utf-8",
+          });
+
+          // console.log(bendersBigScore);
+
+          _.filter(bendersBigScore.properties, function (props) {
+            // console.log(i);
+            if (props.$ref) {
+              let $ref = props.$ref.split("./")[1].split(".")[0];
+              props.$ref = $ref;
+            }
+          });
+
+          if (bendersBigScore.required) {
+            _.filter(bendersBigScore.required, function (req) {
+              // console.log(req);
+
+              _.filter(bendersBigScore.properties, function (prop, zoid) {
+                if (req === zoid) {
+                  // console.log(req, zoid);
+                  prop.required = true;
+                  // console.log(prop);
+                }
+              });
+            });
+          }
+
+          types.push(bendersBigScore);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+          data.types = types;
+        });
+    });
   },
 };
 </script>

@@ -2,7 +2,9 @@
   <div>
     <section>
       <h2 id="http-request">
-        <a href="#http-request" class="header-anchor">#</a> HTTP Request
+        <router-link :to="'#http-request'" class="header-anchor">#</router-link>
+        <!-- <a href="#http-request" class="header-anchor">#</a> HTTP Request -->
+        HTTP Request
       </h2>
       <div class="md-api_reference_FiraCode">
         <div class="md-api_reference_request_heading">
@@ -15,17 +17,19 @@
         </div>
         <p>{{ method.excerpt }}</p>
         <h3 id="authorization-scopes">
-          <a href="#authorization-scopes" class="header-anchor">#</a>
+          <router-link :to="'#authorization-scopes'" class="header-anchor">#</router-link>
+          <!-- <a href="#authorization-scopes" class="header-anchor">#</a> -->
           Authorization Scopes
         </h3>
         <ul>
           <li>
             Required Auth Level:
-            <a
+            <router-link :to="'/guides/authentication/#authentication-using-secret'">SECRET</router-link>
+            <!-- <a
               href="/guides/authentication/#authentication-using-secret"
               class=""
               >SECRET</a
-            >
+            > -->
           </li>
           <li>Authorized Roles: All</li>
         </ul>
@@ -43,7 +47,7 @@
         </h3>
         <ul v-if="statusCodes">
           <li v-for="(code, index) in statusCodes" :key="index">
-            <strong>{{ code.code }}</strong> --&gt;
+            <strong>{{ code.code }}</strong> -->
             <strong>{{ code.title }}</strong
             >, {{ code.description }}
           </li>
@@ -53,63 +57,62 @@
     <section>
       <h2 id="schema"><a href="#schema" class="header-anchor">#</a> Schema</h2>
       <div class="md-api_reference_FiraCode">
-        <div v-for="(entry, index) in schemas" :key="index">
-          <h3 :id="entry.name">
-            <a :href="'#' + entry.name" class="header-anchor">#</a>
-            {{ entry.name }}
+        <div v-for="(type, entry) in schemas" :key="entry">
+          <h3 :id="type.name">
+            <router-link :to="'#' + type.name" class="header-anchor">#</router-link>
+            <!-- <a :href="'#' + type.name" class="header-anchor">#</a> -->
+            {{ type.name }}
           </h3>
           <ul>
             <li>
               Type:
-              <code v-if="entry.url">
-                  {{ entry.type }}
-                <!-- <router-link :to="entry.url">
-                  {{ entry.type }}
-                </router-link> -->
+              <code v-if="type.url && type.type">
+                <!-- {{ type.type }} -->
+                <router-link :to="type.url">{{type.type}}</router-link>
               </code>
-              <code v-else>{{ entry.type }}</code>
+              <code v-else>{{ type.type }}</code>
             </li>
 
             <li>
               Required:
               <code>
-                <span v-if="entry.required">{{ entry.required }}</span>
+                <span v-if="type.required">{{ type.required }}</span>
                 <span v-else>false</span>
               </code>
             </li>
-            <li v-if="entry.enum">
-              Enum: <code>{{ entry.enum }}</code>
+            <li v-if="type.enum">
+              Enum: <code>{{ type.enum }}</code>
             </li>
-            <li v-if="entry.default">
-              Default: <code>{{ entry.default }}</code>
+            <li v-if="type.default">
+              Default: <code>{{ type.default }}</code>
             </li>
             <li
               v-if="
-                entry.minLength &&
-                entry.maxLength &&
-                entry.minLength === entry.maxLength
+                type.minLength &&
+                type.maxLength &&
+                type.minLength === type.maxLength
               "
             >
-              Length: <code>{{ entry.minLength }}</code>
+              Length: <code>{{ type.minLength }}</code>
             </li>
-            <li v-else-if="entry.minLength">
-              Length: <code>>= {{ entry.minLength }}</code>
+            <li v-else-if="type.minLength">
+              Length: <code>>= {{ type.minLength }}</code>
             </li>
-            <li v-else-if="entry.maxLength">
-              Length: <code><= {{ entry.maxLength }}</code>
+            <li v-else-if="type.maxLength">
+              Length: <code><= {{ type.maxLength }}</code>
             </li>
-            <li v-if="entry.minimum && entry.type === 'integer'">
-              Value: <code>>= {{ entry.minimum }}</code>
+            <li v-if="type.minimum && type.type === 'integer'">
+              Value: <code>>= {{ type.minimum }}</code>
             </li>
-            <li v-if="entry.maximum && entry.type === 'integer'">
-              Value: <code><= {{ entry.maximum }}</code>
+            <li v-if="type.maximum && type.type === 'integer'">
+              Value: <code><= {{ type.maximum }}</code>
             </li>
-            <li v-if="entry.pattern">
-              RegExp: <code>{{ entry.pattern }}</code>
+            <li v-if="type.pattern">
+              RegExp: <code>{{ type.pattern }}</code>
             </li>
-            <!-- <li v-if="entry.default">Default: <code>{{entry.default}}</code></li> -->
+            <!-- <li v-if="type.default">Default: <code>{{type.default}}</code></li> -->
           </ul>
-          <p v-if="entry.description">{{ entry.description }}</p>
+          <p v-if="type.description">{{ type.description }}</p>
         </div>
       </div>
     </section>
@@ -424,8 +427,9 @@ export default {
                                   OpenApiJsonModel.description;
 
                                 types.url =
-                                  "/api/reference/rest/types/#" +
-                                  OpenApiJsonModel.title.toLowerCase();
+                                  "/api/reference/rest/v1/types/#" +
+                                  OpenApiJsonModel.title;
+                                // OpenApiJsonModel.title.toLowerCase();
 
                                 // _.filter($schema.required, function(w1, w2) {
                                 //   console.log(w1);

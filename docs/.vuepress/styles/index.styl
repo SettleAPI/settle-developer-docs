@@ -89,6 +89,13 @@ table
 // .logo
 // height: 60px
 .theme-default-content
+  section
+    padding-top: 3.3em;
+    // padding-bottom: 3.3em;
+
+  .required
+    color: $requiredColor;
+
   &
     pre
       &
@@ -130,88 +137,85 @@ table
         // margin-bottom: 0;
         // }
         p:last-child
-          margin-bottom: 3.3em;
-
-        ul:last-child
           margin-bottom: 2.2em;
 
-      h3
-        margin-top: -3.1rem;
-        padding-top: 4.6rem;
-        margin-bottom: 0;
+        h3
+          margin-top: -3.1rem;
+          padding-top: 4.6rem;
+          margin-bottom: 0;
 
-      &
-        .noLink a, .noLink a code
-          color: $textColor;
-          text-decoration: none;
-
-        .badge
-          height: auto;
-          padding: 0 6px;
-          color: #fff;
-          border-radius: 3px;
-          text-transform: uppercase;
-
-        .badge.small
-          text-transform: uppercase;
-
-        .badge.post
-          background-color: #EEC049;
-
-        .badge.get
-          background-color: #59B090;
-
-        .badge.put
-          background-color: #96CBE8;
-
-        .badge.delete
-          background-color: #E07166;
-
-        .md-api_reference_request_heading
-          font-size: 1.65rem;
-          font-weight: 600;
-          line-height: 1.25;
-          // margin-block-start: 3.33em;
-          // margin-block-end: 3.33em;
-          margin-top: 3.3rem;
-          margin-bottom: 1.5rem;
-
-          p:last-child
-            margin-bottom: 0em;
-
-          &
-            .request
-              h3
-                margin-top: -3.1rem;
-                padding-top: 4.6rem;
-                margin-bottom: 0;
-
-          a
+        &
+          .noLink a, .noLink a code
             color: $textColor;
+            text-decoration: none;
+
+          .badge
+            height: auto;
+            padding: 0 6px;
+            color: #fff;
+            border-radius: 3px;
+            text-transform: uppercase;
+
+          .badge.small
+            text-transform: uppercase;
+
+          .badge.post
+            background-color: #EEC049;
+
+          .badge.get
+            background-color: #59B090;
+
+          .badge.put
+            background-color: #96CBE8;
+
+          .badge.delete
+            background-color: #E07166;
+
+          .md-api_reference_request_heading
+            font-size: 1.65rem;
             font-weight: 600;
+            line-height: 1.25;
+            // margin-block-start: 3.33em;
+            // margin-block-end: 3.33em;
+            margin-top: 3.3rem;
+            margin-bottom: 1.5rem;
 
-            code
-              // color: $textColor;
+            p:last-child
+              margin-bottom: 0em;
 
-          h4
-            .badge
-              font-size: 16px;
+            &
+              .request
+                h3
+                  margin-top: -3.1rem;
+                  padding-top: 4.6rem;
+                  margin-bottom: 0;
 
-          h2
-            border-bottom: none;
-            // display: none;
+            a
+              color: $textColor;
+              font-weight: 600;
 
-          &
-            .badge
-              // font-size: 1.35rem;
-              // height: auto;
-              // line-height: 1.25;
-              padding: 2px 6px 0 6px;
-              // color: #fff;
-              // border-radius: 3px;
+              code
+                // color: $textColor;
 
-  &
-    a
-      &
-        code
-          color: $accentColor;
+            h4
+              .badge
+                font-size: 16px;
+
+            h2
+              border-bottom: none;
+              // display: none;
+
+            &
+              .badge
+                // font-size: 1.35rem;
+                // height: auto;
+                // line-height: 1.25;
+                padding: 2px 6px 0 6px;
+                // color: #fff;
+                // border-radius: 3px;
+
+    &
+      a
+        &
+          code
+            color: $accentColor;

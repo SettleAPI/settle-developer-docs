@@ -12,3 +12,4 @@ config.local.js
 basement_dist
 docs/.vuepress/dist
 package-lock.json
+.env.local
