@@ -3,7 +3,6 @@
     <section>
       <h2 id="http-request">
         <router-link :to="'#http-request'" class="header-anchor">#</router-link>
-        <!-- <a href="#http-request" class="header-anchor">#</a> HTTP Request -->
         HTTP Request
       </h2>
       <div class="md-api_reference_FiraCode">
@@ -17,19 +16,18 @@
         </div>
         <p>{{ method.excerpt }}</p>
         <h3 id="authorization-scopes">
-          <router-link :to="'#authorization-scopes'" class="header-anchor">#</router-link>
-          <!-- <a href="#authorization-scopes" class="header-anchor">#</a> -->
+          <router-link :to="'#authorization-scopes'" class="header-anchor"
+            >#</router-link
+          >
           Authorization Scopes
         </h3>
         <ul>
           <li>
             Required Auth Level:
-            <router-link :to="'/guides/authentication/#authentication-using-secret'">SECRET</router-link>
-            <!-- <a
-              href="/guides/authentication/#authentication-using-secret"
-              class=""
-              >SECRET</a
-            > -->
+            <router-link
+              :to="'/guides/authentication/#authentication-using-secret'"
+              >SECRET</router-link
+            >
           </li>
           <li>Authorized Roles: All</li>
         </ul>
@@ -59,26 +57,29 @@
       <div class="md-api_reference_FiraCode">
         <div v-for="(type, entry) in schemas" :key="entry">
           <h3 :id="type.name">
-            <router-link :to="'#' + type.name" class="header-anchor">#</router-link>
-            <!-- <a :href="'#' + type.name" class="header-anchor">#</a> -->
+            <router-link :to="'#' + type.name" class="header-anchor"
+              >#</router-link
+            >
             {{ type.name }}
           </h3>
           <ul>
             <li>
               Type:
-              <code v-if="type.url && type.type">
-                <!-- {{ type.type }} -->
-                <router-link :to="type.url">{{type.type}}</router-link>
+              <!-- <code v-if="type.url && type.type">
+                <router-link :to="type.url">{{ type.type }}</router-link>
+              </code> -->
+              <code v-if="type.$ref">
+                <router-link
+                  :to="'/api/reference/rest/v1/types/#' + type.$ref"
+                  >{{ type.$ref }}</router-link
+                >
               </code>
               <code v-else>{{ type.type }}</code>
             </li>
 
-            <li>
+            <li v-if="type.required">
               Required:
-              <code>
-                <span v-if="type.required">{{ type.required }}</span>
-                <span v-else>false</span>
-              </code>
+              <code class="required">{{ type.required }}</code>
             </li>
             <li v-if="type.enum">
               Enum: <code>{{ type.enum }}</code>
@@ -110,7 +111,6 @@
             <li v-if="type.pattern">
               RegExp: <code>{{ type.pattern }}</code>
             </li>
-            <!-- <li v-if="type.default">Default: <code>{{type.default}}</code></li> -->
           </ul>
           <p v-if="type.description">{{ type.description }}</p>
         </div>
@@ -143,8 +143,7 @@ export default {
     return {
       servers: [],
       statusCodes: [],
-      // methods: [],
-      method: {},
+      method: null,
       schemas: [],
       resourceOverviewUrl: [],
     };
@@ -158,11 +157,13 @@ export default {
     const props = this.$props;
     const data = this.$data;
 
+    let unsortedShit = [];
+
     //   console.log(this.$props);
 
-    const schemaUrl = function () {
+    const api = function () {
       let schema = props.resource.split(".")[0];
-      console.log("schema: ", schema);
+      // console.log("schema: ", schema);
       if (schema === "merchant") {
         return "merchant";
       } else if (schema === "oauth2") {
@@ -172,337 +173,77 @@ export default {
       }
     };
 
-    //   data.anchorLink = props.resource.replaceAll('.', '-');
+    _.filter(this.$page.reference, function (bart, lisa) {
+      // console.log(lisa);
+      // console.log(api());
+      if (lisa === api()) {
+        // console.log(bart);
+        data.servers = bart.servers;
 
-    //   console.log(this.$frontmatter);
+        _.filter(bart.components.schemas, function (mat, gron) {
+          // console.log(gron);
+          // console.log(props.resource);
+          // console.log(api() + '.' + gron);
+          if (api() + "." + gron === props.resource) {
+            // console.log(mat);
 
-    //   console.log(props.resource[0]);
-
-    let methodEntryObject = [];
-
-    //   _.filter(pages, function(pages) {
-    if (
-      frontmatter.operationId !== undefined &&
-      frontmatter.operationId === props.resource
-    ) {
-      // let methodEntryObject = [];
-      axios
-        .get(
-          "https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/reference/" +
-            schemaUrl() +
-            ".v1.yaml"
-        )
-        .then(function (response) {
-          // handle success
-          // console.log(response);
-
-          // console.group(
-          //   '%cSECTION: ',
-          //   'font-weight: bold; color: green; font-size: 14px',
-          //   props.resource
-          // );
-
-          // let methodEntryObject = [];
-
-          let OpenApiJsonResponse = yaml.load(response.data, {
-            encoding: "utf-8",
-          });
-          console.log(OpenApiJsonResponse);
-
-          if (OpenApiJsonResponse.openapi ? true : false) {
-            data.version = OpenApiJsonResponse.info.version.split(".")[0];
-
-            let servers = [];
-            _.filter(OpenApiJsonResponse.servers, function (key, value) {
-              // console.log(key);
-              if (key.description !== "Mock") {
-                servers.push(key);
+            _.filter(mat.properties, function (burns, bob) {
+              // console.log(bob, burns);
+              if (bob !== "null") {
+                // console.log(bob, burns);
+                burns.name = bob;
+                data.schemas.push(burns);
               }
             });
-
-            //   console.log(servers);
-            servers = _.sortBy(servers, ["url"]);
-            //   console.log(servers);
-            data.servers = servers;
-
-            if (OpenApiJsonResponse.paths) {
-              // const paths = OpenApiJsonResponse.paths;
-
-              // console.log(OpenApiJsonResponse.paths);
-
-              _.filter(OpenApiJsonResponse.paths, function (key, value) {
-                // let methodPath = value;
-                // let methodData = key;
-
-                // let methodEntry = {
-                //   request: {},
-                // };
-
-                // methodEntry.path = value;
-
-                _.filter(key, function (a, b) {
-                  if (typeof a.operationId !== "undefined") {
-                    //   console.log(a);
-
-                    // let operationId = a.operationId;
-                    // console.log(a.operationId.substring(0,a.operationId.lastIndexOf('.')));
-                    // console.log('props.resource: ', props.resource);
-
-                    let methodEntry = {
-                      request: {},
-                    };
-
-                    methodEntry.path = value;
-
-                    // console.log('frontmatter.schema: ', site.frontmatter);
-                    if (frontmatter.operationId === a.operationId) {
-                      console.group("Found:", a.operationId);
-                      // console.log('operationId: ', a.operationId);
-                      console.log("page.title: ", page.title);
-                      console.log("page.path: ", page.path);
-                      console.log(a);
-                      console.groupEnd();
-
-                      data.resourceOverviewUrl = frontmatter.schema;
-
-                      methodEntry.url = page.path;
-                      methodEntry.request = a;
-
-                      let statusCodes = [];
-                      _.filter(a.responses, function (key, value) {
-                        //   console.log(key);
-                        let description = key.description.split(", ");
-                        statusCodes.push({
-                          code: value,
-                          title: description[0],
-                          description: description[1],
-                        });
-                      });
-
-                      // console.log(statusCodes);
-                      data.statusCodes = statusCodes;
-
-                      let descriptionExcerpt = a.description
-                        .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                        .split("|");
-                      // console.info('Short Description: ', descriptionExcerpt[0]);
-                      methodEntry.excerpt = descriptionExcerpt[0];
-
-                      methodEntry.method = frontmatter.method;
-                      methodEntry.operation = frontmatter.operation;
-                      // console.log('frontmatter.operation: ', frontmatter.operation);
-
-                      data.method.excerpt = descriptionExcerpt[0];
-                      data.method.operation = frontmatter.operation;
-                      data.method.path = value;
-
-                      methodEntryObject.push(methodEntry);
-
-                      let $schema = OpenApiJsonResponse.components.schemas;
-                      // console.log($schema);
-                      let $ref =
-                        a.requestBody.content["application/json"].schema.$ref;
-                      $ref = $ref.split("/")[3];
-                      // console.log($ref);
-                      $schema = $schema[$ref];
-
-                      // console.log($schema.properties);
-
-                      let schemas = [];
-
-                      _.filter(
-                        $schema.properties,
-                        function (typeValue, typeName) {
-                          // console.log(typeName, typeValue);
-                          let types = {};
-
-                          if (typeName) {
-                            types.name = typeName;
-                          }
-
-                          _.filter($schema.required, function (r1, r2) {
-                            // console.log(r1);
-                            if (typeName === r1) {
-                              types.required = true;
-                            }
-                          });
-
-                          //   console.log($schema.required);
-                          function setValues(itr) {
-                            if (itr.$ref) {
-                              // console.log(itr);
-                              //   let innerModelUrl = itr.$ref.split('/').pop();
-                              //   axios
-                              //     .get(
-                              //       'https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/models/' +
-                              //         innerModelUrl
-                              //     )
-                              //     .then(function(innerModelResponse) {
-                              //       let innerOpenApiJsonModel = yaml.load(
-                              //         innerModelResponse.data,
-                              //         {
-                              //           encoding: 'utf-8',
-                              //         }
-                              //       );
-                              //       types.type = innerOpenApiJsonModel.title;
-                              //       types.description =
-                              //         innerOpenApiJsonModel.description;
-                              //       types.url =
-                              //         '/api/reference/rest/types/#' +
-                              //         innerOpenApiJsonModel.title.toLowerCase();
-                              //       // console.log(innerOpenApiJsonModel.properties);
-                              //       _.filter(
-                              //         innerOpenApiJsonModel.properties,
-                              //         function(q1, q2) {
-                              //           //   console.log(p1);
-                              //           setValues(q1);
-                              //         }
-                              //       );
-                              //     })
-                              //     .catch(function(error) {
-                              //       // handle error
-                              //       console.log(error);
-                              //     })
-                              //     .then(function() {
-                              //       // always executed
-                              //     });
-                            } else {
-                              if (itr.default) {
-                                types.default = itr.default;
-                              }
-
-                              if (itr.minLength) {
-                                types.minLength = itr.minLength;
-                              }
-
-                              if (itr.maxLength) {
-                                types.maxLength = itr.maxLength;
-                              }
-
-                              if (itr.pattern) {
-                                types.pattern = itr.pattern;
-                              }
-
-                              if (itr.minimum) {
-                                types.minimum = itr.minimum;
-                              }
-
-                              if (itr.maximum) {
-                                types.maximum = itr.maximum;
-                              }
-
-                              if (itr.enum) {
-                                types.enum = itr.enum;
-                              }
-                              if (itr.description) {
-                                types.description = itr.description;
-                              }
-
-                              //   if (itr.type) {
-                              //     types.type = itr.type;
-                              //   }
-                            }
-                          }
-
-                          if (typeValue.$ref) {
-                            // console.log(typeValue.$ref);
-
-                            let modelUrl = typeValue.$ref.split("/").pop();
-                            // console.log(modelUrl);
-                            axios
-                              .get(
-                                "https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/models/" +
-                                  modelUrl
-                              )
-                              .then(function (modelResponse) {
-                                let OpenApiJsonModel = yaml.load(
-                                  modelResponse.data,
-                                  {
-                                    encoding: "utf-8",
-                                  }
-                                );
-
-                                types.type = OpenApiJsonModel.title;
-                                types.description =
-                                  OpenApiJsonModel.description;
-
-                                types.url =
-                                  "/api/reference/rest/v1/types/#" +
-                                  OpenApiJsonModel.title;
-                                // OpenApiJsonModel.title.toLowerCase();
-
-                                // _.filter($schema.required, function(w1, w2) {
-                                //   console.log(w1);
-                                //   console.log(OpenApiJsonModel.title);
-                                //   if (OpenApiJsonModel.title === w1) {
-                                //     types.required = true;
-                                //     // console.log(OpenApiJsonModel.title);
-                                //   }
-                                // });
-
-                                // console.log(OpenApiJsonModel);
-                                _.filter(
-                                  OpenApiJsonModel.properties,
-                                  function (p1, p2) {
-                                    // console.log(p1);
-                                    setValues(p1);
-                                  }
-                                );
-                              })
-                              .catch(function (error) {
-                                // handle error
-                                console.log(error);
-                              })
-                              .then(function () {
-                                // always executed
-                              });
-                          } else {
-                            // console.log(typeValue);
-                            setValues(typeValue);
-                            if (typeValue.type) {
-                              types.type = typeValue.type;
-                            }
-                          }
-
-                          //   schemas.push(types);
-
-                          if (types.name !== "null") {
-                            schemas.push(types);
-                          }
-                        }
-                      );
-
-                      data.schemas = schemas;
-                    }
-                  }
-                });
-              });
-              // console.log(paths);
-              // console.log('pages.title: ', pages.title);
-              // console.log('pages.path: ', pages.path);
-            }
-          } else {
-            console.warn("No valid Open API sepesification document found.");
           }
-
-          // console.groupEnd();
-
-          if (methodEntryObject.length) {
-            // console.table(methodEntryObject);
-            //   data.methods = methodEntryObject;
-          } else {
-            console.warn("No data in methodEntryObject");
-          }
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .then(function () {
-          // always executed
         });
-    }
-    //   });
+
+        _.filter(bart.paths, function (homer, marge) {
+          // console.log(homer);
+          _.filter(bart.paths, function (flanders, moe) {
+            // console.log(moe);
+            _.filter(flanders, function (ralph, skinner) {
+              if (
+                skinner === "post" ||
+                skinner === "get" ||
+                skinner === "put" ||
+                skinner === "delete"
+              ) {
+                if (page.frontmatter.operation === skinner) {
+                  data.method = { operation: skinner, path: moe + "/" };
+                  unsortedShit.push(ralph);
+                }
+              }
+            });
+          });
+        });
+      } else {
+        // console.warn('No matching operationId found.')
+      }
+    });
+
+    let uniqSchemas = _.uniq(unsortedShit);
+    // console.log(uniqSchemas);
+
+    _.filter(uniqSchemas, function (mon, key) {
+      // console.log(mon);
+      if (mon.operationId === props.resource) {
+        // console.log(mon);
+        _.filter(mon.responses, function (apu, smithers) {
+          // console.log(smithers, apu);
+
+          let title = apu.description.split(",")[0];
+          let description = apu.description.split(",")[1];
+          let code = {
+            code: smithers,
+            title: title,
+            description: description,
+          };
+          data.statusCodes.push(code);
+        });
+        //
+      }
+    });
   },
 };
 </script>

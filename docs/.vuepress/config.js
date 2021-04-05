@@ -249,7 +249,9 @@ module.exports = {
    */
   // plugins: [require('./plugins/getTypes.js')],
   plugins: [
-    [require('./plugins/getTypes.js')],
+    // [require('./plugins/getTypes.js')],
+    // [require('./plugins/getResource.js')],
+    [require('./plugins/getOpenAPI.js')],
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
     '@vuepress/nprogress',

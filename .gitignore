@@ -13,3 +13,4 @@ basement_dist
 docs/.vuepress/dist
 package-lock.json
 .env.local
+docs/.vuepress/components/TestComponent.vue
