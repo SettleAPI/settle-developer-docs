@@ -161,89 +161,116 @@ export default {
 
     //   console.log(this.$props);
 
-    const api = function () {
-      let schema = props.resource.split(".")[0];
-      // console.log("schema: ", schema);
-      if (schema === "merchant") {
-        return "merchant";
-      } else if (schema === "oauth2") {
-        return "oauth2";
-      } else if (schema === "users") {
-        return "users";
-      }
-    };
+    function getData() {
+      const api = function () {
+        let schema = props.resource.split(".")[0];
+        // console.log("schema: ", schema);
+        if (schema === "merchant") {
+          return "merchant";
+        } else if (schema === "oauth2") {
+          return "oauth2";
+        } else if (schema === "users") {
+          return "users";
+        }
+      };
 
-    _.filter(this.$page.reference, function (bart, lisa) {
-      // console.log(lisa);
-      // console.log(api());
-      if (lisa === api()) {
-        // console.log(bart);
-        data.servers = bart.servers;
+      _.filter(page.reference, function (bart, lisa) {
+        // console.log(lisa);
+        // console.log(api());
+        if (lisa === api()) {
+          // console.log(bart);
+          data.servers = bart.servers;
 
-        _.filter(bart.components.schemas, function (mat, gron) {
-          // console.log(gron);
-          // console.log(props.resource);
-          // console.log(api() + '.' + gron);
-          if (api() + "." + gron === props.resource) {
-            // console.log(mat);
+          _.filter(bart.components.schemas, function (mat, gron) {
+            // console.log(gron);
+            // console.log(props.resource);
+            // console.log(api() + '.' + gron);
+            if (api() + "." + gron === props.resource) {
+              // console.log(mat);
 
-            _.filter(mat.properties, function (burns, bob) {
-              // console.log(bob, burns);
-              if (bob !== "null") {
+              _.filter(mat.properties, function (burns, bob) {
                 // console.log(bob, burns);
-                burns.name = bob;
-                data.schemas.push(burns);
-              }
-            });
-          }
-        });
-
-        _.filter(bart.paths, function (homer, marge) {
-          // console.log(homer);
-          _.filter(bart.paths, function (flanders, moe) {
-            // console.log(moe);
-            _.filter(flanders, function (ralph, skinner) {
-              if (
-                skinner === "post" ||
-                skinner === "get" ||
-                skinner === "put" ||
-                skinner === "delete"
-              ) {
-                if (page.frontmatter.operation === skinner) {
-                  data.method = { operation: skinner, path: moe + "/" };
-                  unsortedShit.push(ralph);
+                if (bob !== "null") {
+                  // console.log(bob, burns);
+                  burns.name = bob;
+                  data.schemas.push(burns);
                 }
-              }
+              });
+            }
+          });
+
+          _.filter(bart.paths, function (homer, marge) {
+            // console.log(homer);
+            _.filter(bart.paths, function (flanders, moe) {
+              // console.log(moe);
+              _.filter(flanders, function (ralph, skinner) {
+                if (
+                  skinner === "post" ||
+                  skinner === "get" ||
+                  skinner === "put" ||
+                  skinner === "delete"
+                ) {
+                  if (page.frontmatter.operation === skinner) {
+                    data.method = { operation: skinner, path: moe + "/" };
+                    unsortedShit.push(ralph);
+                  }
+                }
+              });
             });
           });
-        });
-      } else {
-        // console.warn('No matching operationId found.')
-      }
-    });
+        } else {
+          // console.warn('No matching operationId found.')
+        }
+      });
 
-    let uniqSchemas = _.uniq(unsortedShit);
-    // console.log(uniqSchemas);
+      let uniqSchemas = _.uniq(unsortedShit);
+      // console.log(uniqSchemas);
 
-    _.filter(uniqSchemas, function (mon, key) {
-      // console.log(mon);
-      if (mon.operationId === props.resource) {
+      _.filter(uniqSchemas, function (mon, key) {
         // console.log(mon);
-        _.filter(mon.responses, function (apu, smithers) {
-          // console.log(smithers, apu);
+        if (mon.operationId === props.resource) {
+          // console.log(mon);
+          _.filter(mon.responses, function (apu, smithers) {
+            // console.log(smithers, apu);
 
-          let title = apu.description.split(",")[0];
-          let description = apu.description.split(",")[1];
-          let code = {
-            code: smithers,
-            title: title,
-            description: description,
-          };
-          data.statusCodes.push(code);
-        });
-        //
+            let title = apu.description.split(",")[0];
+            let description = apu.description.split(",")[1];
+            let code = {
+              code: smithers,
+              title: title,
+              description: description,
+            };
+            data.statusCodes.push(code);
+          });
+          //
+        }
+      });
+
+      return Promise.resolve("Success");
+    }
+
+    function getHeaders() {
+      var h = ["h2"];
+      var headings = [];
+      for (var i = 0; i < h.length; i++) {
+        if (document.getElementsByTagName(h[i])) {
+          headings[i] = document.querySelector(h[i]);
+          if (headings[i]) {
+            console.log(headings[i].textContent);
+          }
+        }
       }
-    });
+    }
+
+    getData().then(
+      (message) => {
+        getHeaders();
+      },
+      (message) => {
+        document.write("Then failure:" + message);
+      }
+    )
+
   },
 };
 </script>

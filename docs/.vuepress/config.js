@@ -16,9 +16,9 @@ module.exports = {
       .loader('yaml-loader');
   },
 
-  markdown: {
-    extractHeaders: ['h2', 'h3', 'h4']
-  },
+  // markdown: {
+  //   extractHeaders: ['h2', 'h3', 'h4']
+  // },
 
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
