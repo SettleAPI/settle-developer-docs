@@ -7,7 +7,7 @@
       </h2>
       <div class="md-api_reference_FiraCode">
         <div class="md-api_reference_request_heading">
-          <p>
+          <p v-if="method.operation && method.path">
             <span :class="['badge', method.operation]">{{
               method.operation
             }}</span>
@@ -143,7 +143,7 @@ export default {
     return {
       servers: [],
       statusCodes: [],
-      method: null,
+      method: '',
       schemas: [],
       resourceOverviewUrl: [],
     };
@@ -153,7 +153,7 @@ export default {
 
     //   const site = this.$site;
     const page = this.$page;
-    // const frontmatter = this.$frontmatter;
+    const frontmatter = this.$page.frontmatter;
     const props = this.$props;
     const data = this.$data;
 
@@ -210,8 +210,11 @@ export default {
                   skinner === "put" ||
                   skinner === "delete"
                 ) {
-                  if (page.frontmatter.operation) {
-                    if (page.frontmatter.operation === skinner) {
+                  // console.log(frontmatter.operation);
+                  if (frontmatter.operation) {
+                    // console.log(frontmatter.operation);
+                    if (frontmatter.operation === skinner) {
+                      // console.log(frontmatter.operation);
                       data.method = { operation: skinner, path: moe + "/" };
                       unsortedShit.push(ralph);
                     }
@@ -224,6 +227,8 @@ export default {
           });
         }
       });
+    } else {
+      console.warn('page.reference not found...');
     }
 
     let uniqSchemas;
