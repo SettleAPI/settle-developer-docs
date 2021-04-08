@@ -97,16 +97,16 @@
               Length: <code>{{ type.minLength }}</code>
             </li>
             <li v-else-if="type.minLength">
-              Length: <code>>= {{ type.minLength }}</code>
+              Length: <code>&#8805; {{ type.minLength }}</code>
             </li>
             <li v-else-if="type.maxLength">
-              Length: <code><= {{ type.maxLength }}</code>
+              Length: <code>&#8804; {{ type.maxLength }}</code>
             </li>
             <li v-if="type.minimum && type.type === 'integer'">
-              Value: <code>>= {{ type.minimum }}</code>
+              Value: <code>&#8805; {{ type.minimum }}</code>
             </li>
             <li v-if="type.maximum && type.type === 'integer'">
-              Value: <code><= {{ type.maximum }}</code>
+              Value: <code>&#8804; {{ type.maximum }}</code>
             </li>
             <li v-if="type.pattern">
               RegExp: <code>{{ type.pattern }}</code>
