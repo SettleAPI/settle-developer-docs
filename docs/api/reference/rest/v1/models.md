@@ -2,11 +2,16 @@
 title: Complex Types
 description: Complex Types
 ---
+
+<!-- <TestComponent /> -->
+
 # Complex Types
 
 Not all data can be easily described with simple data structures. This page lists all the complex data structures that our Settle API is using.
 
-## AccessTokenResponse
+<Types />
+
+<!-- ## AccessTokenResponse
 
 <div class="md-api_reference_FiraCode">
 
@@ -1660,4 +1665,4 @@ Refund.
 
 Capture.
 
-</div>
+</div> -->

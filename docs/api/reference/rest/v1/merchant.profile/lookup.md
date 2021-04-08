@@ -1,5 +1,5 @@
 ---
-title: merchant.lookup
+title: merchant.profile.lookup
 description: Endpoint for retrieving info about merchants on secondary ID.
 ---
 
@@ -7,7 +7,7 @@ description: Endpoint for retrieving info about merchants on secondary ID.
 
 <div class="md-api_reference_method_heading">
 
-merchant.lookup
+merchant.profile.lookup
 
 </div>
 

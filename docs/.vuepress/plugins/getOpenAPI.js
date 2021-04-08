@@ -10,7 +10,7 @@ module.exports = () => ({
 
         // let page = $page;
         let page = $page;
-        
+
         let getTypesFilenames = [];
         let getResourceFilenames = [];
 

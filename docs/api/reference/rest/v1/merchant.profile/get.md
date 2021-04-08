@@ -1,5 +1,5 @@
 ---
-title: merchant.getProfile
+title: merchant.profile.get
 description: Endpoint for retrieving info about merchants.
 ---
 
@@ -7,7 +7,7 @@ description: Endpoint for retrieving info about merchants.
 
 <div class="md-api_reference_method_heading">
 
-merchant.getProfile
+merchant.profile.get
 
 </div>
 

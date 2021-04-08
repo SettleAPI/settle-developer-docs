@@ -139,8 +139,6 @@
 </template>
 
 <script>
-const _ = require("lodash");
-
 export default {
   data() {
     return {
@@ -149,7 +147,7 @@ export default {
   },
   beforeCreate() {
     console.log("beforeCreate");
-
+    
     // require("dotenv").config();
     // require("dotenv").config({ path: ".env.development.local" });
     // const result = dotenv.config();
@@ -161,54 +159,8 @@ export default {
     // console.log(result.parsed);
   },
   async beforeMount() {
-    console.clear();
     console.log("beforeMount");
-
-    const data = this.$data;
-    const site = this.$site;
-
-    data.types = site.pages[0].models;
-
-    // console.log(this.$themeConfig.sidebar);
-
-    let sidebars = this.$themeConfig.sidebar;
-
-    // console.log(sidebars);
-    // console.log(window.location.origin);
-
-    _.filter(sidebars, function (a, b) {
-      // console.log(b);
-      if (b === "/api/reference/rest/") {
-        // console.log(a);
-        _.filter(a, function (c, d) {
-          // console.log(c.title);
-          if (c.title === "REST Models") {
-            // console.log(c);
-            // c.children = site.pages[0].models;
-            _.filter(data.types, function (e, f) {
-              // console.log(e.title);
-
-              // let uri =
-              //   window.location.origin +
-              //   "/api/reference/rest/v1/models/#" +
-              //   e.title;
-
-              let uri =
-                window.location.origin +
-                "/api/reference/rest/v1/models/#" +
-                e.title;
-                
-                console.log(uri);
-              c.children.push([uri, e.title]);
-            });
-          }
-        });
-        console.log(sidebars);
-      }
-    });
-  },
-  async mounted() {
-    console.log("mounted");
+    this.$data.types = this.$site.pages[0].models;
   },
 };
 </script>

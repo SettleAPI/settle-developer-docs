@@ -149,7 +149,7 @@ export default {
     };
   },
   async beforeMount() {
-    // console.clear();
+    console.clear();
 
     //   const site = this.$site;
     const page = this.$page;

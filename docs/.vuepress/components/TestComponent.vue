@@ -3,104 +3,39 @@
 </template>
 
 <script>
-  console.clear();
+// console.clear();
+// console.log('TestComponent');
 
-  export default {
-    async beforeMount() {
-      const listContent = require('list-github-dir-content');
-      const axios = require('axios');
-      const _ = require('lodash');
+// const _ = require("lodash");
 
-      const yaml = require('js-yaml');
+export default {
+  // async created() {
+  //   console.log("created");
+  //   let models = this.$page.models;
+  //   console.log(models);
+  // },
+  // async beforeMount() {
+  //   let sidebar = this.$site.themeConfig.sidebar;
 
-      // const myToken = process.env.GITHUB_TOKEN;
-      const myToken = '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';
+  //   // console.log(sidebar);
 
-      let models = [];
-      let fileNames = [];
-      let api = {
-        merchant: null,
-        oauth2: null,
-        users: null,
-      };
+  //   // _.filter(sidebar, function (entry, path) {
+  //   //   if (path === "/api/reference/rest/") {
+  //   //     // console.log(path);
+  //   //     // console.log(entry);
+  //   //     let sidebarModels;
 
-      // let page = $page;
-      let page = this.$page;
+  //   //     entry.forEach((element) => {
+  //   //       if (element.title === "REST Models") {
+  //   //         return (sidebarModels = element);
+  //   //       }
+  //   //     });
 
-      const modelDirectoryFiles = await listContent.viaContentsApi({
-        user: 'SettleAPI',
-        repository: 'settle-api-description',
-        directory: 'reference',
-        token: myToken,
-      });
+  //   //     let sidebarModelChildren = sidebarModels.children
 
-      _.filter(modelDirectoryFiles, function(r) {
-        //   console.log(r);
-
-        // let fileName = r.split('reference/')[1];
-        let fileName = r.split('reference/')[1];
-
-        fileNames.push(fileName);
-      });
-
-      _.filter(fileNames, function(file) {
-        let apiName = file.split('.')[0];
-        //   console.log(apiName);
-
-        axios
-          .get(
-            'https://raw.githubusercontent.com/SettleAPI/settle-api-description/main/reference/' +
-              file
-          )
-          .then(function(bender) {
-            let bendersBigScore = yaml.load(bender.data, {
-              encoding: 'utf-8',
-            });
-
-            // console.log(bendersBigScore);
-
-            _.filter(bendersBigScore.components.schemas, function(fry) {
-              console.log(fry);
-              //   _.filter(fry.components.schemas, function(zoidberg) {
-
-              //   console.log(zoidberg);
-
-              if (fry.properties) {
-                _.filter(fry.properties, function(props) {
-                  //   console.log(props);
-                  if (props.$ref) {
-                    let $ref = props.$ref.split('../models/')[1].split('.')[0];
-                    props.$ref = $ref;
-                    // console.log($ref);
-                  }
-                });
-              }
-
-              if (fry.required) {
-                _.filter(fry.required, function(req) {
-                  _.filter(fry.properties, function(prop, amy) {
-                    if (req === amy) {
-                      prop.required = true;
-                      //   console.log(amy, prop);
-                    }
-                  });
-                });
-              }
-
-              //   });
-              //   api.push(bendersBigScore);
-            });
-
-            api[apiName] = bendersBigScore;
-          })
-          .catch(function(error) {
-            // handle error
-            console.log(error);
-          })
-          .then(function() {
-            page.reference = api;
-          });
-      });
-    },
-  };
+  //   //     console.log(sidebarModelChildren);
+  //   //   }
+  //   // });
+  // },
+};
 </script>
