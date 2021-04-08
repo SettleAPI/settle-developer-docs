@@ -173,7 +173,7 @@ export default {
     if (this.$page.models) {
       console.log(this.$page.models);
     } else {
-      console.warn('page.models not found');
+      // console.warn('page.models not found');
     }
 
     // console.log(this.$themeConfig.sidebar);
