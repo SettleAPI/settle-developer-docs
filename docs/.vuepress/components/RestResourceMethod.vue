@@ -250,30 +250,6 @@ export default {
         }
       });
     }
-
-    // return Promise.resolve("Success");
-
-    // function getHeaders() {
-    //   var h = ["h2"];
-    //   var headings = [];
-    //   for (var i = 0; i < h.length; i++) {
-    //     if (document.getElementsByTagName(h[i])) {
-    //       headings[i] = document.querySelector(h[i]);
-    //       if (headings[i]) {
-    //         console.log(headings[i].textContent);
-    //       }
-    //     }
-    //   }
-    // }
-
-    // getData().then(
-    //   (message) => {
-    //     getHeaders();
-    //   },
-    //   (message) => {
-    //     document.write("Then failure:" + message);
-    //   }
-    // )
   },
 };
 </script>

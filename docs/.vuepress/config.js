@@ -274,12 +274,6 @@ module.exports = {
     ['vuepress-plugin-code-copy', true],
     'redirect-frontmatter',
     'img-lazy',
-    // [
-    //   'register-components',
-    //   {
-    //     componentsDir: '.vuepress/components/globals/'
-    //   }
-    // ]
   ],
   extraWatchFiles: [
     // Navigation
