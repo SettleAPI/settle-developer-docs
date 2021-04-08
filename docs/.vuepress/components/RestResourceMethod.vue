@@ -210,9 +210,13 @@ export default {
                   skinner === "put" ||
                   skinner === "delete"
                 ) {
-                  if (page.frontmatter.operation === skinner) {
-                    data.method = { operation: skinner, path: moe + "/" };
-                    unsortedShit.push(ralph);
+                  if (page.frontmatter.operation) {
+                    if (page.frontmatter.operation === skinner) {
+                      data.method = { operation: skinner, path: moe + "/" };
+                      unsortedShit.push(ralph);
+                    }
+                  } else {
+                    console.warn("page.frontmatter.operation not found...");
                   }
                 }
               });

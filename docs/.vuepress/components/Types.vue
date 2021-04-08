@@ -161,8 +161,8 @@ export default {
     // console.log(result.parsed);
   },
   async beforeMount() {
-    console.clear();
-    console.log("beforeMount");
+    // console.clear();
+    // console.log("beforeMount");
 
     const data = this.$data;
     const site = this.$site;
@@ -198,17 +198,17 @@ export default {
                 "/api/reference/rest/v1/models/#" +
                 e.title;
                 
-                console.log(uri);
+                // console.log(uri);
               c.children.push([uri, e.title]);
             });
           }
         });
-        console.log(sidebars);
+        // console.log(sidebars);
       }
     });
   },
   async mounted() {
-    console.log("mounted");
+    // console.log("mounted");
   },
 };
 </script>
