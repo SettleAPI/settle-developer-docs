@@ -148,7 +148,7 @@ export default {
     };
   },
   beforeCreate() {
-    console.log("beforeCreate");
+    // console.log("beforeCreate");
 
     // require("dotenv").config();
     // require("dotenv").config({ path: ".env.development.local" });
@@ -166,8 +166,15 @@ export default {
 
     const data = this.$data;
     const site = this.$site;
+    const page = this.$page;
 
-    data.types = site.pages[0].models;
+    this.$data.types = this.$page.models;
+
+    if (this.$page.models) {
+      console.log(this.$page.models);
+    } else {
+      console.warn('page.models not found');
+    }
 
     // console.log(this.$themeConfig.sidebar);
 

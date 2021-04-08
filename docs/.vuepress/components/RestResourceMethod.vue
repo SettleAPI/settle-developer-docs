@@ -153,7 +153,7 @@ export default {
 
     //   const site = this.$site;
     const page = this.$page;
-    const frontmatter = this.$frontmatter;
+    // const frontmatter = this.$frontmatter;
     const props = this.$props;
     const data = this.$data;
 
