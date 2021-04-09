@@ -1,12 +1,10 @@
 ---
-title: Integrating POS
-description: Integrating POS solutions with Settle
+title: Coffee shop POS integration
+description: Coffee shop POS integration
 ---
 # Coffee shop POS integration
 
-## Example
-
-In this tutorial, (*the merchant*) we will integrate is a coffee shop that uses a mobile point of sale system which allows their staff to accept payments at customers' tables. They accept cash, card and Settle.
+**In this tutorial, *the merchant* we will integrate is a coffee shop that uses a mobile point of sale system which allows their staff to accept payments at customers' tables. They accept cash, card and Settle.**
 
 When a client wishes to pay with Settle, the POS generates a QR code for the customer to scan, which is used by the POS vendor to initiate a payment request.
 
