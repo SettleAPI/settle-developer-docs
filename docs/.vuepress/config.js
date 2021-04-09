@@ -12,7 +12,19 @@ const sidebar = require('./nav/sidebars.js');
 // console.log('Sidebar Rest: ', sidebar.rest());
 // console.log('Sidebar: ', sidebar.bar());
 
-module.exports = {
+module.exports = (ctx) => ({
+
+  chainWebpack: (config) => {
+    config.module
+      .rule('yaml')
+      .test(/\.ya?ml?$/)
+      .use('json-loader')
+      .loader('json-loader')
+      .end()
+      .use('yaml-loader')
+      .loader('yaml-loader');
+  },
+
   head: [
     ['link', {
       rel: 'apple-touch-icon',
@@ -31,10 +43,10 @@ module.exports = {
       sizes: '16x16',
       href: '/icons/favicon-16x16.png'
     }],
-    ['link', {
-      rel: 'manifest',
-      href: 'icons/site.webmanifest'
-    }],
+    // ['link', {
+    //   rel: 'manifest',
+    //   href: 'icons/site.webmanifest'
+    // }],
     ['link', {
       rel: 'mask-icon',
       href: '/icons/safari-pinned-tab.svg',
@@ -56,17 +68,13 @@ module.exports = {
       name: 'theme-color',
       content: '#ff4731'
     }],
+    ['meta', {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    }],
   ],
-  chainWebpack: (config) => {
-    config.module
-      .rule('yaml')
-      .test(/\.ya?ml?$/)
-      .use('json-loader')
-      .loader('json-loader')
-      .end()
-      .use('yaml-loader')
-      .loader('yaml-loader');
-  },
+
+  extend: '@vuepress/theme-default',
 
   // markdown: {
   //   extractHeaders: ['h2', 'h3', 'h4']
@@ -81,28 +89,6 @@ module.exports = {
    */
   description: description,
 
-  /**
-   * Extra tags to be injected to the page HTML `<head>`
-   *
-   * ref：https://v1.vuepress.vuejs.org/config/#head
-   */
-  head: [
-    ['meta', {
-      name: 'theme-color',
-      content: '#3eaf7c'
-    }],
-    ['meta', {
-      name: 'apple-mobile-web-app-capable',
-      content: 'yes'
-    }],
-    [
-      'meta',
-      {
-        name: 'apple-mobile-web-app-status-bar-style',
-        content: 'black'
-      },
-    ],
-  ],
   // base: '/docs/',
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -334,4 +320,4 @@ module.exports = {
     // Plugins
     '.vuepress/plugins/getOpenAPI.js',
   ],
-};
+});

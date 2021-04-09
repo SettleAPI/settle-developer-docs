@@ -171,7 +171,7 @@ export default {
     this.$data.types = this.$page.models;
 
     if (this.$page.models) {
-      console.log(this.$page.models);
+      // console.log(this.$page.models);
     } else {
       // console.warn('page.models not found');
     }
