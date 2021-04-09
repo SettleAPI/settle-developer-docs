@@ -1,5 +1,5 @@
 ---
-title: Implement a POS with static QR
+title: POS with static QR
 description: Implement a POS with static QR
 ---
 # Implement a POS with static QR
