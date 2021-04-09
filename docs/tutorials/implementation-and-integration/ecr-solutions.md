@@ -1,6 +1,6 @@
 ---
-title: Coffee shop POS integration
-description: Coffee shop POS integration
+title: POS with dynamic QR
+description: Coffee shop POS integration with dynamic QR
 ---
 # Coffee shop POS integration
 
