@@ -1,30 +1,10 @@
 ---
-title: Integrating ECR solutions with Settle
-description: Integrating ECR solutions with Settle
+title: Coffee shop POS integration
+description: Coffee shop POS integration
 ---
-# Integrating ECR solutions with Settle
+# Coffee shop POS integration
 
-The Settle API supports a number of payment flows suitable for electronic cash register (ECR) integrations. A common use case is to have the customer scan a QR code, which will trigger a callback to the vendor's ERP system or a similar system.
-
-## Prerequisites
-
-### API key
-
-The merchant must have an [`API key`](https://developer.settle.eu/handlers.html#post--user- "POST /user/").
-
-One key is enough, but it is also possible to create several if necessary (if, for example, the merchant has several POS devices and desires separate credentials for all of them for security reasons)
-
-### Shortlink
-
-A [`shortlink`](https://developer.settle.eu/handlers.html#post--shortlink- "POST /shortlink/") whose `callback_uri` property points to the vendor's backend system. The shortlink is used to generate valid QR codes.
-
-### Callback handler
-
-A backend system for receiving QR code scans, see *[callbacks](https://developer.settle.eu/callbacks.html)*.
-
-## Example
-
-A coffee shop (*the merchant*) uses a mobile point of sale (POS) system which allows their staff to accept payments at customers' tables. They accept cash, card and Settle.
+**In this tutorial, *the merchant* we will integrate is a coffee shop that uses a mobile point of sale system which allows their staff to accept payments at customers' tables. They accept cash, card and Settle.**
 
 When a client wishes to pay with Settle, the POS generates a QR code for the customer to scan, which is used by the POS vendor to initiate a payment request.
 
