@@ -1,15 +1,16 @@
 ---
+layout: TypesLayout
 title: Complex Types
 description: Complex Types
 ---
 
 <!-- <TestComponent /> -->
 
-# Complex Types
+<!-- # Complex Types -->
 
-Not all data can be easily described with simple data structures. This page lists all the complex data structures that our Settle API is using.
+<!-- Not all data can be easily described with simple data structures. This page lists all the complex data structures that our Settle API is using. -->
 
-<Types />
+<!-- <Types /> -->
 
 <!-- ## AccessTokenResponse
 

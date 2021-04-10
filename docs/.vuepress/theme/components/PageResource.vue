@@ -3,11 +3,13 @@
     <slot name="top" />
 
     <div class="theme-default-content">
-      <h2>Method</h2>
+      <h2>
+        Method: <span class="FiraCode">{{ $frontmatter.operationId }}</span>
+      </h2>
 
-      <div class="md-api_reference_method_heading">
+      <!-- <div class="md-api_reference_method_heading">
         {{ $frontmatter.operationId }}
-      </div>
+      </div> -->
       <Content />
       <h2 id="http-request">
         <router-link :to="'#http-request'" class="header-anchor">#</router-link>
@@ -125,11 +127,26 @@
           <p v-if="type.description">{{ type.description }}</p>
         </div>
       </div>
+      <!-- <h2 id="request-body">
+        <a href="#request-body" class="header-anchor">#</a> Request Body
+      </h2>
+      <div class="custom-block warning">
+        <p class="custom-block-title">NOTE</p>
+        <p>The request body can not be empty.</p>
+      </div>
+      
+      <h2 id="response-body">
+        <a href="#response-body" class="header-anchor">#</a> Response Body
+      </h2>
+      <p>
+        If successful, the response body contains data with the following
+        structure:
+      </p> -->
     </div>
     <PageEdit />
 
     <PageNav v-bind="{ sidebarItems }" />
-
+<Footer />
     <slot name="bottom" />
   </main>
 </template>
@@ -137,6 +154,7 @@
 <script>
 import PageEdit from "@theme/components/PageEdit.vue";
 import PageNav from "@theme/components/PageNav.vue";
+import Footer from "@theme/components/Footer.vue";
 
 const axios = require("axios");
 const _ = require("lodash");
@@ -144,7 +162,7 @@ const _ = require("lodash");
 const yaml = require("js-yaml");
 
 export default {
-  components: { PageEdit, PageNav },
+  components: { PageEdit, PageNav, Footer },
   props: ["sidebarItems"],
   data() {
     return {
@@ -232,7 +250,9 @@ export default {
 
               // console.log("found: ", meth);
 
-              let excerpt = homer[meth].description.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+              let excerpt = homer[meth].description
+                .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                .split("|");
               // console.log("description: ", excerpt[0]);
 
               // console.log('frontmatter.operation: ', frontmatter.operation);
@@ -244,7 +264,7 @@ export default {
                   path: marge + "/",
                   excerpt: excerpt[0],
                 };
-                // unsortedShit.push(ralph);
+                unsortedShit.push(homer[meth]);
               }
             }
           });
@@ -253,6 +273,8 @@ export default {
     });
 
     let uniqSchemas;
+
+    // console.log("unsortedShit: ", unsortedShit);
 
     if (unsortedShit.length > 0) {
       uniqSchemas = _.uniq(unsortedShit);

@@ -88,7 +88,7 @@
       };
     },
     async beforeMount() {
-      console.clear();
+      // console.clear();
 
       const site = this.$site;
       const pages = site.pages;
@@ -99,7 +99,7 @@
 
       const schemaUrl = function() {
         let schema = props.resource.split('.')[0];
-        console.log('schema: ', schema);
+        // console.log('schema: ', schema);
         if (schema === 'merchant') {
           return 'merchant';
         } else if (schema === 'oauth2') {
@@ -176,11 +176,11 @@
 
                         // console.log('pages.frontmatter.schema: ', site.pages.frontmatter);
                         if (pages.frontmatter.operationId === a.operationId) {
-                          console.group('Found:', a.operationId);
+                          // console.group('Found:', a.operationId);
                           // console.log('operationId: ', a.operationId);
-                          console.log('pages.title: ', pages.title);
-                          console.log('pages.path: ', pages.path);
-                          console.log(a);
+                          // console.log('pages.title: ', pages.title);
+                          // console.log('pages.path: ', pages.path);
+                          // console.log(a);
                           console.groupEnd();
 
                           data.resourceOverviewUrl = pages.frontmatter.schema;
