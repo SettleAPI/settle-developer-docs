@@ -31,6 +31,9 @@
       >
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
+        <p>
+          <router-link :to="feature.url">Learn more</router-link>
+        </p>
       </div>
     </div>
 

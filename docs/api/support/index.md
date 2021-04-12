@@ -1,5 +1,7 @@
 ---
 next: false
+title: How to get help
+description: How to get help
 ---
 
 # How to get help

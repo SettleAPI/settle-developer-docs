@@ -1,3 +1,7 @@
+---
+title: Template
+description: Template
+---
 ## Lorem
 
 Fees and their corresponding VAT amounts for summaries of merchant settlements.

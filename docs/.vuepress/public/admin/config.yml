@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: SettleAPI/settle-developer-docs
-  branch: stage
+  branch: dev
 
 # when using the default proxy server port
 local_backend: true
@@ -40,6 +40,7 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Details', name: 'details', widget: 'string' }
+              - { label: 'URL', name: 'url', widget: 'string' }
           - {
               label: 'Footer',
               name: 'footer',
@@ -47,73 +48,70 @@ collections:
               required: false,
             }
           - { label: 'Body', name: body, widget: markdown, required: false }
-  - label: 'Introduction'
-    name: 'introduction'
-    folder: 'docs/introduction'
+  ## Guides ##
+  # Introduction
+  - name: introduction
+    label: Introductions
+    label_singular: 'Introduction document'
+    
+    folder: docs/api/guides/introduction
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Permalink',
-          name: 'permalink',
-          widget: 'hidden',
-          default: '/:slug',
-        }
-  - label: 'Guides'
-    name: 'guides'
-    folder: 'docs/guides'
+  # Tutorials
+  - name: tutorials
+    label: Tutorials
+    label_singular: 'Tutorial'
+    folder: docs/api/guides/tutorials
+    create: true
+    # adding a nested object will show the collection folder structure
+    nested:
+      depth: 3 # max depth to show in the collection tree
+      summary: '{{title}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+  # Best Practices
+  - name: best-practices
+    label: Best Practices
+    label_singular: 'Best Practice document'
+    folder: docs/api/guides/best-practices
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Permalink',
-          name: 'permalink',
-          widget: 'hidden',
-          default: '/:slug',
-        }
-  - label: 'API Reference'
-    name: 'types'
-    folder: 'docs/api'
+  # Quickstarts
+  - name: quickstarts
+    label: Quickstarts
+    label_singular: 'Quickstart document'
+    folder: docs/api/guides/quickstarts
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Permalink',
-          name: 'permalink',
-          widget: 'hidden',
-          default: '/:slug',
-        }
-  - label: 'API Resources'
-    name: 'resources'
-    folder: 'docs/api/resources'
+  ## Support
+  - name: support
+    label: Support
+    label_singular: 'Support document'
+    folder: docs/api/support
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Permalink',
-          name: 'permalink',
-          widget: 'hidden',
-          default: '/:slug',
-        }
-  - label: 'Tutorials'
-    name: 'tutorials'
-    folder: 'docs/tutorials/implementation-and-integration'
+  ## Other
+  - name: other
+    label: Other
+    label_singular: 'Genereic document'
+    folder: docs/api
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Permalink',
-          name: 'permalink',
-          widget: 'hidden',
-          default: '/:slug',
-        }
