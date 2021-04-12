@@ -40,6 +40,7 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Details', name: 'details', widget: 'string' }
+              - { label: 'URL', name: 'url', widget: 'string' }
           - {
               label: 'Footer',
               name: 'footer',
@@ -47,22 +48,70 @@ collections:
               required: false,
             }
           - { label: 'Body', name: body, widget: markdown, required: false }
-  - name: guides
-    label: Guides
-    label_singular: 'Guide'
-    folder: docs/api/guides
+  ## Guides ##
+  # Introduction
+  - name: introduction
+    label: Introductions
+    label_singular: 'Introduction document'
+    
+    folder: docs/api/guides/introduction
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  # Tutorials
+  - name: tutorials
+    label: Tutorials
+    label_singular: 'Tutorial'
+    folder: docs/api/guides/tutorials
     create: true
     # adding a nested object will show the collection folder structure
     nested:
-      depth: 100 # max depth to show in the collection tree
-      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
+      depth: 3 # max depth to show in the collection tree
+      summary: '{{title}}'
     fields:
-      - label: Title
-        name: title
-        widget: string
-      - label: Body
-        name: body
-        widget: markdown
-    # adding a meta object with a path property allows editing the path of entries
-    # moving an existing entry will move the entire sub tree of the entry to the new location
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
     meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+  # Best Practices
+  - name: best-practices
+    label: Best Practices
+    label_singular: 'Best Practice document'
+    folder: docs/api/guides/best-practices
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  # Quickstarts
+  - name: quickstarts
+    label: Quickstarts
+    label_singular: 'Quickstart document'
+    folder: docs/api/guides/quickstarts
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  ## Support
+  - name: support
+    label: Support
+    label_singular: 'Support document'
+    folder: docs/api/support
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  ## Other
+  - name: other
+    label: Other
+    label_singular: 'Genereic document'
+    folder: docs/api
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Meta description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

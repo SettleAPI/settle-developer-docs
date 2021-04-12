@@ -112,6 +112,7 @@ module.exports = (ctx) => ({
     sidebar: {
       '/api/reference/rest/': sidebar.rest(),
       '/api/guides/': sidebar.guides(),
+      '/': sidebar.support(),
     },
     // sidebar: {
     //   '/api/guides/': [{

@@ -4,7 +4,17 @@ const tutorials = require('./guides/tutorials.js');
 const best_practices = require('./guides/best-practices.js');
 
 
+const overview = {
+    title: 'Overview',
+    collapsable: false,
+    sidebarDepth: 0,
+    children: [
+        ['/api/guides/', 'Settle API Overview'],
+    ],
+}
+
 module.exports = [
+    overview,
     introduction,
     quickstarts,
     tutorials,

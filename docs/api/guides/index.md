@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Settle API Overview
 description: Getting started with the Settle API
 ---
 # Getting started with the Settle API
