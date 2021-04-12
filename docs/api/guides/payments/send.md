@@ -1,3 +1,0 @@
----
-pageClass: guides-sidebar
----

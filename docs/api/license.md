@@ -1,3 +1,7 @@
+---
+title: LICENCE
+description: LICENCE
+---
 # MIT License
 
 ## Copyright (c) 2021 Settle Group

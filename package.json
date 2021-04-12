@@ -31,6 +31,7 @@
     "remove": "^0.1.5",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
+    "to-title-case": "^1.0.0",
     "vue-cli-plugin-yaml": "^1.0.2",
     "vuepress": "^1.8.2",
     "vuepress-plugin-clean-urls": "^1.1.2",
