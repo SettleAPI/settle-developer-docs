@@ -10,6 +10,8 @@ const moment = require('moment');
 
 const sidebar = require('./nav/sidebars.js');
 // console.log('Sidebar Rest: ', sidebar.rest());
+
+console.log('Sidebar Guides: ', sidebar.guides());
 // console.log('Sidebar: ', sidebar.bar());
 
 module.exports = (ctx) => ({
@@ -108,7 +110,8 @@ module.exports = (ctx) => ({
     smoothScroll: true,
     nav: require('./nav/top/mainNav.js'),
     sidebar: {
-      '/api/reference/rest/': sidebar.rest()
+      '/api/reference/rest/': sidebar.rest(),
+      '/api/guides/': sidebar.guides(),
     },
     // sidebar: {
     //   '/api/guides/': [{

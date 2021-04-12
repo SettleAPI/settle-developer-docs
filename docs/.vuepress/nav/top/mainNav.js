@@ -6,7 +6,7 @@ module.exports = [{
     link: '/api/guides/',
 }, {
     text: 'Reference',
-    link: '/api/reference/',
+    link: '/api/reference/rest/v1/',
 }, {
     text: 'Samples',
     link: '/api/samples/',
