@@ -21,7 +21,7 @@ const {
 
 // Import OAuth2 menus
 const {
-    oauth2,
+    // oauth2,
     oauth2_auth_code,
     oauth2_auth_request,
     oauth2_auth_token,
@@ -75,7 +75,7 @@ function OAuth2Group() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-            oauth2,
+            // oauth2,
             oauth2_auth_code,
             oauth2_auth_request,
             oauth2_auth_token,

@@ -2,6 +2,7 @@
 layout: SpecialLayout
 title: merchant.payment.request.create
 description: Endpoint for requesting payments.
+api: merchant
 schema: merchant.payment.request
 operationId: merchant.payment.request.create
 operation: post

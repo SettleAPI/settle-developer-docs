@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top" />
 
-    <div class="theme-default-content">
+    <div class="theme-default-content rest-resource-summary">
       <h2 id="rest-resource">
         <router-link :to="'#rest-resource'" class="header-anchor"
           >#</router-link
@@ -52,7 +52,7 @@
       </table>
       <div v-else class="warning custom-block">
         <p class="custom-block-title">WARNING</p>
-        <p>No Methods found for <strong>merchant.balance</strong>.</p>
+        <p>No Methods found for <strong>{{ $frontmatter.schema }}</strong>.</p>
       </div>
     </div>
     <PageEdit />
@@ -72,6 +72,24 @@ const _ = require("lodash");
 
 const yaml = require("js-yaml");
 
+console.clear();
+
+let getMethods;
+
+let site;
+let page;
+let frontmatter;
+let props;
+let data;
+
+const operations = ["post", "get", "put", "delete"];
+
+let reference;
+
+function log(msg, ref) {
+  console.log(msg, ": ", ref);
+}
+
 export default {
   components: { PageEdit, PageNav, Footer },
   props: ["sidebarItems"],
@@ -80,169 +98,101 @@ export default {
       methods: [],
     };
   },
-  async mounted() {
-    console.clear();
-
-    const site = this.$site;
-    const page = this.$page;
-
-    const frontmatter = this.$frontmatter;
-
-    const props = this.$props;
-    const data = this.$data;
+  async beforeMount() {
+    site = this.$site;
+    page = this.$page;
+    frontmatter = this.$frontmatter;
+    props = this.$props;
+    data = this.$data;
 
     data.methods = [];
 
-    let reference;
+    getMethods = () => {
+      console.clear();
 
-    function log(msg, ref) {
-      console.log(msg, ": ", ref);
-    }
+      if (page.reference) {
+        reference = page.reference;
+        // log("reference", reference);
+      } else if (site.pages[0].reference) {
+        reference = site.pages[0].reference;
+        // log("reference", reference);
+      } else {
+        console.warn(
+          "Neither $page.reference or $site.pages[0].reference found..."
+        );
+      }
 
-    const operations = ["post", "get", "put", "delete"];
+      frontmatter.title = "REST Resource: " + frontmatter.title;
 
-    if (page.reference) {
-      reference = page.reference;
-      // log("reference", reference);
-    } else if (site.pages[0].reference) {
-      reference = site.pages[0].reference;
-      // log("reference", reference);
-    } else {
-      console.warn(
-        "Neither $page.reference or $site.pages[0].reference found..."
-      );
-    }
+      // console.log(frontmatter.api);
 
-    frontmatter.title = "REST Resource: " + frontmatter.title;
+      _.filter(reference, function (api, name) {
+        // console.log(api.info);
 
-    // console.log(frontmatter.api);
+        if (frontmatter.api === name) {
+          // log("reference", reference[name]);
+          // log("paths", reference[name].paths);
 
-    _.filter(reference, function (api, name) {
-      // console.log(api.info);
+          _.filter(reference[name].paths, function (a, b) {
+            // log("a", b);
 
-      if (frontmatter.api === name) {
-        // log("reference", reference[name]);
-        // log("paths", reference[name].paths);
-
-        _.filter(reference[name].paths, function (a, b) {
-          // log("a", b);
-
-          _.filter(a, function (c, d) {
-            // log("d", d);
-            operations.forEach((operation) => {
-              if (d === operation) {
-                // log("c", c);
-
-                let schema = c.operationId.split(/\.(?=[^\.]+$)/)[0];
-                // log("schema", schema);
-                // log("frontmatter.schema", frontmatter.schema);
-                if (schema === frontmatter.schema) {
-                  // log("schema", schema);
-
-                  let method = c.operationId.split(/\.(?=[^\.]+$)/)[1];
-                  c.method = method;
-                  // log("method", method);
-
-                  let excerpt = c.description
-                    .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                    .split("|")[0];
-                  // console.log(excerpt);
-
-                  c.excerpt = excerpt;
-
+            _.filter(a, function (c, d) {
+              // log("d", d);
+              operations.forEach((operation) => {
+                if (d === operation) {
                   // log("c", c);
 
-                  data.methods.push(c);
-                  // log("methods", methods);
+                  let schema = c.operationId.split(/\.(?=[^\.]+$)/)[0];
+                  // log("schema", schema);
+                  // log("frontmatter.schema", frontmatter.schema);
+                  if (schema === frontmatter.schema) {
+                    // log("schema", schema);
+
+                    let method = c.operationId.split(/\.(?=[^\.]+$)/)[1];
+                    c.method = method;
+                    // log("method", method);
+
+                    let excerpt = c.description
+                      .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                      .split("|")[0];
+                    // console.log(excerpt);
+
+                    c.excerpt = excerpt;
+
+                    // log("c", c);
+
+                    data.methods.push(c);
+                    // log("methods", methods);
+                  }
                 }
-              }
+              });
             });
           });
-        });
-      }
-    });
+        }
+      });
+    };
+  },
+  async mounted() {
+    site = this.$site;
+    page = this.$page;
+    frontmatter = this.$frontmatter;
+    props = this.$props;
+    data = this.$data;
+
+    data.methods = [];
+
+    getMethods();
   },
   async beforeUpdate() {
-    console.clear();
-
-    const site = this.$site;
-    const page = this.$page;
-
-    const frontmatter = this.$frontmatter;
-
-    const props = this.$props;
-    const data = this.$data;
+    site = this.$site;
+    page = this.$page;
+    frontmatter = this.$frontmatter;
+    props = this.$props;
+    data = this.$data;
 
     data.methods = [];
 
-    let reference;
-
-    function log(msg, ref) {
-      console.log(msg, ": ", ref);
-    }
-
-    const operations = ["post", "get", "put", "delete"];
-
-    if (page.reference) {
-      reference = page.reference;
-      // log("reference", reference);
-    } else if (site.pages[0].reference) {
-      reference = site.pages[0].reference;
-      // log("reference", reference);
-    } else {
-      console.warn(
-        "Neither $page.reference or $site.pages[0].reference found..."
-      );
-    }
-
-    frontmatter.title = "REST Resource: " + frontmatter.title;
-
-    // console.log(frontmatter.api);
-
-    _.filter(reference, function (api, name) {
-      // console.log(api.info);
-
-      if (frontmatter.api === name) {
-        // log("reference", reference[name]);
-        // log("paths", reference[name].paths);
-
-        _.filter(reference[name].paths, function (a, b) {
-          // log("a", b);
-
-          _.filter(a, function (c, d) {
-            // log("d", d);
-            operations.forEach((operation) => {
-              if (d === operation) {
-                // log("c", c);
-
-                let schema = c.operationId.split(/\.(?=[^\.]+$)/)[0];
-                // log("schema", schema);
-                // log("frontmatter.schema", frontmatter.schema);
-                if (schema === frontmatter.schema) {
-                  // log("schema", schema);
-
-                  let method = c.operationId.split(/\.(?=[^\.]+$)/)[1];
-                  c.method = method;
-                  // log("method", method);
-
-                  let excerpt = c.description
-                    .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                    .split("|")[0];
-                  // console.log(excerpt);
-
-                  c.excerpt = excerpt;
-
-                  // log("c", c);
-
-                  data.methods.push(c);
-                  // log("methods", methods);
-                }
-              }
-            });
-          });
-        });
-      }
-    });
+    getMethods();
   },
 };
 </script>
