@@ -2,7 +2,7 @@ name: Create *Promote Dev to Stage* Pull Request
 on:
   push:
     branches:
-      - 'promote/dev'  # Push events to branches matching refs/heads/promote/dev
+      - 'dev'  # Push events to branches matching refs/heads/promote/dev
 jobs:
   productionPromotion:
     runs-on: ubuntu-latest
