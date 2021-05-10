@@ -11,8 +11,8 @@
         page lists all the complex data structures that our Settle API is using.
       </p>
       <div class="md-api_reference_FiraCode">
-        <section v-for="(type, index) in types" :key="index">
-          <h2 :id="type.title">
+        <section v-for="(type, index) in types" :key="index" :id="type.title">
+          <h2>
             <router-link :to="'#' + type.title" class="header-anchor"
               >#</router-link
             >

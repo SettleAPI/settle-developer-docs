@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: prod
-      - name: Reset production branch
+      - name: Reset stage branch
         run: |
           git fetch origin stage:stage
           git reset --hard stage
