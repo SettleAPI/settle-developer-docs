@@ -44,6 +44,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Introduction
   - name: introduction
