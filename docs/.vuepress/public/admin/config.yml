@@ -33,91 +33,85 @@ collections:
               - { label: 'URL', name: 'url', widget: 'string' }
           - { label: 'Footer', name: 'footer', widget: 'string', required: false }
           - { label: 'Body', name: body, widget: markdown, required: false }
-
   ## Guides ##
   - name: guides
     label: Guides
     label_singular: 'Guides documents'
+
     folder: docs/api/guides/
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Introduction
   - name: introduction
     label: Introductions
     label_singular: 'Introduction document'
     folder: docs/api/guides/introduction
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Tutorials
   - name: tutorials
     label: Tutorials
     label_singular: 'Tutorial'
     folder: docs/api/guides/tutorials
     create: true
-    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    # adding a nested object will show the collection folder structure
+    nested:
+      depth: 3 # max depth to show in the collection tree
+      summary: '{{title}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-    # adding a nested object will show the collection folder structure
-    # nested:
-      depth: 3 # max depth to show in the collection tree
-      summary: '{{title}}'
-
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Best Practices
   - name: best-practices
     label: Best Practices
     label_singular: 'Best Practice document'
     folder: docs/api/guides/best-practices
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Quickstarts
   - name: quickstarts
     label: Quickstarts
     label_singular: 'Quickstart document'
     folder: docs/api/guides/quickstarts
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   ## Support
   - name: support
     label: Support
     label_singular: 'Support document'
     folder: docs/api/support
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   ## Other
   - name: other
     label: Other
     label_singular: 'Genereic document'
     folder: docs/api
     create: true
-    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
