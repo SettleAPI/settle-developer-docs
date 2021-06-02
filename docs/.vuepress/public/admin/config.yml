@@ -44,17 +44,18 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Introduction
   - name: introduction
     label: Introductions
     label_singular: 'Introduction document'
-
     folder: docs/api/guides/introduction
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Tutorials
   - name: tutorials
     label: Tutorials
@@ -80,6 +81,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   # Quickstarts
   - name: quickstarts
     label: Quickstarts
@@ -90,6 +92,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   ## Support
   - name: support
     label: Support
@@ -100,6 +103,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
   ## Other
   - name: other
     label: Other
@@ -110,3 +114,4 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Meta description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
