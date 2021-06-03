@@ -48,7 +48,6 @@ collections:
   - name: introduction
     label: Introductions
     label_singular: 'Introduction document'
-
     folder: docs/api/guides/introduction
     create: true
     fields:
