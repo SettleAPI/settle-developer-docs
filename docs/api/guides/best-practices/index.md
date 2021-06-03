@@ -1,5 +1,5 @@
 ---
-title: Example Document
-description: Example Document
+title: Redirect
+description: Settle REST API
 ---
-# Example Document
+<Redirect to="/api/guides/best-practices/introduction/" />
