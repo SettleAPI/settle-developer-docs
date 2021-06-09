@@ -1,5 +1,5 @@
 ---
-title: Interacting with the REST API's
+title: 1. Interacting with the REST API's
 description: How to interact with the Settle REST API's
 ---
 # Creating, Retrieving, Updating and Deleting resources (CRUD)
