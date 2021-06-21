@@ -1,11 +1,12 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4516111-2bfc-4ae0-9fc3-626cfe56e954/deploy-status)](https://app.netlify.com/sites/settle-developer-docs/deploys)
+
 # Settle API Docs
 
 ## Introduction
 
 This is the repo for the [Settle APIs Documentation](https://developer.settle.eu/) website. It's buildt using [Vuepress](https://vuepress.vuejs.org/) - a minimalistic Vue-powered static site generator from [Evan You](https://evanyou.me/), the creator of [Vue.js](https://vuejs.org/), and [Netlify CMS](https://www.netlifycms.org/) - an open source content management for your [Git workflow](https://guides.github.com/introduction/flow/).
 
-***TL;DR:*** *[Contributing and setting up local environment](#contributing)*
+**_TL;DR:_** _[Contributing and setting up local environment](#contributing)_
 
 ## VuePress
 
@@ -52,13 +53,19 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
    `yarn install`
 
-4. ### Start the local dev server
+4. ### Add .env.local file
+
+   Create a new file in the root folder named `.env.local` and add the `GITHUB_TOKEN` environment variable found in the Netlify Deploy Settings.
+
+   Learn more about environment variables over in the [Netlify docs](https://docs.netlify.com/configure-builds/environment-variables/)
+
+5. ### Start the local dev server
 
    `yarn docs:dev`
 
    By default, you should now see your scaffolded Settle APIs docs site at [https://localhost:8080](https://localhost:8080)🚀
 
-5. ### Start the local CMS server
+6. ### Start the local CMS server
 
    `npx netlify-cms-proxy-server`
 
@@ -78,10 +85,10 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
 3. ### Push to the branch
 
-    `git push origin feat/my-awesome-feature`
+   `git push origin feat/my-awesome-feature`
 
 4. ### Open a Pull Request 🤓
 
-    `gh pr create --title "My Awesome feature" --body "This is my new awesome feature." --base dev`
+   `gh pr create --title "My Awesome feature" --body "This is my new awesome feature." --base dev`
 
-    **NOTE:** Pull Requests are used to start conversation about proposed changes before they're code is reviewed and eventually merged into the main branch, and **we will only consider Pull Requests initiated towards the [dev branch](https://github.com/SettleAPI/settle-developer-docs/tree/dev)**. Pull Requests towards any other branch will be ignored and closed without any further notifications.
+   **NOTE:** Pull Requests are used to start conversation about proposed changes before they're code is reviewed and eventually merged into the main branch, and **we will only consider Pull Requests initiated towards the [dev branch](https://github.com/SettleAPI/settle-developer-docs/tree/dev)**. Pull Requests towards any other branch will be ignored and closed without any further notifications.
