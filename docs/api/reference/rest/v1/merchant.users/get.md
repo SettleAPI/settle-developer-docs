@@ -8,5 +8,5 @@ operationId: merchant.users.get
 operation: get
 method: get
 authLevel: SECRET
-authRoles: Any
+authRoles: All
 ---

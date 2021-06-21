@@ -7,6 +7,6 @@ schema: merchant.users
 operationId: merchant.users.delete
 operation: delete
 method: delete
-authLevel: SECRET
-authRoles: Any
+authLevel: KEY
+authRoles: All
 ---
