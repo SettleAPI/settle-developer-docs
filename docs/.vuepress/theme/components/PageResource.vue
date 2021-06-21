@@ -39,11 +39,17 @@
             <li>
               Required Auth Level:
               <router-link
+                v-if="$frontmatter.authLevel === 'SECRET'"
                 :to="'/guides/authentication/#authentication-using-secret'"
-                >SECRET</router-link
-              >
+                >{{ $frontmatter.authLevel }}
+              </router-link>
+              <router-link
+                v-if="$frontmatter.authLevel === 'KEY'"
+                :to="'/guides/authentication/#authentication-using-key'"
+                >{{ $frontmatter.authLevel }}
+              </router-link>
             </li>
-            <li>Authorized Roles: All</li>
+            <li>Authorized Roles: {{ $frontmatter.authRoles }}</li>
           </ul>
           <h3 id="base-uris" v-if="servers">
             <a href="#base-uris" class="header-anchor">#</a> Base URIs
@@ -140,7 +146,7 @@
         <p class="custom-block-title">NOTE</p>
         <p>The request body can not be empty.</p>
       </div>
-      
+
       <h2 id="response-body">
         <a href="#response-body" class="header-anchor">#</a> Response Body
       </h2>
@@ -152,7 +158,11 @@
       <div v-else>
         <div class="warning custom-block">
           <p class="custom-block-title">WARNING</p>
-          <p>No reference found for method <strong>{{ $frontmatter.operationId }}</strong>.</p>
+          <p>
+            No reference found for method
+            <strong>{{ $frontmatter.operationId }}</strong
+            >.
+          </p>
         </div>
       </div>
     </div>
