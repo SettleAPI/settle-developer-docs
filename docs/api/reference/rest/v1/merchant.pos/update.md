@@ -7,6 +7,6 @@ schema: merchant.pos
 operationId: merchant.pos.update
 operation: put
 method: update
-authLevel: SECRET
-authRoles: Any
+authLevel: KEY
+authRoles: USER, SUPERUSER, INTEGRATOR
 ---

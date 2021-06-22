@@ -7,6 +7,6 @@ schema: merchant.pos
 operationId: merchant.pos.delete
 operation: delete
 method: delete
-authLevel: SECRET
-authRoles: Any
+authLevel: KEY
+authRoles: SUPERUSER, INTEGRATOR
 ---
