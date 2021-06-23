@@ -1,8 +1,6 @@
-const {
-  description
-} = require('../../package');
-require("dotenv").config({
-  path: ".env.local"
+const { description } = require('../../package');
+require('dotenv').config({
+  path: '.env.local',
 });
 // require('dotenv').config()
 const moment = require('moment');
@@ -15,7 +13,6 @@ console.log('Sidebar Guides: ', sidebar.guides());
 // console.log('Sidebar: ', sidebar.bar());
 
 module.exports = (ctx) => ({
-
   chainWebpack: (config) => {
     config.module
       .rule('yaml')
@@ -26,62 +23,85 @@ module.exports = (ctx) => ({
       .use('yaml-loader')
       .loader('yaml-loader');
   },
-
   head: [
-    ['link', {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: '/icons/apple-touch-icon.png'
-    }],
-    ['link', {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      href: '/icons/favicon-32x32.png'
-    }],
-    ['link', {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      href: '/icons/favicon-16x16.png'
-    }],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/icons/apple-touch-icon.png',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/icons/favicon-32x32.png',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/icons/favicon-16x16.png',
+      },
+    ],
     // ['link', {
     //   rel: 'manifest',
     //   href: 'icons/site.webmanifest'
     // }],
-    ['link', {
-      rel: 'mask-icon',
-      href: '/icons/safari-pinned-tab.svg',
-      color: '#ff4731'
-    }],
-    ['link', {
-      rel: 'shortcut icon',
-      href: '/icons/favicon.ico'
-    }],
-    ['meta', {
-      name: 'msapplication-TileColor',
-      content: '#ff4731'
-    }],
-    ['meta', {
-      name: 'msapplication-config',
-      content: '/icons/browserconfig.xml'
-    }],
-    ['meta', {
-      name: 'theme-color',
-      content: '#ff4731'
-    }],
-    ['meta', {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1'
-    }],
+    [
+      'link',
+      {
+        rel: 'mask-icon',
+        href: '/icons/safari-pinned-tab.svg',
+        color: '#ff4731',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'shortcut icon',
+        href: '/icons/favicon.ico',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'msapplication-TileColor',
+        content: '#ff4731',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'msapplication-config',
+        content: '/icons/browserconfig.xml',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'theme-color',
+        content: '#ff4731',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+    ],
   ],
-
   extend: '@vuepress/theme-default',
-
   // markdown: {
   //   extractHeaders: ['h2', 'h3', 'h4']
   // },
-
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
@@ -90,7 +110,6 @@ module.exports = (ctx) => ({
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
   description: description,
-
   // base: '/docs/',
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -114,138 +133,7 @@ module.exports = (ctx) => ({
       '/api/guides/': sidebar.guides(),
       '/': sidebar.support(),
     },
-    // sidebar: {
-    //   '/api/guides/': [{
-    //     title: 'Guides', // required
-    //     collapsable: false, // optional, defaults to true
-    //     sidebarDepth: 1, // optional, defaults to 1
-    //     children: [
-    //       ['/api/guides/', 'Overview'],
-    //       {
-    //         title: 'Quickstarts', // required
-    //         collapsable: false,
-    //         children: [
-    //           ['/api/guides/quickstarts/node', 'Node.js'],
-    //           ['/api/guides/quickstarts/python', 'Python'],
-    //         ],
-    //       },
-    //       {
-    //         title: 'Request and Send Payments', // required
-    //         collapsable: false,
-    //         children: [
-    //           ['/api/guides/payments/request', 'Request Payment'],
-    //           ['/api/guides/payments/send', 'Send Payment'],
-    //         ],
-    //       },
-    //     ],
-    //   }, ],
-    //   '/api/reference/rest/': [{
-    //       title: 'REST Reference', // required
-    //       collapsable: false, // optional, defaults to true
-    //       sidebarDepth: 0, // optional, defaults to 1
-    //       children: [
-    //         ['/api/reference/rest/v1/', 'Resource Summary']
-    //       ],
-    //     },
-    //     {
-    //       title: 'REST Resources', // required
-    //       collapsable: false, // optional, defaults to true
-    //       sidebarDepth: 1, // optional, defaults to 1
-    //       // children: getApiSidebar(),
-    //       children: [
-    //         get_sidebar_reference_merchant(),
-    //         get_sidebar_reference_merchant_balance(),
-    //         get_sidebar_reference_merchant_logo(),
-    //         get_sidebar_reference_merchant_payment_request(),
-    //         get_sidebar_reference_merchant_payment_request_outcome(),
-    //         get_sidebar_reference_merchant_payment_send(),
-    //         get_sidebar_reference_merchant_payment_send_outcome(),
-    //         get_sidebar_reference_merchant_pos(),
-    //         get_sidebar_reference_merchant_sales_summary(),
-    //         get_sidebar_reference_merchant_settlement(),
-    //         get_sidebar_reference_merchant_settlement_account(),
-    //         get_sidebar_reference_merchant_settlement_latest(),
-    //         get_sidebar_reference_merchant_settlement_report(),
-    //         get_sidebar_reference_merchant_shortlink(),
-    //         get_sidebar_reference_merchant_ssp_users(),
-    //         get_sidebar_reference_merchant_statusCodes(),
-    //         get_sidebar_reference_merchant_users(),
-    //         get_sidebar_reference_oauth2(),
-    //         get_sidebar_reference_oauth2_auth_code(),
-    //         get_sidebar_reference_oauth2_auth_request(),
-    //         get_sidebar_reference_oauth2_auth_token(),
-    //         get_sidebar_reference_oauth2_error(),
-    //         get_sidebar_reference_oauth2_qrImage(),
-    //         get_sidebar_reference_oauth2_user_info(),
-    //         get_sidebar_reference_users_permissions(),
-    //         get_sidebar_reference_users_permissions_request(),
-    //         get_sidebar_reference_users_permissions_request_outcome(),
-    //         get_sidebar_reference_users_permissions_scope(),
-    //       ],
-    //     },
-    //     '/api/reference/rest/v1/types',
-    //     // {
-    //     //   title: 'Resources', // required
-    //     //   collapsable: false, // optional, defaults to true
-    //     //   sidebarDepth: 1, // optional, defaults to 1
-    //     //   children: getResourcesSidebar(),
-    //     // },
-    //   ],
-    //   '/api/support': [{
-    //     title: 'Support', // required
-    //     collapsable: false, // optional, defaults to true
-    //     sidebarDepth: 0, // optional, defaults to 1
-    //     children: [
-    //       // get_sidebar_support(),
-    //       ['/api/support/', 'How to Get Help'],
-    //       [
-    //         'https://stackoverflow.com/questions/tagged/settle-api',
-    //         'Stack Overflow',
-    //       ],
-    //       [
-    //         'https://stackoverflow.com/questions/tagged/settle-api',
-    //         'Issue Tracker',
-    //       ],
-    //       [
-    //         'https://stackoverflow.com/questions/tagged/settle-api',
-    //         'Feature Request',
-    //       ],
-    //       ['/api/release-notes', 'Release Notes'],
-    //       ['/api/terms', 'Terms of Service'],
-    //     ],
-    //   }, ],
-    //   '/discovery': [{
-    //     title: 'API Discovery Service', // required
-    //     collapsable: false, // optional, defaults to true
-    //     sidebarDepth: 1, // optional, defaults to 1
-    //     children: [
-    //       get_sidebar_discovery_home(),
-    //       get_sidebar_discovery_guides(),
-    //       get_sidebar_discovery_reference(),
-    //     ],
-    //   }, ],
-    //   '/': [{
-    //       title: 'Introduction', // required
-    //       collapsable: false, // optional, defaults to true
-    //       sidebarDepth: 2, // optional, defaults to 1
-    //       children: getIntroductionSidebar(),
-    //     },
-    //     {
-    //       title: 'Guides', // required
-    //       collapsable: false, // optional, defaults to true
-    //       sidebarDepth: 2, // optional, defaults to 1
-    //       children: getGuidesSidebar(),
-    //     },
-    //     {
-    //       title: 'Tutorials', // required
-    //       collapsable: false, // optional, defaults to true
-    //       sidebarDepth: 0, // optional, defaults to 1
-    //       children: getImpIntSidebar(),
-    //     },
-    //   ],
-    // },
   },
-
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */

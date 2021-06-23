@@ -1,12 +1,12 @@
 ---
 layout: SpecialLayout
-title: merchant.pos.delete
+title: merchant.apiKeys.list
 description: Endpoint description...
 api: merchant
-schema: merchant.pos
-operationId: merchant.pos.delete
-operation: delete
-method: delete
+schema: merchant.apiKeys
+operationId: merchant.apiKeys.list
+operation: get
+method: list
 authLevel: KEY
 authRoles: SUPERUSER, INTEGRATOR
 ---

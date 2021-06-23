@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.users.update
+title: merchant.apiKeys.update
 description: Endpoint description...
 api: merchant
-schema: merchant.users
-operationId: merchant.users.update
+schema: merchant.apiKeys
+operationId: merchant.apiKeys.update
 operation: put
 method: update
 authLevel: KEY

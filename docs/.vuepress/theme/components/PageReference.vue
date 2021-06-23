@@ -71,7 +71,11 @@
       <div class="md-api_reference_FiraCode">
         <!-- REST REsources -->
 
-        <section v-for="(resource, index) in $data.resource" :key="index">
+        <section
+          v-if="!resource.internal"
+          v-for="(resource, index) in $data.resource"
+          :key="index"
+        >
           <h3 :id="'v' + resource.version + '-' + resource.headerAnchor">
             <router-link
               :to="'#v' + resource.version + '-' + resource.headerAnchor"
@@ -130,7 +134,7 @@
     </div>
 
     <PageEdit />
-<Footer />
+    <Footer />
     <PageNav v-bind="{ sidebarItems }" />
 
     <slot name="bottom" />
@@ -242,6 +246,8 @@ export default {
                   let resourceEntry = {
                     name: resourceName,
                     methods: {},
+                    deprecated: false,
+                    internal: false,
                   };
 
                   _.filter(reference, function (api, name) {
@@ -331,9 +337,13 @@ export default {
                         thisMetod.api = thisMetod.operationId.split(".")[0];
                         // console.log('thisMetod: ', thisMetod.description);
 
-                        let excerpt = thisMetod.description
-                          .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                          .split("|")[0];
+                        let excerpt;
+
+                        if (thisMetod.description) {
+                          excerpt = thisMetod.description
+                            .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                            .split("|")[0];
+                        }
                         // console.log(excerpt);
                         thisMetod.excerpt = excerpt;
 
@@ -379,8 +389,20 @@ export default {
 
           // resourceData[hmm[0]].methods.push(boy)
           resourceData[hmm[0]].methods[boy] = bender;
-          // console.log("bender: ", bender);
+          console.log(
+            "resourceData[hmm[0]].methods[boy]: ",
+            resourceData[hmm[0]].methods[boy]
+          );
           // console.log(resourceData[hmm[0]].methods[boy]);
+          if (bender.deprecated) {
+            console.log("deprecated: ", bender.deprecated);
+            resourceData[hmm[0]].deprecated = true;
+          }
+
+          if (bender["x-internal"]) {
+            console.log("x-internal: ", bender["x-internal"]);
+            resourceData[hmm[0]].internal = true;
+          }
         }
       });
     });

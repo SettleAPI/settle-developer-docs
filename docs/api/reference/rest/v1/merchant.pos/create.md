@@ -7,6 +7,6 @@ schema: merchant.pos
 operationId: merchant.pos.create
 operation: post
 method: create
-authLevel: SECRET
-authRoles: Any
+authLevel: KEY
+authRoles: USER, SUPERUSER, INTEGRATOR
 ---

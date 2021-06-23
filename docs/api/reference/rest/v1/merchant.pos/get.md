@@ -8,5 +8,5 @@ operationId: merchant.pos.get
 operation: get
 method: get
 authLevel: SECRET
-authRoles: Any
+authRoles: USER, SUPERUSER, INTEGRATOR
 ---
