@@ -7,6 +7,6 @@ schema: merchant.pos
 operationId: merchant.pos.list
 operation: get
 method: list
-authLevel: SECRET
-authRoles: Any
+authLevel: KEY
+authRoles: SUPERUSER, INTEGRATOR
 ---

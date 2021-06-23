@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.users.delete
+title: merchant.apiKeys.delete
 description: Endpoint description...
 api: merchant
-schema: merchant.users
-operationId: merchant.users.delete
+schema: merchant.apiKeys
+operationId: merchant.apiKeys.delete
 operation: delete
 method: delete
 authLevel: KEY

@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.users.get
+title: merchant.apiKeys.get
 description: Endpoint description...
 api: merchant
-schema: merchant.users
-operationId: merchant.users.get
+schema: merchant.apiKeys
+operationId: merchant.apiKeys.get
 operation: get
 method: get
 authLevel: SECRET
