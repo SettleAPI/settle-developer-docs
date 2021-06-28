@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.users.create
+title: merchant.apiKeys.create
 description: Endpoint description...
 api: merchant
-schema: merchant.users
-operationId: merchant.users.create
+schema: merchant.apiKeys
+operationId: merchant.apiKeys.create
 operation: post
 method: create
 authLevel: KEY

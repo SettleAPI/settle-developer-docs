@@ -40,12 +40,12 @@
               Required Auth Level:
               <router-link
                 v-if="$frontmatter.authLevel === 'SECRET'"
-                :to="'/guides/authentication/#authentication-using-secret'"
+                :to="'/api/guides/introduction/authentication/#authentication-using-secret'"
                 >{{ $frontmatter.authLevel }}
               </router-link>
               <router-link
                 v-if="$frontmatter.authLevel === 'KEY'"
-                :to="'/guides/authentication/#authentication-using-key'"
+                :to="'/api/guides/introduction/authentication/#authentication-using-key'"
                 >{{ $frontmatter.authLevel }}
               </router-link>
             </li>
@@ -70,12 +70,13 @@
           <ul v-if="statusCodes">
             <li v-for="(code, index) in statusCodes" :key="index">
               <strong>{{ code.code }}</strong> -->
-              <strong>{{ code.title }}</strong
-              >, {{ code.description }}
+              <!-- <strong>{{ code.title }}</strong>, {{ code.description }} -->
+              <strong>{{ code.title }}</strong>
+              <span v-if="code.description">, {{ code.description }}</span>
             </li>
           </ul>
         </div>
-        <h2 id="schema">
+        <h2 id="schema" v-if="schemas.length">
           <a href="#schema" class="header-anchor">#</a> Schema
         </h2>
         <div class="md-api_reference_FiraCode">
@@ -139,6 +140,23 @@
             <p v-if="type.description">{{ type.description }}</p>
           </div>
         </div>
+        <br />
+        <!-- <h2 id="code-snippets">
+          <a href="#code-snippets" class="header-anchor">#</a> Code Snippets
+        </h2>
+        <div class="language-http extra-class">
+          <pre class="language-http code-copy-added">
+            <code>
+              <span class="token request-line"><span class="token property">POST</span> /some/resource/ HTTP/1.1</span>
+              <span class="token header-name keyword">HOST:</span> server.test
+              <span class="token header-name keyword">Accept:</span> application/vnd.mcash.api.merchant.v1+json
+              <span class="token header-name keyword">Content-Type:</span> application/json
+              <span class="token header-name keyword">X-Auka-Merchant:</span> T9oWAQ3FSl6oeITuR2ZGWA
+              <span class="token header-name keyword">X-Auka-User:</span> POS1
+              <span class="token header-name keyword">Authorization:</span> SECRET MySecretPassword
+            </code>
+          </pre>
+        </div> -->
         <!-- <h2 id="request-body">
         <a href="#request-body" class="header-anchor">#</a> Request Body
       </h2>
@@ -222,6 +240,8 @@ export default {
     data = this.$data;
 
     unsortedShit = [];
+
+    this.$page.frontmatter.title = "Method: " + this.$page.frontmatter.title;
 
     //   console.log(this.$props);
 
@@ -332,9 +352,12 @@ export default {
               // console.log(mon);
               _.filter(mon.responses, function (apu, smithers) {
                 // console.log(smithers, apu);
-
                 let title = apu.description.split(",")[0];
                 let description = apu.description.split(",")[1];
+                console.log("code", title + ":" + description);
+
+                // let title = apu.description.split(",")[0];
+                // let description = apu.description.split(",")[1];
                 let code = {
                   code: smithers,
                   title: title,
