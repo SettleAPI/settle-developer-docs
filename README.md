@@ -47,7 +47,7 @@ At its core, **Netlify CMS** is an open-source React app that acts as a wrapper 
 
 2. ### Navigate into your newly created Settle API docs directory
 
-   `cd settle-api-docs`
+   `cd settle-developer-docs`
 
 3. ### Install dependencies
 
