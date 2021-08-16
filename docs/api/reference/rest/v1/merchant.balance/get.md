@@ -7,6 +7,7 @@ schema: merchant.balance
 operationId: merchant.balance.get
 operation: get
 method: get
+
 authLevel: JWT
 authRoles: USER, SUPERUSER, INTEGRATOR
 ---

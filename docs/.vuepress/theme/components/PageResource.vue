@@ -132,14 +132,7 @@
                   "
                 >
                   Length: <code>{{ type.minLength }}</code>
-                </li>
-                <li v-else-if="type.minLength && type.maxLength">
-                  Length:
-                  <code
-                    >&#8804; {{ type.minLength }} && &#8805;
-                    {{ type.maxLength }}</code
-                  >
-                </li>
+                </li
                 <li v-else-if="type.minLength">
                   Length: <code>&#8805; {{ type.minLength }}</code>
                 </li>
