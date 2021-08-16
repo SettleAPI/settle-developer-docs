@@ -7,8 +7,9 @@ schema: merchant.balance
 operationId: merchant.balance.get
 operation: get
 method: get
-authLevel: SECRET
-authRoles: Any
+
+authLevel: JWT
+authRoles: USER, SUPERUSER, INTEGRATOR
 ---
 
 ::: slot example
