@@ -8,4 +8,4 @@ description: Getting started with the Settle API
 
 To get started we recommend that you first create a consumer account and a business account in the [Sandbox environment](/sandbox). This allows you to try out Settle and test your integration without having to worry about real money.
 
-You can then follow one the tutorials or checkout the API references directly.
+You can then follow one of the tutorials or checkout the API references directly.
