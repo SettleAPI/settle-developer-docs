@@ -30,10 +30,10 @@ const introduction = {
     ['/api/guides/introduction/permission-requests.md','Permission Requests'],
     ['/api/guides/introduction/qr-acceptance.md','QR Acceptance'],
     ['/api/guides/introduction/resiliency.md','Resiliency'],
-    ['/api/guides/introduction/sandbox-environment.md','Sandbox Enviroment #1'],
-    ['/api/guides/introduction/settle-sandbox-environment.md',' Sandbox Enviroment #2'],
+    ['/api/guides/introduction/sandbox-environment.md','Sandbox Environment #1'],
+    ['/api/guides/introduction/settle-sandbox-environment.md',' Sandbox Environment #2'],
     ['/api/guides/introduction/settlements.md','Settlements'],
-    ['/api/guides/introduction/versioning.md','Verioning'],
+    ['/api/guides/introduction/versioning.md','Versioning'],
   ],
 };
 
