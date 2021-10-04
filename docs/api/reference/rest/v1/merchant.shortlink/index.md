@@ -1,19 +1,21 @@
 ---
 layout: ResourceOverview
 title: merchant.shortlink
-description: Overview
+description: Description...
 schema: merchant.shortlink
 api: merchant
+resourceDesc: true
 ---
 
-## Shortlink Scan Handler
+::: slot resource
+### Shortlink Scan Handler
 
 When user scans, Settle sends scan id and argstring, and can receive text and uri which can be transported back to the app. Uri will be opened in a web view inside the app if registered in list of trusted domains.
 
 <div class="md-api_reference_FiraCode">
   <div class="md-api_reference_request_heading">
     <p>
-      <span class="badge post">POST</span> http://merchant.server/callback/url
+      <span class="badge post">POST</span> https://merchant.server/callback/url
     </p>
   </div>
 </div>
@@ -41,12 +43,14 @@ The string that was appended to the shortlink value in the QR code that was scan
 
 </div>
 
-## Trusted Domains
+### Trusted Domains
 
 Because of security considerations when opening external URIs inside the Settle App, URIs or domains that will be opened in the app needs to be preapproved by Settle.
 
 There are currently no API endpoints for managing trusted domains, please contact Settle support to register domain that should be visible inside app.
 
-## Shortlink Management
+### Shortlink Management
 
-To be able to receive scans, one must first register a shortlink.
+To be able to receive scans, one must first [register a shortlink](/api/reference/rest/v1/merchant.shortlink/create/).
+:::
+

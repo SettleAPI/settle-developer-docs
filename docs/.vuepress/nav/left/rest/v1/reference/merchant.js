@@ -144,7 +144,20 @@ function merchant_settlement() {
     sidebarDepth: 0,
     children: [
       ['/api/reference/rest/v1/merchant.settlement/', 'Overview'],
+      [`/api/reference/rest/v1/merchant.settlement/list`, 'list'],
       ['/api/reference/rest/v1/merchant.settlement/get', 'get'],
+    ],
+  };
+}
+
+function merchant_settlement_latest() {
+  return {
+    title: 'merchant.settlement.latest', // required
+    collapsable: true,
+    sidebarDepth: 0,
+    children: [
+      ['/api/reference/rest/v1/merchant.settlement.latest/', 'Overview'],
+      ['/api/reference/rest/v1/merchant.settlement.latest/get', 'get'],
     ],
   };
 }
@@ -162,17 +175,7 @@ function merchant_settlement_account() {
   };
 }
 
-function merchant_settlement_latest() {
-  return {
-    title: 'merchant.settlement.latest', // required
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.settlement.latest/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.settlement.latest/get', 'get'],
-    ],
-  };
-}
+
 
 function merchant_settlement_report() {
   return {

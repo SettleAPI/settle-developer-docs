@@ -7,16 +7,13 @@
         <router-link :to="'#rest-resource'" class="header-anchor"
           >#</router-link
         >
-        REST Resource
+        REST Resource: <span class="FiraCode">{{ $frontmatter.schema }}</span>
       </h2>
-      <div class="md-api_reference_FiraCode">
-        <h3>{{ $frontmatter.schema }}</h3>
-        <p></p>
-      </div>
-      <h3 id="resource">
+
+      <h2 id="resource">
         <router-link :to="'#resource'" class="header-anchor">#</router-link>
         Resource
-      </h3>
+      </h2>
       <div v-if="$frontmatter.resourceDesc === true">
         <Content slot-key="resource" :hasDescription="true" />
       </div>
@@ -24,7 +21,7 @@
         <p>There is no persistent data associated with this resource.</p>
       </div>
 
-      <!-- <Content /> -->
+<!--      <Content />-->
       <h2 id="http-request">
         <router-link :to="'#http-request'" class="header-anchor">#</router-link>
         HTTP Requests
