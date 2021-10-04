@@ -19,7 +19,7 @@
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "@vuepress/plugin-nprogress": "^1.8.2",
     "@vuepress/plugin-register-components": "^1.8.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "dotenv": "^8.2.0",
     "js-yaml": "^4.0.0",
     "list-github-dir-content": "^3.0.0",
