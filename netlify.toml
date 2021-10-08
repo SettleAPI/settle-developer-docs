@@ -1,0 +1,6 @@
+## This rule redirects root to API Reference
+[[redirects]]
+  from = "/"
+  to = "/api/reference/rest/v1/"
+  status = 301
+  force = true # COMMENT: ensure that we always redirect
