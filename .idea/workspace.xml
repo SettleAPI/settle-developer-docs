@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ba07928-77b3-4d3f-926c-03489bcca59c" name="Default Changelist" comment="Remove all content except API Reference">
+    <list default="true" id="6ba07928-77b3-4d3f-926c-03489bcca59c" name="Default Changelist" comment="Redirecting auth page to Zendesk">
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.logo/get.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.logo/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.sales.summary/get.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.sales.summary/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/get.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/update.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/get.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/list.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/resources.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/resources.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,6 +22,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="prod" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -19,6 +36,15 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="stage" />
+        <option value="prod" />
+        <option value="dev" />
+      </list>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/node_modules/list-github-dir-content/index.js" root0="FORCE_HIGHLIGHTING" />
@@ -34,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../settle-signature-verification/signature-verification-node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -65,6 +91,7 @@
       <workItem from="1625935273495" duration="4054000" />
       <workItem from="1625956747692" duration="80000" />
       <workItem from="1633343676273" duration="1632000" />
+      <workItem from="1635365452809" duration="1853000" />
     </task>
     <task id="LOCAL-00001" summary="Remove all content except API Reference">
       <created>1633344889235</created>
@@ -73,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633344889235</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Deprecating some API endpoints">
+      <created>1635365628548</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635365628548</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Redirecting auth page to Zendesk">
+      <created>1635366048254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635366048254</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,7 +134,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove all content except API Reference" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove all content except API Reference" />
+    <MESSAGE value="Deprecating some API endpoints" />
+    <MESSAGE value="Redirecting auth page to Zendesk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redirecting auth page to Zendesk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
