@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ba07928-77b3-4d3f-926c-03489bcca59c" name="Default Changelist" comment="Remove all content except API Reference">
-      <change beforePath="$PROJECT_DIR$/docs/api/guides/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/guides/introduction/authentication.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/api/guides/introduction/interacting.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../settle-signature-verification/signature-verification-node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
