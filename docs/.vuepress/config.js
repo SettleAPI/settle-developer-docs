@@ -9,7 +9,7 @@ const moment = require('moment');
 const sidebar = require('./nav/sidebars.js');
 // console.log('Sidebar Rest: ', sidebar.rest());
 
-console.log('Sidebar Guides: ', sidebar.guides());
+// console.log('Sidebar Guides: ', sidebar.guides());
 // console.log('Sidebar: ', sidebar.bar());
 
 module.exports = (ctx) => ({
@@ -130,8 +130,8 @@ module.exports = (ctx) => ({
     nav: require('./nav/top/mainNav.js'),
     sidebar: {
       '/api/reference/rest/': sidebar.rest(),
-      '/api/guides/': sidebar.guides(),
-      '/': sidebar.support(),
+      // '/api/guides/': sidebar.guides(),
+      // '/': sidebar.support(),
     },
   },
   /**
@@ -197,20 +197,20 @@ module.exports = (ctx) => ({
     'redirect-frontmatter',
     'img-lazy',
   ],
-  extraWatchFiles: [
-    // Navigation
-    '.vuepress/nav/top/mainNav.js',
-    // Sidebars
-    '.vuepress/nav/sidebars.js',
-    '.vuepress/nav/left/guides.js',
-    '.vuepress/nav/left/rest/rest.js',
-    '.vuepress/nav/left/rest/v1/summary.js',
-    '.vuepress/nav/left/rest/v1/resources.js',
-    '.vuepress/nav/left/rest/v1/models/models.js',
-    '.vuepress/nav/left/rest/v1/reference/merchant.js',
-    '.vuepress/nav/left/rest/v1/reference/oauth2.js',
-    '.vuepress/nav/left/rest/v1/reference/users.js',
-    // Plugins
-    '.vuepress/plugins/getOpenAPI.js',
-  ],
+  // extraWatchFiles: [
+  //   // Navigation
+  //   '.vuepress/nav/top/mainNav.js',
+  //   // Sidebars
+  //   '.vuepress/nav/sidebars.js',
+  //   '.vuepress/nav/left/guides.js',
+  //   '.vuepress/nav/left/rest/rest.js',
+  //   '.vuepress/nav/left/rest/v1/summary.js',
+  //   '.vuepress/nav/left/rest/v1/resources.js',
+  //   '.vuepress/nav/left/rest/v1/models/models.js',
+  //   '.vuepress/nav/left/rest/v1/reference/merchant.js',
+  //   '.vuepress/nav/left/rest/v1/reference/oauth2.js',
+  //   '.vuepress/nav/left/rest/v1/reference/users.js',
+  //   // Plugins
+  //   '.vuepress/plugins/getOpenAPI.js',
+  // ],
 });
