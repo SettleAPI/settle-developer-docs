@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ba07928-77b3-4d3f-926c-03489bcca59c" name="Default Changelist" comment="Redirecting auth page to Zendesk">
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.logo/get.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.logo/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.sales.summary/get.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.sales.summary/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/get.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement.account/update.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/get.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.settlement/list.md" afterDir="false" />
+    <list default="true" id="6ba07928-77b3-4d3f-926c-03489bcca59c" name="Default Changelist" comment="Adding permission requests">
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.permissions.request.outcome/get.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.permissions.request/create.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/reference/merchant.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/reference/merchant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/reference/oauth2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/reference/users.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/resources.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/nav/left/rest/v1/resources.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/theme/components/PageReference.vue" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/theme/components/PageReference.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vuepress/theme/components/PageResource.vue" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/theme/components/PageResource.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.payment.request/create.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.payment.request/create.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/user.permissions.request.outcome/get.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/user.permissions.request.outcome/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.permissions.request.outcome/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/user.permissions.request/create.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/user.permissions.request/get.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.permissions.request/get.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api/reference/rest/v1/user.permissions.request/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api/reference/rest/v1/merchant.permissions.request/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +62,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.18.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.18.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/api/reference/rest/v1" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
     <option name="showLigatures" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/api/reference/rest/v1" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="localhost:8080" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/">
@@ -92,6 +101,7 @@
       <workItem from="1625956747692" duration="80000" />
       <workItem from="1633343676273" duration="1632000" />
       <workItem from="1635365452809" duration="1853000" />
+      <workItem from="1639565593541" duration="11763000" />
     </task>
     <task id="LOCAL-00001" summary="Remove all content except API Reference">
       <created>1633344889235</created>
@@ -114,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635366048254</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding permission requests">
+      <created>1639566413553</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639566413553</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +153,8 @@
     <MESSAGE value="Remove all content except API Reference" />
     <MESSAGE value="Deprecating some API endpoints" />
     <MESSAGE value="Redirecting auth page to Zendesk" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redirecting auth page to Zendesk" />
+    <MESSAGE value="Adding permission requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding permission requests" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

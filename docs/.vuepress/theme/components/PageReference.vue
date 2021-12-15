@@ -206,7 +206,7 @@ export default {
       let apiPath = [];
 
       _.filter(apis, function (apiName, val) {
-        // console.log(reference[apiName].paths);
+        console.log(reference[apiName].paths);
         apiPath.push(reference[apiName].paths);
       });
 

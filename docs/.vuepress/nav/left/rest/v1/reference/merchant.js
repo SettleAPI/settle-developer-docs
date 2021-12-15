@@ -26,19 +26,6 @@ function merchant_balance() {
   };
 }
 
-function merchant_logo() {
-  return {
-    title: 'merchant.logo', // required
-    // path: '/api/reference/rest/v1/merchant.logo.paymentRequest/',
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.logo/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.logo/get', 'get'],
-    ],
-  };
-}
-
 function merchant_payment_request() {
   return {
     title: 'merchant.payment.request', // required
@@ -125,31 +112,6 @@ function merchant_profile() {
   };
 }
 
-function merchant_sales_summary() {
-  return {
-    title: 'merchant.sales.summary', // required
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.sales.summary/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.sales.summary/get', 'get'],
-    ],
-  };
-}
-
-function merchant_settlement() {
-  return {
-    title: 'merchant.settlement', // required
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.settlement/', 'Overview'],
-      [`/api/reference/rest/v1/merchant.settlement/list`, 'list'],
-      ['/api/reference/rest/v1/merchant.settlement/get', 'get'],
-    ],
-  };
-}
-
 function merchant_settlement_latest() {
   return {
     title: 'merchant.settlement.latest', // required
@@ -161,21 +123,6 @@ function merchant_settlement_latest() {
     ],
   };
 }
-
-function merchant_settlement_account() {
-  return {
-    title: 'merchant.settlement.account', // required
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.settlement.account/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.settlement.account/get', 'get'],
-      ['/api/reference/rest/v1/merchant.settlement.account/update', 'update'],
-    ],
-  };
-}
-
-
 
 function merchant_settlement_report() {
   return {
@@ -205,20 +152,6 @@ function merchant_shortlink() {
   };
 }
 
-function merchant_ssp_users() {
-  return {
-    title: 'merchant.ssp.users', // required
-    collapsable: true,
-    sidebarDepth: 0,
-    children: [
-      ['/api/reference/rest/v1/merchant.ssp.users/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.ssp.users/create', 'create'],
-      ['/api/reference/rest/v1/merchant.ssp.users/get', 'get'],
-      ['/api/reference/rest/v1/merchant.ssp.users/delete', 'delete'],
-    ],
-  };
-}
-
 function merchant_statusCodes() {
   return {
     title: 'merchant.statusCodes', // required
@@ -232,17 +165,27 @@ function merchant_statusCodes() {
   };
 }
 
-function merchant_users() {
+function merchant_permissions_request() {
   return {
-    title: 'merchant.users', // required
+    title: 'merchant.permissions.request', // required
     collapsable: true,
     sidebarDepth: 0,
     children: [
-      ['/api/reference/rest/v1/merchant.users/', 'Overview'],
-      ['/api/reference/rest/v1/merchant.users/create', 'create'],
-      ['/api/reference/rest/v1/merchant.users/get', 'get'],
-      ['/api/reference/rest/v1/merchant.users/update', 'update'],
-      ['/api/reference/rest/v1/merchant.users/delete', 'delete'],
+      ['/api/reference/rest/v1/merchant.permissions.request/', 'Overview'],
+      ['/api/reference/rest/v1/merchant.permissions.request/create', 'create'],
+      ['/api/reference/rest/v1/merchant.permissions.request/get', 'get'],
+    ],
+  };
+}
+
+function merchant_permissions_request_outcome() {
+  return {
+    title: 'merchant.permissions.request.outcome', // required
+    collapsable: true,
+    sidebarDepth: 0,
+    children: [
+      ['/api/reference/rest/v1/merchant.permissions.request.outcome/', 'Overview'],
+      ['/api/reference/rest/v1/merchant.permissions.request.outcome/get', 'get'],
     ],
   };
 }
@@ -250,20 +193,16 @@ function merchant_users() {
 module.exports = {
   merchant_apiKeys: merchant_apiKeys(),
   merchant_balance: merchant_balance(),
-  merchant_logo: merchant_logo(),
   merchant_payment_request: merchant_payment_request(),
   merchant_payment_request_outcome: merchant_payment_request_outcome(),
   merchant_payment_send: merchant_payment_send(),
   merchant_payment_send_outcome: merchant_payment_send_outcome(),
   merchant_pos: merchant_pos(),
   merchant_profile: merchant_profile(),
-  merchant_sales_summary: merchant_sales_summary(),
-  merchant_settlement: merchant_settlement(),
-  merchant_settlement_account: merchant_settlement_account(),
   merchant_settlement_latest: merchant_settlement_latest(),
   merchant_settlement_report: merchant_settlement_report(),
   merchant_shortlink: merchant_shortlink(),
-  merchant_ssp_users: merchant_ssp_users(),
   merchant_statusCodes: merchant_statusCodes(),
-  merchant_users: merchant_users(),
+  merchant_permissions_request: merchant_permissions_request(),
+  merchant_permissions_request_outcome: merchant_permissions_request_outcome(),
 };
