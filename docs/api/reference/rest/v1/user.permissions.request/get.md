@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.ssp.users.get
+title: user.permissions.request.get
 description: Endpoint description...
 api: merchant
-schema: merchant.ssp.users
-operationId: merchant.ssp.users.get
+schema: user.permissions.request
+operationId: user.permissions.request.get
 operation: get
 method: get
 authLevel: SECRET

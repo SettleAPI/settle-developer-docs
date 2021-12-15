@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: merchant.ssp.users.create
+title: user.permissions.request.create
 description: Endpoint description...
 api: merchant
-schema: merchant.ssp.users
-operationId: merchant.ssp.users.create
+schema: user.permissions.request
+operationId: user.permissions.request.create
 operation: post
 method: create
 authLevel: SECRET

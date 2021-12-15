@@ -1,9 +1,9 @@
 ---
 layout: ResourceOverview
-title: users.permissions.request
+title: user.permissions.request
 description: Overview
-schema: users.permissions.request
-api: users
+schema: user.permissions.request
+api: merchant
 ---
 
 ## Permission Request
