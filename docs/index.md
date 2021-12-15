@@ -1,4 +1,4 @@
 ---
 home: false
 ---
-<Redirect to="/api/reference/rest/v1/" />
+<Redirect to="https://api.support.settle.eu/api/reference/rest/v1/" />

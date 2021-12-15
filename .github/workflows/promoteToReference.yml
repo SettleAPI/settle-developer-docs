@@ -1,0 +1,20 @@
+name: Create *Promote Prod to Reference* Pull Request
+on:
+  push:
+    branches:
+      - prod
+jobs:
+  productionPromotion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: reference
+      - name: Reset prod branch
+        run: |
+          git fetch origin prod:prod
+          git reset --hard prod
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: promTo/reference
