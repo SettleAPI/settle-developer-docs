@@ -1,11 +1,11 @@
 ---
 layout: ResourceOverview
-title: user.permissions.request.outcome
+title: merchant.permissions.request.outcome
 description: Overview
-schema: user.permissions.request.outcome
+schema: merchant.permissions.request.outcome
 api: merchant
 ---
 
-## Permission Request
+## Permission Request Outcome
 
 Request authorization to access user controlled endpoint.

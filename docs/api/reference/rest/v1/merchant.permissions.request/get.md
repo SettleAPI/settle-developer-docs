@@ -1,10 +1,10 @@
 ---
 layout: SpecialLayout
-title: user.permissions.request.outcome.get
+title: merchant.permissions.request.get
 description: Endpoint description...
 api: merchant
-schema: user.permissions.request.outcome
-operationId: user.permissions.request.outcome.get
+schema: merchant.permissions.request
+operationId: merchant.permissions.request.get
 operation: get
 method: get
 authLevel: SECRET
