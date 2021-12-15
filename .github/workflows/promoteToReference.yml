@@ -1,4 +1,4 @@
-name: Create *Promote Stage to Prod* Pull Request
+name: Create *Promote Prod to Reference* Pull Request
 on:
   push:
     branches:
