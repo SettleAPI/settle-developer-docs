@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <slot name="top" />
+    <slot name="top"/>
 
     <div class="theme-default-content">
       <h2>
@@ -10,12 +10,13 @@
       <!-- <div class="md-api_reference_method_heading">
         {{ $frontmatter.operationId }}
       </div> -->
-      <Content />
+      <Content/>
 
       <div v-if="$data.resourceExists === true">
         <h2 id="http-request">
           <router-link :to="'#http-request'" class="header-anchor"
-            >#</router-link
+          >#
+          </router-link
           >
           HTTP Request
         </h2>
@@ -23,15 +24,16 @@
           <div class="md-api_reference_request_heading">
             <p v-if="method.operation && method.path">
               <span :class="['badge', method.operation]">{{
-                method.operation
-              }}</span>
+                  method.operation
+                }}</span>
               {{ method.path }}
             </p>
           </div>
           <p>{{ method.excerpt }}</p>
           <h3 id="authorization-scopes">
             <router-link :to="'#authorization-scopes'" class="header-anchor"
-              >#</router-link
+            >#
+            </router-link
             >
             Authorization Scopes
           </h3>
@@ -39,24 +41,24 @@
             <li>
               Required Auth Level:
               <router-link
-                v-if="$frontmatter.authLevel === 'SECRET'"
-                :to="'/api/guides/introduction/authentication/#authentication-using-secret'"
-                >{{ $frontmatter.authLevel }}
+                  v-if="$frontmatter.authLevel === 'SECRET'"
+                  :to="'/api/guides/introduction/authentication/#authentication-using-secret'"
+              >{{ $frontmatter.authLevel }}
               </router-link>
               <router-link
-                v-if="$frontmatter.authLevel === 'KEY'"
-                :to="'/api/guides/introduction/authentication/#authentication-using-key'"
-                >{{ $frontmatter.authLevel }}
+                  v-if="$frontmatter.authLevel === 'KEY'"
+                  :to="'/api/guides/introduction/authentication/#authentication-using-key'"
+              >{{ $frontmatter.authLevel }}
               </router-link>
               <router-link
-                v-if="$frontmatter.authLevel === 'JWT'"
-                :to="'/api/guides/introduction/authentication/#authentication-using-secret'"
-                >{{ $frontmatter.authLevel }}
+                  v-if="$frontmatter.authLevel === 'JWT'"
+                  :to="'/api/guides/introduction/authentication/#authentication-using-secret'"
+              >{{ $frontmatter.authLevel }}
               </router-link>
               <router-link
-                v-if="$frontmatter.authLevel === 'RSA'"
-                :to="'/api/guides/introduction/authentication/#authentication-using-key'"
-                >{{ $frontmatter.authLevel }}
+                  v-if="$frontmatter.authLevel === 'RSA'"
+                  :to="'/api/guides/introduction/authentication/#authentication-using-key'"
+              >{{ $frontmatter.authLevel }}
               </router-link>
             </li>
             <li>Authorized Roles: {{ $frontmatter.authRoles }}</li>
@@ -95,7 +97,8 @@
             <div v-for="(type, entry) in schemas" :key="entry">
               <h3 :id="type.name">
                 <router-link :to="'#' + type.name" class="header-anchor"
-                  >#</router-link
+                >#
+                </router-link
                 >
                 {{ type.name }}
               </h3>
@@ -107,8 +110,9 @@
               </code> -->
                   <code v-if="type.$ref">
                     <router-link
-                      :to="'/api/reference/rest/v1/models/#' + type.$ref"
-                      >{{ type.$ref }}</router-link
+                        :to="'/api/reference/rest/v1/models/#' + type.$ref"
+                    >{{ type.$ref }}
+                    </router-link
                     >
                   </code>
                   <code v-else>{{ type.type }}</code>
@@ -125,14 +129,14 @@
                   Default: <code>{{ type.default }}</code>
                 </li>
                 <li
-                  v-if="
+                    v-if="
                     type.minLength &&
                     type.maxLength &&
                     type.minLength === type.maxLength
                   "
                 >
                   Length: <code>{{ type.minLength }}</code>
-                </li
+                </li>
                 <li v-else-if="type.minLength">
                   Length: <code>&#8805; {{ type.minLength }}</code>
                 </li>
@@ -154,11 +158,11 @@
           </div>
         </section>
 
-        <br />
+        <br/>
         <!-- <h2 id="code-snippets">
           <a href="#code-snippets" class="header-anchor">#</a> Code Snippets
         </h2> -->
-        <Content slot-key="example" />
+        <Content slot-key="example"/>
 
         <!-- <h2 id="request-body">
         <a href="#request-body" class="header-anchor">#</a> Request Body
@@ -187,11 +191,11 @@
         </div>
       </div>
     </div>
-    <PageEdit />
+    <PageEdit/>
 
-    <PageNav v-bind="{ sidebarItems }" />
-    <Footer />
-    <slot name="bottom" />
+    <PageNav v-bind="{ sidebarItems }"/>
+    <Footer/>
+    <slot name="bottom"/>
   </main>
 </template>
 
@@ -219,7 +223,7 @@ let unsortedShit = [];
 let getResource;
 
 export default {
-  components: { PageEdit, PageNav, Footer },
+  components: {PageEdit, PageNav, Footer},
   props: ["sidebarItems"],
   data() {
     return {
@@ -272,7 +276,7 @@ export default {
         console.log("reference: ", reference);
       } else {
         console.warn(
-          "Neither $page.reference or $site.pages[0].reference found..."
+            "Neither $page.reference or $site.pages[0].reference found..."
         );
       }
 
@@ -294,7 +298,7 @@ export default {
                 _.filter(mat.properties, function (burns, bob) {
                   // console.log(bob, burns);
                   if (bob !== "null") {
-                    // console.log(bob, burns);
+                    console.log('bob, burns: ', bob, burns);
                     burns.name = bob;
                     data.schemas.push(burns);
                   }
@@ -308,7 +312,7 @@ export default {
 
               methods.forEach((meth) => {
                 if (homer[meth]) {
-                  console.log("found: ", homer[meth]);
+                  // console.log("found: ", homer[meth]);
 
                   if (homer[meth].operationId === frontmatter.operationId) {
                     console.log("Operation ID matches");
@@ -317,8 +321,8 @@ export default {
                     // console.log("found: ", meth);
 
                     let excerpt = homer[meth].description
-                      .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
-                      .split("|");
+                        .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+                        .split("|");
                     // console.log("description: ", excerpt[0]);
 
                     // console.log('frontmatter.operation: ', frontmatter.operation);
@@ -352,7 +356,7 @@ export default {
           _.filter(uniqSchemas, function (mon, key) {
             // console.log(mon);
             if (mon.operationId === frontmatter.operationId) {
-              // console.log(mon);
+              console.log('match: ', mon);
               _.filter(mon.responses, function (apu, smithers) {
                 let title;
                 let description;
@@ -361,14 +365,14 @@ export default {
                 if (apu.$ref) {
                   console.log("$ref", apu.$ref);
                   let currentResponseRef = apu.$ref.split(
-                    "#/components/responses/"
+                      "#/components/responses/"
                   )[1];
                   console.log("currentResponseRef: ", currentResponseRef);
                   // _.filter(reference, function (bart, lisa){})
                   let response =
-                    reference[page.frontmatter.api].components.responses[
-                      currentResponseRef
-                    ];
+                      reference[page.frontmatter.api].components.responses[
+                          currentResponseRef
+                          ];
                   console.log("response: ", response);
                   title = response.description;
                   if (title.includes(",")) {
@@ -378,6 +382,19 @@ export default {
                   } else {
                     title = title;
                   }
+                  // if (response !== undefined) {
+                  //   title = response.description;
+                  //   if (title.includes(",")) {
+                  //     title = title.split(",")[0];
+                  //     description = title.split(",")[1];
+                  //     // console.log("code", title + ":" + description);
+                  //   } else {
+                  //     // title = title;
+                  //   }
+                  // } else {
+                  //   title = "Response Title is undefined";
+                  // }
+
                 } else {
                   console.log("apu", apu);
                   title = apu.description;
@@ -399,14 +416,16 @@ export default {
                 data.statusCodes.push(code);
               });
               //
+            } else {
+              console.log("no match");
             }
           });
         }
       } else {
         console.warn(
-          "No frontmatter.api assigned to the resource ",
-          page.frontmatter,
-          "."
+            "No frontmatter.api assigned to the resource ",
+            page.frontmatter,
+            "."
         );
       }
     };
